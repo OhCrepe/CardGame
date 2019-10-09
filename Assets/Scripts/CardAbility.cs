@@ -43,7 +43,7 @@ public abstract class CardAbility : MonoBehaviour {
 
 	public void Update(){
 
-		if(GameState.targetting){
+		if(GameState.targetting && GameState.targettingCard == this.gameObject){
 
 			if(Input.GetMouseButton(0)){
 

@@ -40,9 +40,10 @@ public class BlackMarketAbility : CardAbility {
 		if(card.tag != "Card"){
 			return false;
 		}
-		if(card.GetComponent<Draggable>().parentToReturnTo.GetComponent<Dropzone>().zoneType != Dropzone.Zone.HAND){
+		if(card.transform.parent.GetComponent<Dropzone>().zoneType != Dropzone.Zone.HAND){
 			return false;
 		}
+		Debug.Log("Valid target");
 		return true;
 
 	}
