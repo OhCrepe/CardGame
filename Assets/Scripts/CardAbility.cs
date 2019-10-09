@@ -27,11 +27,13 @@ public abstract class CardAbility : MonoBehaviour {
 
 		bool selected = false;
 		GameState.targetting = true;
+		GameState.targettingCard = this.gameObject;
 		Debug.Log("Waiting for target");
 		while(!selected){
 			if(target != null){
 				selected = true;
 				GameState.targetting = false;
+				GameState.targettingCard = null;
 				Debug.Log("Target selected");
 				OnTargetSelect(target);
 			}
