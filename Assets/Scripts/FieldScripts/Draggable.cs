@@ -5,14 +5,13 @@ using UnityEngine.UI;
 using UnityEngine.EventSystems;
 using UnityEngine.Networking;
 
-public class Draggable :  NetworkBehaviour, IBeginDragHandler, IDragHandler, IEndDragHandler, IPointerEnterHandler, IPointerExitHandler{
+public class Draggable :  MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHandler, IPointerEnterHandler, IPointerExitHandler{
 
 	public static bool dragging = false; // Whether we are currently dragging a card
 
 	private Vector2 startPosition; // Position of the mouse relative to the card it's dragging
 	public Transform parentToReturnTo; // Parent that the card needs to go back to on end drag
 	public float hoverScale; // How much bigger to make the card when we're mousing over and dragging it
-	[SyncVar]
 	public GameObject player; // Player this card belongs to
 	public GameObject abilityButton; // The button that we press to trigger this cards ability
 	private Dropzone.Zone originalParent; // The parent of the card when we first started dragging

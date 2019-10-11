@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.Networking;
 
-public class DeckInteraction : NetworkBehaviour {
+public class DeckInteraction : MonoBehaviour {
 
 	public GameObject playerHand; // Hand of the player this deck belongs to
 	public GameObject deckObject; // The deck that we're using
@@ -61,7 +61,7 @@ public class DeckInteraction : NetworkBehaviour {
 			return null;
 		}
 		GameObject drawnCard = deck[0];
-		CmdMoveCardToHand(drawnCard);
+		MoveCardToHand(drawnCard);
 		CheckForDeck();
 		return drawnCard;
 
@@ -91,28 +91,6 @@ public class DeckInteraction : NetworkBehaviour {
 	}
 
 	/*
-	*	Helper function to handle common functionality between searching and drawing
-	*/
-	[Command]
-	private void CmdMoveCardToHand(GameObject card){
-
-		deck.Remove(card);
-		card.transform.SetParent(playerHand.transform);
-		//RpcMoveCardToParent(card, playerHand);
-		card.GetComponent<Draggable>().parentToReturnTo = playerHand.transform;
-		card.SetActive(true);
-	}
-
-	[ClientRpc]
-	private void RpcMoveCardToParent(GameObject card, GameObject player){
-		card.transform.SetParent(playerHand.transform); // Currently "card" is null
-
-		//Transform parentTransform = parent.transform;
-		//card.transform.SetParent(parentTransform);
-	}
-
-
-	/*
 	* Puts a card on top of thte deck and then shuffles it
 	*/
 	public void ShuffleIntoDeck(GameObject card){
@@ -124,27 +102,17 @@ public class DeckInteraction : NetworkBehaviour {
 
 
 	/*
-	* Calls the CmdAddToTop
+	* Places a card on top of the deck
 	*/
 	public void AddToTop(GameObject card){
-		CmdAddToTop(card);
-	}
-	[Command]
-	private void CmdAddToTop(GameObject card){
 		if(deck.Contains(card)){
 			deck.Remove(card);
 		} else {
 			card.transform.SetParent(deckObject.transform);
 			card.SetActive(false);
-			RpcAddToTop(card);
 			CheckForDeck();
 		}
 		deck.Insert(0, card);
-	}
-	[ClientRpc]
-	private void RpcAddToTop(GameObject card){
-		card.transform.SetParent(deckObject.transform);
-		card.SetActive(false);
 	}
 
 	/*
@@ -181,39 +149,14 @@ public class DeckInteraction : NetworkBehaviour {
 	*	Will disable the card back if the deck is empty (or enable othewise)
 	*/
 	private void CheckForDeck(){
-		/*
 		if(deck.Count == 0){
-			deckObject.transform.GetChild(0).gameObject.SetActive(false);
-		} else {
-			deckObject.transform.GetChild(0).gameObject.SetActive(true);
-		}*/
-		CmdCheckForDeck();
-	}
-	[Command]
-	private void CmdCheckForDeck(){
-		if(deck.Count == 0){
-			RpcCheckForDeck(false);
+			SetDeckVisibility(false);
 			return;
 		}
-		RpcCheckForDeck(true);
-		/*
-		if(deck.Count == 0){
-			deckObject.transform.GetChild(0).gameObject.SetActive(false);
-		} else {
-			deckObject.transform.GetChild(0).gameObject.SetActive(true);
-		}
-		*/
+		SetDeckVisibility(true);
 	}
-	[ClientRpc]
-	private void RpcCheckForDeck(bool visible){
+	private void SetDeckVisibility(bool visible){
 		deckObject.transform.GetChild(0).gameObject.SetActive(visible);
-		/*
-		if(deck.Count == 0){
-			deckObject.transform.GetChild(0).gameObject.SetActive(false);
-		} else {
-			deckObject.transform.GetChild(0).gameObject.SetActive(true);
-		}
-		*/
 	}
 
 }
