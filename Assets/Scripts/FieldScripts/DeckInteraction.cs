@@ -94,7 +94,7 @@ public class DeckInteraction : MonoBehaviour {
 	* Puts a card on top of thte deck and then shuffles it
 	*/
 	public void ShuffleIntoDeck(GameObject card){
-		if(deck.Contains(card)){
+		if(!deck.Contains(card)){
 			AddToTop(card);
 		}
 		ShuffleDeck();
