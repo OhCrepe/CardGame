@@ -28,6 +28,9 @@ public class FrogAbility : CardAbility {
 	public override void OnTargetSelect(GameObject card){
 		//Do nothing
 	}
+	public override void OnKillAbility(){
+		// Do nothing
+	}
 
 	/*
 	* Validate that the target of this ability is correct

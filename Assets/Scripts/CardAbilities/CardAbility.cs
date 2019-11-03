@@ -6,9 +6,11 @@ public abstract class CardAbility : MonoBehaviour {
 
 	public GameObject player; // The player this card belongs to
 	public int fieldTriggerCost; //The cost to trigger the field effect of this card
+	public bool hasTriggerAbility;
 
 	public abstract void OnHire(); // Ability that triggers when hired
 	public abstract void OnFieldTrigger(); // Ability that triggers on the field when clicked
+	public abstract void OnKillAbility();
 	public abstract void OnTargetSelect(GameObject card); // What to do when a target is selected for this cards ability
 	public abstract bool ValidateTarget(GameObject card); //Validate that the target for this ability is valid
 
@@ -16,7 +18,7 @@ public abstract class CardAbility : MonoBehaviour {
 
 	public void CheckUtility(){
 		if(this.transform.GetComponent<CardData>().cardType == CardData.Type.UTILITY){
-			player.GetComponent<PlayerField>().discard.GetComponent<DiscardPile>().Discard(this.gameObject);
+			Kill();
 		}
 	}
 
@@ -62,6 +64,13 @@ public abstract class CardAbility : MonoBehaviour {
 			}
 
 		}
+
+	}
+
+	public void Kill(){
+
+		player.GetComponent<PlayerField>().discard.GetComponent<DiscardPile>().Discard(this.gameObject);
+		OnKillAbility();
 
 	}
 

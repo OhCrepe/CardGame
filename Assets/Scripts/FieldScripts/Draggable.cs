@@ -72,6 +72,9 @@ public class Draggable :  MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDr
 		if(this.gameObject.GetComponent<CardData>().cardType == CardData.Type.UTILITY){
 			return;
 		}
+		if(!this.gameObject.GetComponent<CardAbility>().hasTriggerAbility){
+			return;
+		}
 		abilityButton.SetActive(active);
 	}
 

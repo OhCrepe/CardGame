@@ -20,6 +20,9 @@ public class SleightOfHandAbility : CardAbility {
 	public override void OnFieldTrigger(){
 		//Do nothing
 	}
+	public override void OnKillAbility(){
+		// Do nothing
+	}
 
 	/*
 	* Ability of this card that triggers when the a target is selected for it's ability
