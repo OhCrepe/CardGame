@@ -29,6 +29,7 @@ GameObject:
   - component: {fileID: 114706808702674812}
   - component: {fileID: 114802448771782658}
   - component: {fileID: 61905497360412712}
+  - component: {fileID: 114441527663566764}
   m_Layer: 5
   m_Name: Withdrawal
   m_TagString: Card
@@ -46,7 +47,6 @@ GameObject:
   - component: {fileID: 224607066851762864}
   - component: {fileID: 222393941208336290}
   - component: {fileID: 114893735893837962}
-  - component: {fileID: 114133180441313218}
   m_Layer: 5
   m_Name: Text
   m_TagString: Untagged
@@ -179,17 +179,6 @@ MonoBehaviour:
   player: {fileID: 0}
   abilityButton: {fileID: 0}
   placeholderParent: {fileID: 0}
---- !u!114 &114133180441313218
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1292760616128118}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0f15d335879449f4cbdc8a3b1fd4b174, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &114194956539681302
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -298,6 +287,17 @@ MonoBehaviour:
   m_FillAmount: 1
   m_FillClockwise: 1
   m_FillOrigin: 0
+--- !u!114 &114441527663566764
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1270272842502648}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1c8539eae9c0da74b9f419f21fa91486, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &114453101400228078
 MonoBehaviour:
   m_ObjectHideFlags: 1

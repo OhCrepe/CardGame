@@ -3,8 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-
-public class GetCardCost : MonoBehaviour {
+public class GetCardStats : MonoBehaviour {
 
 	/*
 	*	Triggers on start
@@ -17,8 +16,8 @@ public class GetCardCost : MonoBehaviour {
 	* Works out the cost to activate this card, and updates the gold cost text to match
 	*/
 	private void GetAndSetCost(){
-		int cost = this.gameObject.transform.parent.parent.gameObject.GetComponent<CardData>().cost;
-		this.gameObject.GetComponent<Text>().text = "" + cost;
+		int cost = transform.gameObject.GetComponent<CardData>().cost;
+		transform.Find("Coin Counter/Text").GetComponent<Text>().text = "" + cost;
 	}
 
 }

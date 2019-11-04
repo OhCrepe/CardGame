@@ -73,7 +73,6 @@ GameObject:
   - component: {fileID: 224506654309795360}
   - component: {fileID: 222653938481892998}
   - component: {fileID: 114406255047500982}
-  - component: {fileID: 114291873673418882}
   m_Layer: 5
   m_Name: Text
   m_TagString: Untagged
@@ -116,6 +115,7 @@ GameObject:
   - component: {fileID: 114746493652831542}
   - component: {fileID: 114823122652064872}
   - component: {fileID: 61565508407307088}
+  - component: {fileID: 114493448851192980}
   m_Layer: 5
   m_Name: Dat Boi
   m_TagString: Card
@@ -200,17 +200,6 @@ MonoBehaviour:
   m_FlexibleWidth: 0
   m_FlexibleHeight: 0
   m_LayoutPriority: 1
---- !u!114 &114291873673418882
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1514490893544282}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0f15d335879449f4cbdc8a3b1fd4b174, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &114331038889380566
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -320,6 +309,17 @@ MonoBehaviour:
   m_BlockingMask:
     serializedVersion: 2
     m_Bits: 4294967295
+--- !u!114 &114493448851192980
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1605258806895032}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1c8539eae9c0da74b9f419f21fa91486, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &114641930711206464
 MonoBehaviour:
   m_ObjectHideFlags: 1

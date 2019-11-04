@@ -29,6 +29,7 @@ GameObject:
   - component: {fileID: 114741432258349654}
   - component: {fileID: 114420998391176408}
   - component: {fileID: 61143648944597894}
+  - component: {fileID: 114673237667962268}
   m_Layer: 5
   m_Name: Sleight Of Hand
   m_TagString: Card
@@ -46,7 +47,6 @@ GameObject:
   - component: {fileID: 224962737583770350}
   - component: {fileID: 222747039916386098}
   - component: {fileID: 114788401471312336}
-  - component: {fileID: 114387857108791852}
   m_Layer: 5
   m_Name: Text
   m_TagString: Untagged
@@ -174,17 +174,6 @@ MonoBehaviour:
   m_FillAmount: 1
   m_FillClockwise: 1
   m_FillOrigin: 0
---- !u!114 &114387857108791852
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1443225309481436}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0f15d335879449f4cbdc8a3b1fd4b174, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &114420998391176408
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -242,6 +231,17 @@ MonoBehaviour:
   player: {fileID: 0}
   abilityButton: {fileID: 0}
   placeholderParent: {fileID: 0}
+--- !u!114 &114673237667962268
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1356455944840686}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1c8539eae9c0da74b9f419f21fa91486, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &114722520822814990
 MonoBehaviour:
   m_ObjectHideFlags: 1

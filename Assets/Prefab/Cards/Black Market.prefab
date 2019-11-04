@@ -38,7 +38,6 @@ GameObject:
   - component: {fileID: 224014393382865194}
   - component: {fileID: 222198006499075038}
   - component: {fileID: 114884583402210276}
-  - component: {fileID: 114585293361170538}
   m_Layer: 5
   m_Name: Text
   m_TagString: Untagged
@@ -98,6 +97,7 @@ GameObject:
   - component: {fileID: 114097176095324494}
   - component: {fileID: 114511583410691470}
   - component: {fileID: 61584856966044480}
+  - component: {fileID: 114073997654962076}
   m_Layer: 5
   m_Name: Black Market
   m_TagString: Card
@@ -180,6 +180,17 @@ MonoBehaviour:
     m_VerticalOverflow: 0
     m_LineSpacing: 1
   m_Text: "Discard a card in your hand and gain gold equal to its cost.\r"
+--- !u!114 &114073997654962076
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1835115329842476}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1c8539eae9c0da74b9f419f21fa91486, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &114085965969271104
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -314,17 +325,6 @@ MonoBehaviour:
   player: {fileID: 0}
   fieldTriggerCost: 0
   hasTriggerAbility: 0
---- !u!114 &114585293361170538
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1611572118245930}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0f15d335879449f4cbdc8a3b1fd4b174, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &114729198883527660
 MonoBehaviour:
   m_ObjectHideFlags: 1
