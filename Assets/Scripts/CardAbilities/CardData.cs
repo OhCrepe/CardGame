@@ -12,4 +12,24 @@ public class CardData : MonoBehaviour {
 	public enum Type { MINION, UTILITY }; // Whether this card is a utility or a minion
 	public Type cardType;
 
+	private int currentHealth;
+	private int currentStrength;
+
+	void Awake(){
+		currentHealth = health;
+		currentStrength = strength;
+	}
+
+	public void DealDamage(int damage){
+		currentHealth-=damage;
+		GetComponent<GetCardStats>().SetHealth(currentHealth, health);
+		if(currentHealth <= 0){
+			GetComponent<CardAbility>().Kill();
+		}
+	}
+
+	public void DealDamageTo(GameObject card){
+		card.GetComponent<CardData>().DealDamage(currentStrength);
+	}
+
 }

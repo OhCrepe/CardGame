@@ -16,6 +16,8 @@ public abstract class CardAbility : MonoBehaviour {
 
 	public virtual void Attack(){
 
+		StartCoroutine(WaitForAttackTarget());
+
 	}
 
 	private GameObject target = null;
@@ -45,6 +47,43 @@ public abstract class CardAbility : MonoBehaviour {
 			}
 			yield return null;
 		}
+	}
+	public IEnumerator WaitForAttackTarget(){
+
+		bool selected = false;
+		GameState.targetting = true;
+		GameState.attacking= true;
+		GameState.targettingCard = this.gameObject;
+		Debug.Log("Waiting for target");
+		while(!selected){
+			if(target != null){
+				selected = true;
+				GameState.targetting = false;
+				GameState.attacking = true;
+				GameState.targettingCard = null;
+				Debug.Log("Target selected");
+				if(ValidAttackTarget(target)){
+					OnAttackTargetSelect(target);
+				}
+			}
+			yield return null;
+		}
+	}
+
+	protected virtual bool ValidAttackTarget(GameObject target){
+
+		if(target.transform.parent.GetComponent<Dropzone>().zoneType == Dropzone.Zone.FIELD){
+			return true;
+		}
+		return false;
+
+	}
+
+	public void OnAttackTargetSelect(GameObject target){
+
+		GetComponent<CardData>().DealDamageTo(target);
+		target.GetComponent<CardData>().DealDamageTo(gameObject);
+
 	}
 
 	public void Update(){

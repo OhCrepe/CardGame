@@ -21,8 +21,10 @@ public class Draggable :  MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDr
 	GameObject placeholder=null; // Placeholder slot to indicate where our card will be dropped
 
 	void Awake(){
-		abilityButton = transform.Find("Ability Button").gameObject;
-		attackButton = transform.Find("Attack Button").gameObject;
+		if(GetComponent<CardData>().cardType == CardData.Type.MINION){
+			abilityButton = transform.Find("Ability Button").gameObject;
+			attackButton = transform.Find("Attack Button").gameObject;
+		}
 	}
 
 	/*

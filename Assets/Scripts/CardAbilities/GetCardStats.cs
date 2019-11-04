@@ -34,5 +34,22 @@ public class GetCardStats : MonoBehaviour {
 		int health = data.health;
 		transform.Find("Health/Text").GetComponent<Text>().text = "" + health;
 	}
+	public void SetHealth(int health, int maxHealth){
+		Text healthText = transform.Find("Health/Text").GetComponent<Text>();
+		if(health < maxHealth){
+			healthText.color = Color.red;
+		}
+		if(health > maxHealth){
+			healthText.color = Color.green;
+		}
+		if(health == maxHealth){
+			healthText.color = Color.black;
+		}
+		healthText.text = "" + health;
+
+	}
+	public void SetStrength(int strength){
+		transform.Find("Strength/Text").GetComponent<Text>().text = "" + strength;
+	}
 
 }

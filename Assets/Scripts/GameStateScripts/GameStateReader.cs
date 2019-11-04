@@ -13,9 +13,14 @@ public class GameStateReader : MonoBehaviour {
 	void Update () {
 
 		if(GameState.targetting){
-				displayMessage.text = activePlayer + " is deciding which card to target for the effect of "
-						+ GameState.targettingCard.transform.Find("Name").GetComponent<Text>().text;
+			if(GameState.attacking){
+				displayMessage.text = activePlayer + " is deciding which card to target for the attack of "
+					+ GameState.targettingCard.transform.Find("Name").GetComponent<Text>().text ;
 				return;
+			}
+			displayMessage.text = activePlayer + " is deciding which card to target for the effect of "
+				+ GameState.targettingCard.transform.Find("Name").GetComponent<Text>().text;
+			return;
 		}
 		displayMessage.text = activePlayer + " is currently deciding what to do...";
 
