@@ -14,6 +14,10 @@ public abstract class CardAbility : MonoBehaviour {
 	public abstract void OnTargetSelect(GameObject card); // What to do when a target is selected for this cards ability
 	public abstract bool ValidateTarget(GameObject card); //Validate that the target for this ability is valid
 
+	public virtual void Attack(){
+
+	}
+
 	private GameObject target = null;
 
 	public void CheckUtility(){

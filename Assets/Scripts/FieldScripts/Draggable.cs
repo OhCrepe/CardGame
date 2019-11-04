@@ -13,11 +13,17 @@ public class Draggable :  MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDr
 	public Transform parentToReturnTo; // Parent that the card needs to go back to on end drag
 	public float hoverScale; // How much bigger to make the card when we're mousing over and dragging it
 	public GameObject player; // Player this card belongs to
-	public GameObject abilityButton; // The button that we press to trigger this cards ability
+	private GameObject abilityButton, // The button that we press to trigger this cards ability
+						attackButton; // The button that we press to trigger this cards attack
 	private Dropzone.Zone originalParent; // The parent of the card when we first started dragging
 
 	public Transform placeholderParent = null; // Parent of the placeholder slot for the card when dragging
 	GameObject placeholder=null; // Placeholder slot to indicate where our card will be dropped
+
+	void Awake(){
+		abilityButton = transform.Find("Ability Button").gameObject;
+		attackButton = transform.Find("Attack Button").gameObject;
+	}
 
 	/*
 	*	Play this card onto the field - but only if cost can be paid
@@ -72,6 +78,7 @@ public class Draggable :  MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDr
 		if(this.gameObject.GetComponent<CardData>().cardType == CardData.Type.UTILITY){
 			return;
 		}
+		attackButton.SetActive(active);
 		if(!this.gameObject.GetComponent<CardAbility>().hasTriggerAbility){
 			return;
 		}
