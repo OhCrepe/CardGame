@@ -14,17 +14,6 @@ public class BlackMarketAbility : CardAbility {
 	}
 
 	/*
-	* Ability of this card that triggers when the ability button is clicked
-	* In this case, we do nothing
-	*/
-	public override void OnFieldTrigger(){
-		//Do nothing
-	}
-	public override void OnKillAbility(){
-		// Do nothing
-	}
-
-	/*
 	* Ability of this card that triggers when the a target is selected for it's ability
 	* In this case discard that card, and give the player gold equal to it's cost
 	*/

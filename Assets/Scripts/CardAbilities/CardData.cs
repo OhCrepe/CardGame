@@ -20,16 +20,16 @@ public class CardData : MonoBehaviour {
 		currentStrength = strength;
 	}
 
-	public void DealDamage(int damage){
+	public void DealDamage(int damage, bool combat){
 		currentHealth-=damage;
 		GetComponent<GetCardStats>().SetHealth(currentHealth, health);
 		if(currentHealth <= 0){
-			GetComponent<CardAbility>().Kill();
+			GetComponent<CardAbility>().Kill(combat);
 		}
 	}
 
-	public void DealDamageTo(GameObject card){
-		card.GetComponent<CardData>().DealDamage(currentStrength);
+	public void DealDamageTo(GameObject card, bool combat){
+		card.GetComponent<CardData>().DealDamage(currentStrength, combat);
 	}
 
 }

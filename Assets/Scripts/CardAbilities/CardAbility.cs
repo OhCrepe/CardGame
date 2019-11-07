@@ -6,13 +6,7 @@ public abstract class CardAbility : MonoBehaviour {
 
 	public GameObject player; // The player this card belongs to
 	public int fieldTriggerCost; //The cost to trigger the field effect of this card
-	public bool hasTriggerAbility;
-
-	public abstract void OnHire(); // Ability that triggers when hired
-	public abstract void OnFieldTrigger(); // Ability that triggers on the field when clicked
-	public abstract void OnKillAbility();
-	public abstract void OnTargetSelect(GameObject card); // What to do when a target is selected for this cards ability
-	public abstract bool ValidateTarget(GameObject card); //Validate that the target for this ability is valid
+	public bool hasTriggerAbility; //Whether this card has an ability that can be triggered on the field
 
 	public virtual void Attack(){
 
@@ -22,9 +16,44 @@ public abstract class CardAbility : MonoBehaviour {
 
 	private GameObject target = null;
 
+	public virtual void OnKillAbility(bool combat){
+		if(combat){
+			OnKillByCombatAbility();
+		}else{
+			OnKillByEffectAbility();
+		}
+	}
+
+	public virtual void OnKillByCombatAbility(){
+		//DO NOTHING
+	}
+	public virtual void OnKillByEffectAbility(){
+		//DO NOTHING
+	}
+
+	// What to do when a target is selected for this cards ability
+	public virtual void OnTargetSelect(GameObject card){
+		//DO NOTHING
+	}
+
+	//Validate that the target for this ability is valid
+	public virtual bool ValidateTarget(GameObject card){
+		return true;
+	}
+
+	// Ability that triggers when hired
+	public virtual void OnHire(){
+		//DO NOTHING
+	}
+
+	// Ability that triggers on the field when clicked
+	public virtual void OnFieldTrigger(){
+		//DO NOTHING
+	}
+
 	public void CheckUtility(){
 		if(this.transform.GetComponent<CardData>().cardType == CardData.Type.UTILITY){
-			Kill();
+			Kill(false);
 		}
 	}
 
@@ -81,8 +110,8 @@ public abstract class CardAbility : MonoBehaviour {
 
 	public void OnAttackTargetSelect(GameObject target){
 
-		GetComponent<CardData>().DealDamageTo(target);
-		target.GetComponent<CardData>().DealDamageTo(gameObject);
+		GetComponent<CardData>().DealDamageTo(target, true);
+		target.GetComponent<CardData>().DealDamageTo(gameObject, true);
 
 	}
 
@@ -110,10 +139,10 @@ public abstract class CardAbility : MonoBehaviour {
 
 	}
 
-	public void Kill(){
+	public void Kill(bool combat){
 
 		player.GetComponent<PlayerField>().discard.GetComponent<DiscardPile>().Discard(this.gameObject);
-		OnKillAbility();
+		OnKillAbility(combat);
 
 	}
 

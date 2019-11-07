@@ -16,25 +16,6 @@ public class WithdrawalAbility : CardAbility {
 	}
 
 	/*
-	* Ability of this card that triggers when the ability button is clicked
-	* In this case, we do nothing
-	*/
-	public override void OnFieldTrigger(){
-		//Do nothing
-	}
-	public override void OnKillAbility(){
-		// Do nothing
-	}
-
-	/*
-	* Ability of this card that triggers when the a target is selected for it's ability
-	* in this case do nothing
-	*/
-	public override void OnTargetSelect(GameObject card){
-		//Do nothing
-	}
-
-	/*
 	* Validate that the target of this ability is correct
 	*/
 	public override bool ValidateTarget(GameObject card){
