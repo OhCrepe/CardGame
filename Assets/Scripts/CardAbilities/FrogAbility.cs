@@ -17,7 +17,7 @@ public class FrogAbility : CardAbility {
 	*/
 	public override void OnFieldTrigger(){
 		if(player.GetComponent<PlayerField>().PayGold(fieldTriggerCost)){
-			this.gameObject.transform.SetParent(player.GetComponent<PlayerField>().hand.transform);
+			Bounce();
 		}
 	}
 

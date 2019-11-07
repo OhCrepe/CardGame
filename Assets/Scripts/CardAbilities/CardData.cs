@@ -32,4 +32,10 @@ public class CardData : MonoBehaviour {
 		card.GetComponent<CardData>().DealDamage(currentStrength, combat);
 	}
 
+	public void Restore(){
+		currentHealth = health;
+		GetComponent<GetCardStats>().SetHealth(currentHealth, health);
+		currentStrength = strength;
+	}
+
 }

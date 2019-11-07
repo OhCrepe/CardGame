@@ -43,7 +43,7 @@ public abstract class CardAbility : MonoBehaviour {
 
 	// Ability that triggers when hired
 	public virtual void OnHire(){
-		//DO NOTHING
+		CheckUtility();
 	}
 
 	// Ability that triggers on the field when clicked
@@ -144,6 +144,14 @@ public abstract class CardAbility : MonoBehaviour {
 		player.GetComponent<PlayerField>().discard.GetComponent<DiscardPile>().Discard(this.gameObject);
 		OnKillAbility(combat);
 
+	}
+
+	public void Bounce(){
+		Transform hand = player.GetComponent<PlayerField>().hand.transform;
+		GetComponent<Draggable>().parentToReturnTo = hand;
+		this.gameObject.transform.SetParent(hand);
+		gameObject.SetActive(true);
+		GetComponent<CardData>().Restore();
 	}
 
 }
