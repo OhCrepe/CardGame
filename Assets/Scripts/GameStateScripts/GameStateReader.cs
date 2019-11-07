@@ -12,10 +12,16 @@ public class GameStateReader : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 
+		if(GameState.deciding){
+			displayMessage.text = activePlayer + " is deciding whether to use the effect of "
+				+ GameState.decidingCard.transform.Find("Name").GetComponent<Text>().text;
+			return;
+		}
+
 		if(GameState.targetting){
 			if(GameState.attacking){
 				displayMessage.text = activePlayer + " is deciding which card to target for the attack of "
-					+ GameState.targettingCard.transform.Find("Name").GetComponent<Text>().text ;
+					+ GameState.targettingCard.transform.Find("Name").GetComponent<Text>().text;
 				return;
 			}
 			displayMessage.text = activePlayer + " is deciding which card to target for the effect of "
