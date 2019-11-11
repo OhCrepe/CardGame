@@ -14,9 +14,10 @@ public class BloatedBodyScript : CardAbility
   public override void OnKillAbility(bool combat){
     GameObject[] cards = GameObject.FindGameObjectsWithTag("Card");
     foreach(GameObject card in cards){
-      if(card.GetComponent<CardData>().cardType == CardData.Type.MINION){
+      CardData data = card.GetComponent<CardData>();
+      if(data.cardType == CardData.Type.MINION){
         if(card.transform.parent.GetComponent<Dropzone>().zoneType == Dropzone.Zone.FIELD){
-          card.GetComponent<CardData>().DealDamage(damageDealt, false);
+          data.DealDamage(damageDealt, false);
         }
       }
     }
