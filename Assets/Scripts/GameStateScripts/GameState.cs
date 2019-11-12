@@ -19,7 +19,7 @@ public class GameState : MonoBehaviour {
 	/*
 	*	Logic that handles the start of a player's turn
 	*/
-	private static void StartPhase(){
+	public static void StartPhase(){
 		currentPhase = Phase.START;
 		DebtPhase();
 	}
@@ -29,7 +29,7 @@ public class GameState : MonoBehaviour {
 	* Give them a debt counter if no gold left, or they lose the game if they have
 	* no gold AND a debt counter
 	*/
-	private static void DebtPhase(){
+	public static void DebtPhase(){
 		currentPhase = Phase.DEBT;
 		GoldPhase();
 	}
@@ -38,7 +38,7 @@ public class GameState : MonoBehaviour {
 	*	Logic that handles the player's gold gained for the turn.
 	* DEFUALT: Give 5 gold.
 	*/
-	private static void GoldPhase(){
+	public static void GoldPhase(){
 		currentPhase = Phase.GOLD;
 		currentPlayer.GetComponent<PlayerField>().GainGold(5);
 		StartEffectsPhase();
@@ -47,7 +47,7 @@ public class GameState : MonoBehaviour {
 	/*
 	* Resolve all effects that trigger at the beginning of a player's turn
 	*/
-	private static void StartEffectsPhase(){
+	public static void StartEffectsPhase(){
 		currentPhase = Phase.START_EFFECTS;
 		DrawPhase();
 	}
@@ -55,7 +55,7 @@ public class GameState : MonoBehaviour {
 	/*
 	*	Turn player draws a card
 	*/
-	private static void DrawPhase(){
+	public static void DrawPhase(){
 		currentPhase = Phase.DRAW;
 		currentPlayer.GetComponent<DeckInteraction>().DrawCard();
 		MainPhase();
@@ -65,7 +65,7 @@ public class GameState : MonoBehaviour {
 	*	In this phase the turn player gets to play their cards, hire units
 	* and enter combat
 	*/
-	private static void MainPhase(){
+	public static void MainPhase(){
 		currentPhase = Phase.MAIN;
 
 	}
@@ -73,7 +73,7 @@ public class GameState : MonoBehaviour {
 	/*
 	*	Resolve all effects that trigger at the end of a player's turn
 	*/
-	private static void EndEffectsPhase(){
+	public static void EndEffectsPhase(){
 		currentPhase = Phase.END_EFFECTS;
 		EndPhase();
 	}
@@ -81,7 +81,7 @@ public class GameState : MonoBehaviour {
 	/*
 	*	End the current player's turn, give control to their opponent
 	*/
-	private static void EndPhase(){
+	public static void EndPhase(){
 		currentPhase = Phase.END;
 		StartPhase();
 	}
