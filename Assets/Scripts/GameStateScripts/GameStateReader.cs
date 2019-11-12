@@ -12,6 +12,41 @@ public class GameStateReader : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 
+		if(GameState.currentPhase == GameState.Phase.START){
+			displayMessage.text = "It is the start of " + activePlayer + "'s turn";
+			return;
+		}
+
+		if(GameState.currentPhase == GameState.Phase.DEBT){
+			displayMessage.text = "Checking for " + activePlayer + "'s turn";
+			return;
+		}
+
+		if(GameState.currentPhase == GameState.Phase.GOLD){
+			displayMessage.text = "Giving " + activePlayer + "5 gold";
+			return;
+		}
+
+		if(GameState.currentPhase == GameState.Phase.DRAW){
+			displayMessage.text = activePlayer + " get's to draw a card";
+			return;
+		}
+
+		if(GameState.currentPhase == GameState.Phase.START_EFFECTS){
+			displayMessage.text = "Resolving start of turn effects";
+			return;
+		}
+
+		if(GameState.currentPhase == GameState.Phase.END_EFFECTS){
+			displayMessage.text = "Resolving end of turn effects";
+			return;
+		}
+
+		if(GameState.currentPhase == GameState.Phase.END){
+			displayMessage.text = "Ending " + activePlayer + "'s turn";
+			return;
+		}
+
 		if(GameState.deciding){
 			displayMessage.text = activePlayer + " is deciding whether to use the effect of "
 				+ GameState.decidingCard.transform.Find("Name").GetComponent<Text>().text;
