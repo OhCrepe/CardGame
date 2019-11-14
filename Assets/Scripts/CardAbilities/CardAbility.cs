@@ -24,6 +24,13 @@ public abstract class CardAbility : MonoBehaviour {
 		}
 	}
 
+	/*
+	*	Check whether the activation of the card is legal
+	*/
+	public virtual bool ValidActivation(){
+		return true;
+	}
+
 	public virtual void OnKillByCombatAbility(){
 		//DO NOTHING
 	}

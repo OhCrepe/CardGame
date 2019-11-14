@@ -33,6 +33,10 @@ public class Draggable :  MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDr
 	public void CallCard(){
 
 		int cost = this.gameObject.GetComponent<CardData>().cost;
+		if(!GetComponent<CardAbility>().ValidActivation()){
+			parentToReturnTo = player.GetComponent<PlayerField>().hand.transform;
+			return;
+		}
 		if(player.GetComponent<PlayerField>().PayGold(cost)){
 			parentToReturnTo = player.GetComponent<PlayerField>().field.transform;
 			this.gameObject.GetComponent<CardAbility>().OnHire();
