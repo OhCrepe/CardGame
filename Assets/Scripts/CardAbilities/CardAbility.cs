@@ -28,6 +28,14 @@ public abstract class CardAbility : MonoBehaviour {
 	*	Check whether the activation of the card is legal
 	*/
 	public virtual bool ValidActivation(){
+		PlayerField playerField = this.player.GetComponent<PlayerField>();
+		if(playerField.gold > GetComponent<CardData>().cost){
+			return ActivationRequirementsMet();
+		}
+		return false;
+	}
+
+	protected virtual bool ActivationRequirementsMet(){
 		return true;
 	}
 

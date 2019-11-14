@@ -26,6 +26,20 @@ public class SleightOfHandAbility : CardAbility {
 	}
 
 	/*
+	*	Check that black market can resolve. Makes sure there's a card in hand to shuffle
+	* into the deck, and that there'll be 2 card in deck after the card is shuffled in.
+	*/
+	protected override bool ActivationRequirementsMet(){
+		PlayerField field = player.GetComponent<PlayerField>();
+		DeckInteraction deck = player.GetComponent<DeckInteraction>();
+		if(field.hand.transform.childCount > 0 && deck.DeckCount() > 0){
+			return true;
+		}else{
+			return false;
+		}
+	}
+
+	/*
 	* Validate that the target of this ability is correct
 	*/
 	public override bool ValidateTarget(GameObject card){

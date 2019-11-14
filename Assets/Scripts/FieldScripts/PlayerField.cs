@@ -11,8 +11,8 @@ public class PlayerField : MonoBehaviour {
 										deck, 				// This player's deck
 										goldCounter,  // This player's gold counter
 										discard;      // This player's discard pile
-	public int startingGold = 5;		// The amount of gold this player starts with
-	private int gold = 0;						// This player's gold quantity
+	public int startingGold = 25;		// The amount of gold this player starts with
+	public int gold = 0;						// This player's gold quantity
 
 	/*
 	* Initiate the players game state

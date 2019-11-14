@@ -161,4 +161,8 @@ public class DeckInteraction : MonoBehaviour {
 		deckObject.transform.GetChild(0).gameObject.SetActive(visible);
 	}
 
+	public int DeckCount(){
+		return deck.Count;
+	}
+
 }

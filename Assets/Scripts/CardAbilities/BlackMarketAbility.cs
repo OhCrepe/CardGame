@@ -25,6 +25,17 @@ public class BlackMarketAbility : CardAbility {
 	}
 
 	/*
+	*	Check that black market can resolve. Makes sure there's a card in hand to discard.
+	*/
+	protected override bool ActivationRequirementsMet(){
+		if(player.GetComponent<PlayerField>().hand.transform.childCount > 0){
+			return true;
+		}else{
+			return false;
+		}
+	}
+
+	/*
 	* Validate that the target of this ability is correct
 	*/
 	public override bool ValidateTarget(GameObject card){
