@@ -44,6 +44,9 @@ public class Dropzone : MonoBehaviour, IDropHandler, IPointerEnterHandler, IPoin
   */
 	public void OnDrop(PointerEventData eventData){
 
+    if(GameState.currentPhase != GameState.Phase.MAIN) return;
+		if(GameState.targetting)return;
+
 		Debug.Log(eventData.pointerDrag.name + " was dropped on " + gameObject.name);
 
 		Draggable d = eventData.pointerDrag.GetComponent<Draggable>();

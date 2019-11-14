@@ -96,6 +96,7 @@ public class Draggable :  MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDr
 	*/
 	public void OnBeginDrag(PointerEventData eventData){
 
+		if(GameState.currentPhase != GameState.Phase.MAIN) return;
 		if(GameState.targetting)return;
 
 		originalParent = this.transform.parent.GetComponent<Dropzone>().zoneType;
@@ -147,6 +148,7 @@ public class Draggable :  MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDr
 	*/
 	public void OnDrag(PointerEventData eventData){
 
+		if(GameState.currentPhase != GameState.Phase.MAIN) return;
 		if(GameState.targetting)return;
 
 		if(originalParent == Dropzone.Zone.FIELD){
@@ -194,6 +196,7 @@ public class Draggable :  MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDr
 	*/
 	public void OnEndDrag(PointerEventData eventData){
 
+		if(GameState.currentPhase != GameState.Phase.MAIN) return;
 		if(GameState.targetting)return;
 
 		if(originalParent == Dropzone.Zone.FIELD){
