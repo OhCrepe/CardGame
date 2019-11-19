@@ -25,6 +25,7 @@ public class Draggable :  MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDr
 			abilityButton = transform.Find("Ability Button").gameObject;
 			attackButton = transform.Find("Attack Button").gameObject;
 		}
+		parentToReturnTo = transform.parent;
 	}
 
 	/*

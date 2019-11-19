@@ -49,6 +49,14 @@ public class GameState : MonoBehaviour {
 	*/
 	public static void StartEffectsPhase(){
 		currentPhase = Phase.START_EFFECTS;
+		GameObject[] lords = GameObject.FindGameObjectsWithTag("Lord");
+		foreach(GameObject lord in lords){
+			lord.GetComponent<CardAbility>().StartOfTurnAbility();
+		}
+		GameObject[] cards = GameObject.FindGameObjectsWithTag("Lord");
+		foreach(GameObject card in cards){
+			card.GetComponent<CardAbility>().StartOfTurnAbility();
+		}
 		DrawPhase();
 	}
 
@@ -75,6 +83,14 @@ public class GameState : MonoBehaviour {
 	*/
 	public static void EndEffectsPhase(){
 		currentPhase = Phase.END_EFFECTS;
+		GameObject[] lords = GameObject.FindGameObjectsWithTag("Lord");
+		foreach(GameObject lord in lords){
+			lord.GetComponent<CardAbility>().EndOfTurnAbility();
+		}
+		GameObject[] cards = GameObject.FindGameObjectsWithTag("Lord");
+		foreach(GameObject card in cards){
+			card.GetComponent<CardAbility>().EndOfTurnAbility();
+		}
 		EndPhase();
 	}
 

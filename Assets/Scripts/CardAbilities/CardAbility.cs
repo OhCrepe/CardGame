@@ -6,7 +6,9 @@ public abstract class CardAbility : MonoBehaviour {
 
 	public GameObject player; // The player this card belongs to
 	public int fieldTriggerCost; //The cost to trigger the field effect of this card
-	public bool hasTriggerAbility; //Whether this card has an ability that can be triggered on the field
+	public bool hasTriggerAbility, //Whether this card has an ability that can be triggered on the field
+							hasStartOfTurnAbility,
+							hasEndOfTurnAbility;
 
 	public virtual void Attack(){
 
@@ -63,6 +65,16 @@ public abstract class CardAbility : MonoBehaviour {
 
 	// Ability that triggers on the field when clicked
 	public virtual void OnFieldTrigger(){
+		//DO NOTHING
+	}
+
+	// Ability that triggers on the field when clicked
+	public virtual void StartOfTurnAbility(){
+		//DO NOTHING
+	}
+
+	// Ability that triggers on the field when clicked
+	public virtual void EndOfTurnAbility(){
 		//DO NOTHING
 	}
 
