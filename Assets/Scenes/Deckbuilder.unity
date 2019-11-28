@@ -625,19 +625,5 @@ PrefabInstance:
       propertyPath: m_SizeDelta.y
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents:
-    - {fileID: 153937060784006805, guid: 0943cb35b3ff87540a4ef26f2277026b, type: 3}
-    - {fileID: 534680865779538649, guid: 0943cb35b3ff87540a4ef26f2277026b, type: 3}
-    - {fileID: 1442190487234887912, guid: 0943cb35b3ff87540a4ef26f2277026b, type: 3}
-    - {fileID: 1441208652219118630, guid: 0943cb35b3ff87540a4ef26f2277026b, type: 3}
-    - {fileID: 5310699017617987804, guid: 0943cb35b3ff87540a4ef26f2277026b, type: 3}
-    - {fileID: 7832280698242637882, guid: 0943cb35b3ff87540a4ef26f2277026b, type: 3}
-    - {fileID: 1557555565814934211, guid: 0943cb35b3ff87540a4ef26f2277026b, type: 3}
-    - {fileID: 1553808754445483081, guid: 0943cb35b3ff87540a4ef26f2277026b, type: 3}
-    - {fileID: 3701243801345204609, guid: 0943cb35b3ff87540a4ef26f2277026b, type: 3}
-    - {fileID: 3657193422379558002, guid: 0943cb35b3ff87540a4ef26f2277026b, type: 3}
-    - {fileID: 4035538777487399499, guid: 0943cb35b3ff87540a4ef26f2277026b, type: 3}
-    - {fileID: 4035411868429141335, guid: 0943cb35b3ff87540a4ef26f2277026b, type: 3}
-    - {fileID: 392935673789005682, guid: 0943cb35b3ff87540a4ef26f2277026b, type: 3}
-    - {fileID: 392137699630314544, guid: 0943cb35b3ff87540a4ef26f2277026b, type: 3}
+    m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0943cb35b3ff87540a4ef26f2277026b, type: 3}
