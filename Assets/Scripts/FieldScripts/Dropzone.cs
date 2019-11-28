@@ -5,7 +5,7 @@ using UnityEngine.EventSystems;
 
 public class Dropzone : MonoBehaviour, IDropHandler, IPointerEnterHandler, IPointerExitHandler {
 
- 	public enum Zone { HAND, FIELD }; // Possible locations this dropzone could be
+ 	public enum Zone { HAND, FIELD, DECKVIEW, CARDVIEW }; // Possible locations this dropzone could be
 	public Zone zoneType = Zone.HAND; // Zone this dropzone is
 
   /*
