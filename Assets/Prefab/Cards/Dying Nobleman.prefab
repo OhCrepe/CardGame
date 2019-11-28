@@ -644,6 +644,7 @@ GameObject:
   - component: {fileID: 114164790093502126}
   - component: {fileID: 61114106298527468}
   - component: {fileID: 114456467492726258}
+  - component: {fileID: 114456592791104676}
   m_Layer: 5
   m_Name: Dying Nobleman
   m_TagString: Card
@@ -830,6 +831,8 @@ MonoBehaviour:
   player: {fileID: 0}
   fieldTriggerCost: 0
   hasTriggerAbility: 0
+  hasStartOfTurnAbility: 0
+  hasEndOfTurnAbility: 0
   goldGained: 6
 --- !u!61 &61114106298527468
 BoxCollider2D:
@@ -867,6 +870,18 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 1c8539eae9c0da74b9f419f21fa91486, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &114456592791104676
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1596164016227624}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bc53cf09cd75d6743a31b19a6f63f17e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &1771859599118348

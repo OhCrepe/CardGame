@@ -7,24 +7,16 @@ using UnityEngine.Networking;
 
 public class Draggable :  MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHandler, IPointerEnterHandler, IPointerExitHandler{
 
-	public static bool dragging = false; // Whether we are currently dragging a card
-
 	private Vector2 startPosition; // Position of the mouse relative to the card it's dragging
 	public Transform parentToReturnTo; // Parent that the card needs to go back to on end drag
 	public float hoverScale; // How much bigger to make the card when we're mousing over and dragging it
 	public GameObject player; // Player this card belongs to
-	private GameObject abilityButton, // The button that we press to trigger this cards ability
-						attackButton; // The button that we press to trigger this cards attack
 	private Dropzone.Zone originalParent; // The parent of the card when we first started dragging
 
 	public Transform placeholderParent = null; // Parent of the placeholder slot for the card when dragging
 	GameObject placeholder=null; // Placeholder slot to indicate where our card will be dropped
 
 	void Awake(){
-		if(GetComponent<CardData>().cardType == CardData.Type.MINION){
-			abilityButton = transform.Find("Ability Button").gameObject;
-			attackButton = transform.Find("Attack Button").gameObject;
-		}
 		parentToReturnTo = transform.parent;
 	}
 
@@ -50,14 +42,10 @@ public class Draggable :  MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDr
 	*/
 	public void OnPointerEnter(PointerEventData eventData){
 
-		if(!dragging){
+		if(!GameState.dragging){
 			//Increase the size of the card and render it in front
 			this.gameObject.GetComponent<RectTransform>().localScale = new Vector3(hoverScale, hoverScale, hoverScale);
 			this.gameObject.GetComponent<Canvas>().sortingOrder = 10; //Layer of cards being held
-
-			if(this.transform.parent.GetComponent<Dropzone>().zoneType == Dropzone.Zone.FIELD){
-				ConfigureAbilityButton(true);
-			}
 
 		}
 
@@ -71,23 +59,7 @@ public class Draggable :  MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDr
 		//Decrease the size of the card back to normal, and render it alongside the other cards
 		this.gameObject.GetComponent<RectTransform>().localScale = new Vector3(1f, 1f, 1f);
 		this.gameObject.GetComponent<Canvas>().sortingOrder = 9; //Layer of cards not being interacted with
-		ConfigureAbilityButton(false);
 
-	}
-
-	/*
-	* Check whether an ability button exists (defined by whether this is a minion or a utility), and
-	* set it's activeness as to which of the two it is.
-	*/
-	private void ConfigureAbilityButton(bool active){
-		if(this.gameObject.GetComponent<CardData>().cardType == CardData.Type.UTILITY){
-			return;
-		}
-		attackButton.SetActive(active);
-		if(!this.gameObject.GetComponent<CardAbility>().hasTriggerAbility){
-			return;
-		}
-		abilityButton.SetActive(active);
 	}
 
 	/*
@@ -121,7 +93,7 @@ public class Draggable :  MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDr
 
 		// Allow raycasting to pass through while being dragged
 		GetComponent<CanvasGroup>().blocksRaycasts = false;
-		dragging = true;
+		GameState.dragging = true;
 
 	}
 
@@ -215,7 +187,7 @@ public class Draggable :  MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDr
 
 		GetComponent<CanvasGroup>().blocksRaycasts = true;
 
-		dragging = false;
+		GameState.dragging = false;
 		Destroy(placeholder);
 
 	}

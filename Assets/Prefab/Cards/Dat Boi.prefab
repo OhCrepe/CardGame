@@ -639,6 +639,7 @@ GameObject:
   - component: {fileID: 114823122652064872}
   - component: {fileID: 61565508407307088}
   - component: {fileID: 114493448851192980}
+  - component: {fileID: 114664558354442276}
   m_Layer: 5
   m_Name: Dat Boi
   m_TagString: Card
@@ -809,6 +810,8 @@ MonoBehaviour:
   player: {fileID: 0}
   fieldTriggerCost: 2
   hasTriggerAbility: 1
+  hasStartOfTurnAbility: 0
+  hasEndOfTurnAbility: 0
 --- !u!114 &114823122652064872
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -861,6 +864,18 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 1c8539eae9c0da74b9f419f21fa91486, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &114664558354442276
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1605258806895032}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bc53cf09cd75d6743a31b19a6f63f17e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &1667510368140596
