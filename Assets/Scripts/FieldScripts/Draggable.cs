@@ -9,6 +9,7 @@ public class Draggable :  MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDr
 
 	private Vector2 startPosition; // Position of the mouse relative to the card it's dragging
 	public Transform parentToReturnTo; // Parent that the card needs to go back to on end drag
+	public float hoverScale; // How much bigger to make the card when we're mousing over and dragging it
 	public GameObject player; // Player this card belongs to
 	private Dropzone.Zone originalParent; // The parent of the card when we first started dragging
 
@@ -89,7 +90,7 @@ public class Draggable :  MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDr
 	}
 
 	/*
-	*	Will make the card follow the mouse
+	*	Will make the card follow the mouse and also increase it's size and rendering priority
 	*/
 	public void OnDrag(PointerEventData eventData){
 
@@ -103,6 +104,7 @@ public class Draggable :  MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDr
 		//Debug.Log("OnDrag");
 		Vector3 cam = Camera.main.ScreenToWorldPoint(new Vector3(eventData.position.x, eventData.position.y, 0));
 		this.transform.position = this.startPosition + new Vector2(cam.x, cam.y);
+
 		MovePlaceholder();
 
 	}

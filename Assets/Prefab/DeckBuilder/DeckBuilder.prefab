@@ -89,6 +89,7 @@ GameObject:
   - component: {fileID: 2391922338389037732}
   - component: {fileID: 2391922338389037733}
   - component: {fileID: 2391922338389037730}
+  - component: {fileID: 6430284718397685942}
   m_Layer: 5
   m_Name: DeckBuilder
   m_TagString: Untagged
@@ -103,7 +104,7 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2391922338389037731}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 0.0167, y: 0.0167, z: 0}
   m_Children:
@@ -179,6 +180,18 @@ MonoBehaviour:
   m_BlockingMask:
     serializedVersion: 2
     m_Bits: 4294967295
+--- !u!114 &6430284718397685942
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2391922338389037731}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 727cf484493581d4d82d46d2fbb98542, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &2391922338611169791
 GameObject:
   m_ObjectHideFlags: 0
@@ -269,7 +282,6 @@ GameObject:
   - component: {fileID: 2391922338690786632}
   - component: {fileID: 2391922338690786636}
   - component: {fileID: 2391922338690786637}
-  - component: {fileID: 2391922338690786634}
   - component: {fileID: 2391922338690786635}
   m_Layer: 5
   m_Name: DeckView
@@ -332,19 +344,6 @@ MonoBehaviour:
   m_FillClockwise: 1
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
---- !u!114 &2391922338690786634
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2391922338690786633}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a986e153a101b4641a6fa894128a7ec0, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  zoneType: 2
 --- !u!114 &2391922338690786635
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -380,7 +379,6 @@ GameObject:
   - component: {fileID: 2391922339083777970}
   - component: {fileID: 2391922339083777974}
   - component: {fileID: 2391922339083777975}
-  - component: {fileID: 2391922339083777972}
   - component: {fileID: 2391922339083777973}
   m_Layer: 5
   m_Name: CardSelection
@@ -450,19 +448,6 @@ MonoBehaviour:
   m_FillClockwise: 1
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
---- !u!114 &2391922339083777972
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2391922339083777971}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a986e153a101b4641a6fa894128a7ec0, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  zoneType: 3
 --- !u!114 &2391922339083777973
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1055,7 +1040,8 @@ PrefabInstance:
       propertyPath: m_Pivot.y
       value: 0.5
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 114724330932878680, guid: 4b2d2eecbcb2c2a4f9fd6d55662b5801, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 4b2d2eecbcb2c2a4f9fd6d55662b5801, type: 3}
 --- !u!224 &8270697454879508954 stripped
 RectTransform:
