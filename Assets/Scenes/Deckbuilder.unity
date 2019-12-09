@@ -635,5 +635,10 @@ PrefabInstance:
       propertyPath: m_FontData.m_MinSize
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 1011281789427960052, guid: 0943cb35b3ff87540a4ef26f2277026b,
+        type: 3}
+      propertyPath: hoverScale
+      value: 1.2
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0943cb35b3ff87540a4ef26f2277026b, type: 3}
