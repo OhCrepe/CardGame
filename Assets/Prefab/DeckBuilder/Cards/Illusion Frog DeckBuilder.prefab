@@ -557,6 +557,7 @@ GameObject:
   - component: {fileID: 5118240398275495637}
   - component: {fileID: 5064328039743479395}
   - component: {fileID: 5118240909697471869}
+  - component: {fileID: 114633194899142966}
   m_Layer: 5
   m_Name: Illusion Frog DeckBuilder
   m_TagString: Card
@@ -750,6 +751,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1c8539eae9c0da74b9f419f21fa91486, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &114633194899142966
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5085882029526316455}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fbd870a63b3c0774a9e56d69fb91c1ff, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  hoverScale: 1.2
 --- !u!1 &5086257019935642561
 GameObject:
   m_ObjectHideFlags: 0

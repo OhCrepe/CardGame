@@ -172,6 +172,7 @@ GameObject:
   - component: {fileID: 4299365387221664557}
   - component: {fileID: 4244032458703707035}
   - component: {fileID: 4299365829047554181}
+  - component: {fileID: 114218605716184076}
   m_Layer: 5
   m_Name: Dying Nobleman DeckBuilder
   m_TagString: Card
@@ -365,6 +366,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1c8539eae9c0da74b9f419f21fa91486, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &114218605716184076
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4195490417569149023}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fbd870a63b3c0774a9e56d69fb91c1ff, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  hoverScale: 1.2
 --- !u!1 &4195534821705373291
 GameObject:
   m_ObjectHideFlags: 0
