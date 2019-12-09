@@ -13,8 +13,12 @@ public class Hoverable : MonoBehaviour, IPointerEnterHandler, IPointerExitHandle
   */
   public void OnPointerEnter(PointerEventData eventData){
 
-      this.gameObject.GetComponent<RectTransform>().localScale = new Vector3(hoverScale, hoverScale, hoverScale);
-      this.gameObject.GetComponent<Canvas>().sortingOrder = 10; //Layer of cards being held
+      if(!GameState.dragging){
+          //Increase the size of the card and render it in front
+          this.gameObject.GetComponent<RectTransform>().localScale = new Vector3(hoverScale, hoverScale, hoverScale);
+          this.gameObject.GetComponent<Canvas>().sortingOrder = 10; //Layer of cards being held
+
+      }
 
   }
 

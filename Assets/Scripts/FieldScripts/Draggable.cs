@@ -5,7 +5,7 @@ using UnityEngine.UI;
 using UnityEngine.EventSystems;
 using UnityEngine.Networking;
 
-public class Draggable :  MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHandler, IPointerEnterHandler, IPointerExitHandler{
+public class Draggable :  MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHandler{
 
 	private Vector2 startPosition; // Position of the mouse relative to the card it's dragging
 	public Transform parentToReturnTo; // Parent that the card needs to go back to on end drag
@@ -34,31 +34,6 @@ public class Draggable :  MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDr
 			parentToReturnTo = player.GetComponent<PlayerField>().hand.transform;
 			return;
 		}
-
-	}
-
-	/*
-	* Detects when the mouse hovers over the card
-	*/
-	public void OnPointerEnter(PointerEventData eventData){
-
-		if(!GameState.dragging){
-			//Increase the size of the card and render it in front
-			this.gameObject.GetComponent<RectTransform>().localScale = new Vector3(hoverScale, hoverScale, hoverScale);
-			this.gameObject.GetComponent<Canvas>().sortingOrder = 10; //Layer of cards being held
-
-		}
-
-	}
-
-	/*
-	* Detects when the mouse stops hovering over the card
-	*/
-	public void OnPointerExit(PointerEventData eventData){
-
-		//Decrease the size of the card back to normal, and render it alongside the other cards
-		this.gameObject.GetComponent<RectTransform>().localScale = new Vector3(1f, 1f, 1f);
-		this.gameObject.GetComponent<Canvas>().sortingOrder = 9; //Layer of cards not being interacted with
 
 	}
 

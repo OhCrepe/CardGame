@@ -625,5 +625,15 @@ PrefabInstance:
       propertyPath: m_SizeDelta.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5485328681565886177, guid: 0943cb35b3ff87540a4ef26f2277026b,
+        type: 3}
+      propertyPath: m_FontData.m_FontSize
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 5485328681565886177, guid: 0943cb35b3ff87540a4ef26f2277026b,
+        type: 3}
+      propertyPath: m_FontData.m_MinSize
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0943cb35b3ff87540a4ef26f2277026b, type: 3}

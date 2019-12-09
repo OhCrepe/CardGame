@@ -645,6 +645,7 @@ GameObject:
   - component: {fileID: 61114106298527468}
   - component: {fileID: 114456467492726258}
   - component: {fileID: 114456592791104676}
+  - component: {fileID: 114682521645608724}
   m_Layer: 5
   m_Name: Dying Nobleman
   m_TagString: Card
@@ -884,6 +885,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bc53cf09cd75d6743a31b19a6f63f17e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &114682521645608724
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1596164016227624}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fbd870a63b3c0774a9e56d69fb91c1ff, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  hoverScale: 1.2
 --- !u!1 &1771859599118348
 GameObject:
   m_ObjectHideFlags: 0
