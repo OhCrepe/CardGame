@@ -13,11 +13,11 @@ public class IllusionFrogAbility : CardAbility
   public override void OnKillByCombatAbility(){
     GameState.deciding = true;
     GameState.decidingCard = this.gameObject;
-    if(EditorUtility.DisplayDialog("Place Selection On Surface?", "Do you want to use the effect of Illusion Frog", "Yes", "No")){
+    //if(EditorUtility.DisplayDialog("Place Selection On Surface?", "Do you want to use the effect of Illusion Frog", "Yes", "No")){
       Bounce();
-    }else{
-      player.GetComponent<PlayerField>().discard.GetComponent<DiscardPile>().Discard(this.gameObject);
-    }
+    //}else{
+    //  player.GetComponent<PlayerField>().discard.GetComponent<DiscardPile>().Discard(this.gameObject);
+    //}
     GameState.deciding = false;
     GameState.decidingCard = null;
 
