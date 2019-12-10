@@ -75,5 +75,28 @@ public class DeckBuilder : MonoBehaviour
         return card.transform.Find("Name").GetComponent<Text>().text;
     }
 
+    /*
+    *   Save the deck to a file that can be loaded
+    */
+    public void SaveDeck(){
+
+        string deckName = GetDeckName();
+        if(deckName.Length <= 0){
+            // TODO Tell the user that the deck name is invalid
+            return;
+        }
+        Debug.Log("valid");
+
+    }
+
+    /*
+    *   Find the name of the deck
+    */
+    private string GetDeckName(){
+        GameObject input = GameObject.Find("DeckName");
+        GameObject textField = input.transform.Find("Text").gameObject;
+        return textField.GetComponent<Text>().text;
+    }
+
 
 }
