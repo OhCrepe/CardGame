@@ -13,8 +13,8 @@ public class DeckBuilder : MonoBehaviour
     void Start()
     {
         deck = new Dictionary<string, int>();
-        deckView = transform.Find("DeckViewPanel/DeckView").gameObject;
-        select = transform.Find("CardSelection").gameObject;
+        deckView = GameObject.Find("DeckView").gameObject;
+        select = GameObject.Find("CardSelection").gameObject;
     }
 
     /*
