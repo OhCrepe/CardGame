@@ -13,7 +13,7 @@ public class DeckBuilder : MonoBehaviour
     void Start()
     {
         deck = new Dictionary<string, int>();
-        deckView = transform.Find("DeckView").gameObject;
+        deckView = transform.Find("DeckViewPanel/DeckView").gameObject;
         select = transform.Find("CardSelection").gameObject;
     }
 
