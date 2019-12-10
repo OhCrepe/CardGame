@@ -25,6 +25,10 @@ public class DeckBuilder : MonoBehaviour
         string cardName = GetCardName(card);
         Debug.Log("Adding " + cardName + " to deck");
         if(deck.ContainsKey(cardName)){
+            if(card.tag == "Lord"){
+                Debug.Log("You can't have more than 1 copy of a Lord card in your deck!");
+                return;
+            }
             if(deck[cardName] < 3){
                 deck[cardName] = deck[cardName] + 1;
                 CopyToDeckView(card);
