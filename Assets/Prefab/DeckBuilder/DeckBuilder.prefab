@@ -1040,8 +1040,7 @@ PrefabInstance:
       propertyPath: m_Pivot.y
       value: 0.5
       objectReference: {fileID: 0}
-    m_RemovedComponents:
-    - {fileID: 114724330932878680, guid: 4b2d2eecbcb2c2a4f9fd6d55662b5801, type: 3}
+    m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4b2d2eecbcb2c2a4f9fd6d55662b5801, type: 3}
 --- !u!224 &8270697454879508954 stripped
 RectTransform:
@@ -1056,11 +1055,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 2391922339083777970}
     m_Modifications:
-    - target: {fileID: 3882098565071006213, guid: f7d11b2c5c0543c4da76fb22fe4b4908,
-        type: 3}
-      propertyPath: m_Name
-      value: Sleight Of Hand DeckBuilder
-      objectReference: {fileID: 0}
     - target: {fileID: 3946612820399662297, guid: f7d11b2c5c0543c4da76fb22fe4b4908,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -1166,6 +1160,11 @@ PrefabInstance:
       propertyPath: m_Pivot.y
       value: 0.5
       objectReference: {fileID: 0}
+    - target: {fileID: 3882098565071006213, guid: f7d11b2c5c0543c4da76fb22fe4b4908,
+        type: 3}
+      propertyPath: m_Name
+      value: Sleight Of Hand DeckBuilder
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f7d11b2c5c0543c4da76fb22fe4b4908, type: 3}
 --- !u!224 &1726285768760484674 stripped
@@ -1181,11 +1180,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 2391922339083777970}
     m_Modifications:
-    - target: {fileID: 4236814941680373776, guid: 8212ec424216f9a4d82034a4f017ec52,
-        type: 3}
-      propertyPath: m_Name
-      value: Black Market DeckBuilder
-      objectReference: {fileID: 0}
     - target: {fileID: 4167976873136278064, guid: 8212ec424216f9a4d82034a4f017ec52,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -1290,6 +1284,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Pivot.y
       value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 4236814941680373776, guid: 8212ec424216f9a4d82034a4f017ec52,
+        type: 3}
+      propertyPath: m_Name
+      value: Black Market DeckBuilder
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8212ec424216f9a4d82034a4f017ec52, type: 3}
@@ -1556,11 +1555,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 2391922339083777970}
     m_Modifications:
-    - target: {fileID: 4195490417569149023, guid: b4cbc3640b130164fb46e510510c654d,
-        type: 3}
-      propertyPath: m_Name
-      value: Dying Nobleman DeckBuilder
-      objectReference: {fileID: 0}
     - target: {fileID: 4116440734139509249, guid: b4cbc3640b130164fb46e510510c654d,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -1665,6 +1659,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Pivot.y
       value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 4195490417569149023, guid: b4cbc3640b130164fb46e510510c654d,
+        type: 3}
+      propertyPath: m_Name
+      value: Dying Nobleman DeckBuilder
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b4cbc3640b130164fb46e510510c654d, type: 3}
