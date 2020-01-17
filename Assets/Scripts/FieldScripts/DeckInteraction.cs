@@ -73,17 +73,6 @@ public class DeckInteraction : MonoBehaviour {
 	}
 
 	/*
-	*	Triggers a card draw when the D key is pressed
-	*/
-	public void Update(){
-		/*
-		if(Input.GetKeyUp("d")){
-			DrawCard();
-		}
-		*/
-	}
-
-	/*
 	* Draws a card from the top of the deck if the deck isn't empty
 	*/
 	public GameObject DrawCard(){
