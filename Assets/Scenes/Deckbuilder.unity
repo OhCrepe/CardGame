@@ -680,6 +680,23 @@ PrefabInstance:
       propertyPath: m_SizeDelta.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8825633725693204408, guid: 0943cb35b3ff87540a4ef26f2277026b,
+        type: 3}
+      propertyPath: m_Name
+      value: Trinkets & Baubles DeckBuilder
+      objectReference: {fileID: 0}
+    - target: {fileID: 8928648143475181230, guid: 0943cb35b3ff87540a4ef26f2277026b,
+        type: 3}
+      propertyPath: m_Text
+      value: Gain 5 gold.
+      objectReference: {fileID: 0}
+    - target: {fileID: 8928466654494339156, guid: 0943cb35b3ff87540a4ef26f2277026b,
+        type: 3}
+      propertyPath: m_Text
+      value: 'Trinkets & Baubles
+
+'
+      objectReference: {fileID: 0}
     - target: {fileID: 1019411791, guid: 0943cb35b3ff87540a4ef26f2277026b, type: 3}
       propertyPath: m_AnchorMax.x
       value: 0

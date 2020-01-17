@@ -22,7 +22,7 @@ GameObject:
   - component: {fileID: 114441527663566764}
   - component: {fileID: 114696158040532062}
   m_Layer: 5
-  m_Name: Withdrawal
+  m_Name: Trinkets & Baubles
   m_TagString: Card
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -189,7 +189,7 @@ MonoBehaviour:
   hasTriggerAbility: 0
   hasStartOfTurnAbility: 0
   hasEndOfTurnAbility: 0
-  goldGained: 2
+  goldGained: 5
 --- !u!114 &114802448771782658
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -484,7 +484,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: 'Withdrawal
+  m_Text: 'Trinkets & Baubles
 
 '
 --- !u!1 &1715266791801982
@@ -563,7 +563,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Gain 2 gold.
+  m_Text: Gain 5 gold.
 --- !u!1 &1930737048325822
 GameObject:
   m_ObjectHideFlags: 0
