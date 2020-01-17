@@ -7,14 +7,13 @@ public class DeckBuilder : MonoBehaviour
 {
 
     private Dictionary<string, int> deck;
-    private GameObject deckView, select;
+    private GameObject deckView;
 
     // Start is called before the first frame update
     void Start()
     {
         deck = new Dictionary<string, int>();
         deckView = GameObject.Find("DeckView").gameObject;
-        select = GameObject.Find("CardSelection").gameObject;
     }
 
     /*
@@ -86,6 +85,16 @@ public class DeckBuilder : MonoBehaviour
             return;
         }
         Debug.Log("valid");
+
+        int deckSize = deckView.transform.childCount;
+
+        string[] deckCards = new string[deckSize];
+        for(int i = 0; i < deckSize; i++){
+            deckCards[i] = deckView.transform.GetChild(i).Find("Name").GetComponent<Text>().text;
+        }
+
+        DeckList deck = new DeckList(deckName, deckCards);
+        DeckList.SaveDeck(deck);
 
     }
 
