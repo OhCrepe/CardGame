@@ -8,6 +8,7 @@ public class DeckInteraction : MonoBehaviour {
 
 	public GameObject playerHand; // Hand of the player this deck belongs to
 	public GameObject deckObject; // The deck that we're using
+	public int handSize;
 
 	/*
 	With the deck linked list, the first element at index 0 is the card at the
@@ -20,8 +21,32 @@ public class DeckInteraction : MonoBehaviour {
 	* Triggers at start of game
 	*/
 	void Start () {
+		LoadDeck();
 		InitDeck();
 		CheckForDeck();
+	}
+
+	/*
+	*	Load the deck from memory
+	*	// TODO at the moment deck uses "sample.dek" by default
+	*/
+	private void LoadDeck(){
+
+		DeckList deck = DeckList.LoadDeck("Sample");
+		if(deck == null){
+			return;
+		}
+		Debug.Log("yeeteth");
+		foreach(string name in deck.deckList){
+			Debug.Log(name);
+			if(CardMap.GetCardType(name) != "Lord"){
+				CardMap.InstantiateToZone(name, deckObject.transform);
+			}else{
+				CardMap.InstantiateToZone(name, GameObject.Find("Lord").transform);
+			}
+		}
+
+
 	}
 
 	/*
@@ -40,6 +65,10 @@ public class DeckInteraction : MonoBehaviour {
 		}
 		ShuffleDeck();
 		Debug.Log("The deck has " + deck.Count + " cards in it");
+
+		for(int i = 0; i < handSize; i++){
+			DrawCard();
+		}
 
 	}
 

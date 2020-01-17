@@ -13,10 +13,7 @@ public class GameState : MonoBehaviour {
 
 	static GameState(){
 		currentPlayer = GameObject.Find("PlayerField");
-		if(currentPlayer != null)
-			StartPhase();
-		else
-			MainPhase();
+		MainPhase();
 	}
 
 	/*

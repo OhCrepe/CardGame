@@ -45,7 +45,7 @@ public class DeckList
 
         if(!File.Exists(filepath)){
 
-            Debug.Log("Error loading deck");
+            Debug.Log("Error loading deck - " + filepath);
             return null;
 
         }else{
