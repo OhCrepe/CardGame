@@ -36,9 +36,7 @@ public class DeckInteraction : MonoBehaviour {
 		if(deck == null){
 			return;
 		}
-		Debug.Log("yeeteth");
 		foreach(string name in deck.deckList){
-			Debug.Log(name);
 			if(CardMap.GetCardType(name) != "Lord"){
 				CardMap.InstantiateToZone(name, deckObject.transform);
 			}else{

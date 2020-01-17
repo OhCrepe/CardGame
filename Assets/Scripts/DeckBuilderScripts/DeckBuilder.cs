@@ -2,18 +2,37 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class DeckBuilder : MonoBehaviour
 {
 
     private Dictionary<string, int> deck;
-    private GameObject deckView;
+    private GameObject deckView, cardSelect;
+
+    private const string prefabPath = "Prefab/DeckBuilder/Cards";
 
     // Start is called before the first frame update
     void Start()
     {
         deck = new Dictionary<string, int>();
         deckView = GameObject.Find("DeckView").gameObject;
+        cardSelect = GameObject.Find("CardSelection").gameObject;
+        LoadCardSelection();
+    }
+
+    /*
+    *   Load all cards in the game
+    */
+    private void LoadCardSelection(){
+
+        Object[] cardArray = Resources.LoadAll(prefabPath, typeof(GameObject));
+        foreach(GameObject cardObject in cardArray){
+
+            GameObject card = (GameObject)cardObject;
+            Instantiate(card, cardSelect.transform);
+
+        }
     }
 
     /*
@@ -105,6 +124,10 @@ public class DeckBuilder : MonoBehaviour
         GameObject input = GameObject.Find("DeckName");
         GameObject textField = input.transform.Find("Text").gameObject;
         return textField.GetComponent<Text>().text;
+    }
+
+    public void MainMenu(){
+        SceneManager.LoadScene("MainMenu");
     }
 
 

@@ -268,6 +268,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playerHand: {fileID: 1954515091638100}
   deckObject: {fileID: 1308441115275292}
+  handSize: 4
 --- !u!1 &1308441115275292
 GameObject:
   m_ObjectHideFlags: 0
