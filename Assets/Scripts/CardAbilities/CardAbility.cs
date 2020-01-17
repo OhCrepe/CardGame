@@ -10,6 +10,10 @@ public abstract class CardAbility : MonoBehaviour {
 							hasStartOfTurnAbility,
 							hasEndOfTurnAbility;
 
+	public void Awake(){
+		player = GameObject.Find("PlayerField");
+	}
+
 	public virtual void Attack(){
 
 		StartCoroutine(WaitForAttackTarget());

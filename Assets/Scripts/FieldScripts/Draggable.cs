@@ -18,6 +18,7 @@ public class Draggable :  MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDr
 
 	void Awake(){
 		parentToReturnTo = transform.parent;
+		player = GameObject.Find("PlayerField");
 	}
 
 	/*
