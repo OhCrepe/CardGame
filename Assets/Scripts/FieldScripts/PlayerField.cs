@@ -52,4 +52,22 @@ public class PlayerField : MonoBehaviour {
 		goldCounter.GetComponent<Text>().text = "" + gold;
 	}
 
+	/*
+	*	Pay the wages for the Units this player has in play
+	*/
+	public void PayWages(){
+
+		int wageMod = 1;
+		int wageBonus = 0;
+		int unitCount = 0;
+		foreach(Transform unit in field.transform){
+			wageMod *= unit.gameObject.GetComponent<CardData>().wageMod;
+			wageBonus += unit.gameObject.GetComponent<CardData>().wageBonus;
+			unitCount++;
+		}
+		int finalWages = (unitCount + wageBonus) * wageMod;
+		PayGold(finalWages);
+
+	}
+
 }

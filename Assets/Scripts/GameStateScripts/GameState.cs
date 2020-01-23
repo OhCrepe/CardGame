@@ -53,7 +53,7 @@ public class GameState : MonoBehaviour {
 		foreach(GameObject lord in lords){
 			lord.GetComponent<CardAbility>().StartOfTurnAbility();
 		}
-		GameObject[] cards = GameObject.FindGameObjectsWithTag("Lord");
+		GameObject[] cards = GameObject.FindGameObjectsWithTag("Card");
 		foreach(GameObject card in cards){
 			card.GetComponent<CardAbility>().StartOfTurnAbility();
 		}
@@ -98,6 +98,10 @@ public class GameState : MonoBehaviour {
 	*	End the current player's turn, give control to their opponent
 	*/
 	public static void EndPhase(){
+		if(currentPlayer == null){
+			Debug.Log("Player null");
+		}
+		currentPlayer.GetComponent<PlayerField>().PayWages();
 		currentPhase = Phase.END;
 		StartPhase();
 	}

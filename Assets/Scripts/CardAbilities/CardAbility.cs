@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public abstract class CardAbility : MonoBehaviour {
+public class CardAbility : MonoBehaviour {
 
 	public GameObject player; // The player this card belongs to
 	public int fieldTriggerCost; //The cost to trigger the field effect of this card

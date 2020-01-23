@@ -817,6 +817,8 @@ MonoBehaviour:
   strength: 1
   health: 1
   cardType: 0
+  wageMod: 1
+  wageBonus: 0
 --- !u!114 &114164790093502126
 MonoBehaviour:
   m_ObjectHideFlags: 0

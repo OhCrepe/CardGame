@@ -17,6 +17,7 @@ public class CardMap : MonoBehaviour
         foreach(GameObject cardObject in cardArray){
             GameObject card = (GameObject)cardObject;
             string cardName = card.transform.Find("Name").GetComponent<Text>().text;
+            Debug.Log("Map - " + cardName);
             cards.Add(cardName, card);
         }
 
@@ -36,6 +37,7 @@ public class CardMap : MonoBehaviour
     }
 
     public static string GetCardType(string cardName){
+        Debug.Log(cardName);
         return cards[cardName].tag;
     }
 

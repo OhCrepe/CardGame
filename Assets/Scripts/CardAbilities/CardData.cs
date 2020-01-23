@@ -11,6 +11,7 @@ public class CardData : MonoBehaviour {
 	public int cost, strength, health; // Cost to hire this warrior/activate this utility
 	public enum Type { MINION, UTILITY }; // Whether this card is a utility or a minion
 	public Type cardType;
+	public int wageMod, wageBonus;
 
 	private int currentHealth;
 	private int currentStrength;
