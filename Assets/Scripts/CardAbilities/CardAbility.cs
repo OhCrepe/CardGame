@@ -9,6 +9,9 @@ public class CardAbility : MonoBehaviour {
 	public bool hasTriggerAbility, //Whether this card has an ability that can be triggered on the field
 							hasStartOfTurnAbility,
 							hasEndOfTurnAbility;
+	public bool isOncePerTurn;
+
+	public bool oncePerTurnUsed;
 
 	public void Awake(){
 		player = GameObject.Find("PlayerField");
@@ -183,6 +186,10 @@ public class CardAbility : MonoBehaviour {
 		this.gameObject.transform.SetParent(hand);
 		gameObject.SetActive(true);
 		GetComponent<CardData>().Restore();
+	}
+
+	public void ResetOncePerTurn(){
+		oncePerTurnUsed = false;
 	}
 
 }

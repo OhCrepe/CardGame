@@ -56,6 +56,7 @@ public class GameState : MonoBehaviour {
 		GameObject[] cards = GameObject.FindGameObjectsWithTag("Card");
 		foreach(GameObject card in cards){
 			card.GetComponent<CardAbility>().StartOfTurnAbility();
+			card.GetComponent<CardAbility>().ResetOncePerTurn();
 		}
 		DrawPhase();
 	}

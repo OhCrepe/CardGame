@@ -21,6 +21,14 @@ public class CardData : MonoBehaviour {
 		currentStrength = strength;
 	}
 
+	public void Heal(int healthGained){
+		currentHealth += healthGained;
+		if(currentHealth > health){
+			currentHealth = health;
+		}
+		GetComponent<GetCardStats>().SetHealth(currentHealth, health);
+	}
+
 	public void DealDamage(int damage, bool combat){
 		currentHealth-=damage;
 		GetComponent<GetCardStats>().SetHealth(currentHealth, health);

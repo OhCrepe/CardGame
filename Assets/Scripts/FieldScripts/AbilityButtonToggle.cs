@@ -30,6 +30,10 @@ public class AbilityButtonToggle : MonoBehaviour, IPointerEnterHandler, IPointer
         if(!this.gameObject.GetComponent<CardAbility>().hasTriggerAbility){
             return;
         }
+        if(this.gameObject.GetComponent<CardAbility>().oncePerTurnUsed){
+            abilityButton.SetActive(false);
+            return;
+        }
         abilityButton.SetActive(active);
     }
 
