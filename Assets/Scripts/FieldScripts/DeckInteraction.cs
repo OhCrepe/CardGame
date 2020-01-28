@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.Networking;
+using UnityEngine.UI;
 
 public class DeckInteraction : MonoBehaviour {
 
@@ -24,6 +25,7 @@ public class DeckInteraction : MonoBehaviour {
 		LoadDeck();
 		InitDeck();
 		CheckForDeck();
+		AddToHand("Dying Nobleman");
 	}
 
 	/*
@@ -86,14 +88,32 @@ public class DeckInteraction : MonoBehaviour {
 	}
 
 	/*
+	*	Adds a copy of a card that is in the deck to the hand with the specified name
+	*/
+	public void AddToHand(string name){
+
+		foreach(GameObject card in deck){
+			if(card.transform.Find("Name").GetComponent<Text>().text == name){
+				AddToHand(card);
+				return;
+			}
+		}
+
+		Debug.Log("Card with name: " + name + " could not be found");
+
+	}
+
+	/*
 	*	Adds a specific card that is in the deck into the hand
 	*/
 	public void AddToHand(GameObject card){
+
 		if(deck.Contains(card)){
 			MoveCardToHand(card);
 		}
 		CheckForDeck();
 		ShuffleDeck();
+
 	}
 
 	/*
