@@ -9,6 +9,7 @@ public class DeckInteraction : MonoBehaviour {
 
 	public GameObject playerHand; // Hand of the player this deck belongs to
 	public GameObject deckObject; // The deck that we're using
+	public GameObject searchWindow; // The search window
 	public int handSize;
 
 	/*
@@ -84,6 +85,21 @@ public class DeckInteraction : MonoBehaviour {
 		MoveCardToHand(drawnCard);
 		CheckForDeck();
 		return drawnCard;
+
+	}
+
+	/*
+	*	Slap all the cards that have a certain substring in their name in the search window
+	*/
+	public GameObject SearchCardFromDeckByName(string substring){
+
+		searchWindow.SetActive(true);
+		foreach(GameObject card in deck){
+			if(card.transform.Find("Name").GetComponent<Text>().text.Contains(substring)){
+				// TODO Add cards to the selection panel
+			}
+		}
+		return null;
 
 	}
 

@@ -112,6 +112,12 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
+--- !u!1 &10643494 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6452203724195871480, guid: 22acd9ff395a3004ebd6a9233b3d6397,
+    type: 3}
+  m_PrefabInstance: {fileID: 1897267202}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &22987001
 GameObject:
   m_ObjectHideFlags: 0
@@ -661,9 +667,19 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 114319324244482588, guid: 22acd9ff395a3004ebd6a9233b3d6397,
+        type: 3}
+      propertyPath: searchWindow
+      value: 
+      objectReference: {fileID: 10643494}
     - target: {fileID: 223111271931156526, guid: 22acd9ff395a3004ebd6a9233b3d6397,
         type: 3}
       propertyPath: m_SortingOrder
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6452203724195871480, guid: 22acd9ff395a3004ebd6a9233b3d6397,
+        type: 3}
+      propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 9189421844108670216, guid: 22acd9ff395a3004ebd6a9233b3d6397,
