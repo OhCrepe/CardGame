@@ -76,13 +76,13 @@ public class GameState : MonoBehaviour {
 	*/
 	public static void MainPhase(){
 		currentPhase = Phase.MAIN;
-
 	}
 
 	/*
 	*	Resolve all effects that trigger at the end of a player's turn
 	*/
 	public static void EndEffectsPhase(){
+
 		currentPhase = Phase.END_EFFECTS;
 		GameObject[] lords = GameObject.FindGameObjectsWithTag("Lord");
 		foreach(GameObject lord in lords){
@@ -93,6 +93,7 @@ public class GameState : MonoBehaviour {
 			card.GetComponent<CardAbility>().EndOfTurnAbility();
 		}
 		EndPhase();
+		
 	}
 
 	/*

@@ -21,6 +21,7 @@ public class PlayerField : MonoBehaviour {
 
 		GainGold(startingGold);
 		this.transform.GetChild(0).SetParent(this.transform.parent);
+		GameState.currentPlayer = gameObject;
 
 	}
 
