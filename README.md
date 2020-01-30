@@ -21,3 +21,7 @@ The Unity version used to create this game is 2018.4.10f1. It is therefore recom
 **System Requirements**
 
 The system requirements for opening hte game in the Unity Editor are identically to those for running the game executable.
+
+# Credits/References
+
+Card artwork provided by Charlie Adams
