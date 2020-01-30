@@ -479,6 +479,8 @@ MonoBehaviour:
   strength: 1
   health: 1
   cardType: 0
+  wageMod: 0
+  wageBonus: 0
 --- !u!61 &2090195616144885159
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -840,7 +842,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: ee3b0ae137682564d8ef88b23ae6dc99, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 0ebd08ce7c293074a8fcff6c3956a06e, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
