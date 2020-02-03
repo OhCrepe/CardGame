@@ -7,7 +7,9 @@ public class EndTurnButton : MonoBehaviour
 
     public void OnButton()
     {
-      GameState.EndEffectsPhase();
+        if(!GameState.targetting){
+            GameState.EndEffectsPhase();
+        }
     }
 
 }

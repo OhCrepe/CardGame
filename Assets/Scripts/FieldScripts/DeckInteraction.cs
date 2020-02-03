@@ -26,7 +26,6 @@ public class DeckInteraction : MonoBehaviour {
 		LoadDeck();
 		InitDeck();
 		CheckForDeck();
-		AddToHand("Dying Nobleman");
 	}
 
 	/*
@@ -91,15 +90,43 @@ public class DeckInteraction : MonoBehaviour {
 	/*
 	*	Slap all the cards that have a certain substring in their name in the search window
 	*/
-	public GameObject SearchCardFromDeckByName(string substring){
+	public void SearchCardFromDeckByName(string substring){
 
-		searchWindow.SetActive(true);
+		searchWindow.transform.parent.gameObject.SetActive(true);
 		foreach(GameObject card in deck){
 			if(card.transform.Find("Name").GetComponent<Text>().text.Contains(substring)){
-				// TODO Add cards to the selection panel
+				AddToSearchWindow(card);
 			}
 		}
-		return null;
+
+	}
+
+	/*
+	*	Add the card to the search window
+	*/
+	private void AddToSearchWindow(GameObject card){
+
+		card.transform.SetParent(searchWindow.transform);
+		card.SetActive(true);
+		card.GetComponent<Canvas>().sortingOrder = 15;
+		Debug.Log("Search by name - " + card.transform.Find("Name").GetComponent<Text>().text);
+
+	}
+
+	/*
+	*	Clear the search window of all cards, return the cards to the deck
+	*/
+	public void CloseSearchWindow(){
+
+		foreach(Transform child in searchWindow.transform){
+
+			child.SetParent(deckObject.transform);
+			child.gameObject.SetActive(false);
+
+		}
+		searchWindow.transform.parent.gameObject.SetActive(false);
+		CheckForDeck();
+		ShuffleDeck();
 
 	}
 
@@ -116,6 +143,15 @@ public class DeckInteraction : MonoBehaviour {
 		}
 
 		Debug.Log("Card with name: " + name + " could not be found");
+
+	}
+
+	public bool CheckForTargetByName(string substring){
+
+		foreach(GameObject card in deck){
+			if(card.transform.Find("Name").GetComponent<Text>().text.Contains(substring)) return true;
+		}
+		return false;
 
 	}
 
