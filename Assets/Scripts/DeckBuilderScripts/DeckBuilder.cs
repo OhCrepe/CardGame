@@ -10,7 +10,10 @@ public class DeckBuilder : MonoBehaviour
     private Dictionary<string, int> deck;
     private GameObject deckView, cardSelect;
 
+    private int containsLord;
+
     private const string prefabPath = "Prefab/DeckBuilder/Cards";
+    private const int deckSize = 25;
 
     // Start is called before the first frame update
     void Start()
@@ -42,6 +45,12 @@ public class DeckBuilder : MonoBehaviour
 
         string cardName = GetCardName(card);
         Debug.Log("Adding " + cardName + " to deck");
+        if(!card.CompareTag("Lord")){
+            if(deckView.transform.childCount - containsLord >= deckSize){
+                Debug.Log("You cannot have more than 25 cards in a deck (excluding the Lord card).");
+                return;
+            }
+        }
         if(deck.ContainsKey(cardName)){
             if(card.tag == "Lord"){
                 Debug.Log("You can't have more than 1 copy of a Lord card in your deck!");
@@ -54,6 +63,9 @@ public class DeckBuilder : MonoBehaviour
                 Debug.Log("You can't have more than 3 copies of a card in your deck!");
             }
         }else{
+            if(card.tag == "Lord"){
+                containsLord = 1;
+            }
             deck.Add(cardName, 1);
             CopyToDeckView(card);
         }
@@ -79,6 +91,9 @@ public class DeckBuilder : MonoBehaviour
             if(deck[cardName] > 1){
                 deck[cardName] = deck[cardName] - 1;
             }else{
+                if(card.tag == "Lord"){
+                    containsLord = 0;
+                }
                 deck.Remove(cardName);
             }
             Destroy(card);
@@ -103,9 +118,13 @@ public class DeckBuilder : MonoBehaviour
             // TODO Tell the user that the deck name is invalid
             return;
         }
+        int thisDeckSize = deckView.transform.childCount;
+        if(thisDeckSize != 26){
+            Debug.Log("The deck must contain 25 regular cards plus one Lord card!");
+            return;
+        }
         Debug.Log("valid");
 
-        int deckSize = deckView.transform.childCount;
 
         string[] deckCards = new string[deckSize];
         for(int i = 0; i < deckSize; i++){
