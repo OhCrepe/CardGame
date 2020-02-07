@@ -107,6 +107,7 @@ public class CardAbility : MonoBehaviour {
 				GameState.targettingCard = null;
 				Debug.Log("Target selected");
 				OnTargetSelect(target);
+				target = null;
 			}
 			yield return null;
 		}
@@ -115,7 +116,7 @@ public class CardAbility : MonoBehaviour {
 
 		bool selected = false;
 		GameState.targetting = true;
-		GameState.attacking= true;
+		GameState.attacking = true;
 		GameState.targettingCard = this.gameObject;
 		Debug.Log("Waiting for target");
 		while(!selected){
@@ -127,6 +128,7 @@ public class CardAbility : MonoBehaviour {
 				Debug.Log("Target selected");
 				if(ValidAttackTarget(target)){
 					OnAttackTargetSelect(target);
+					target = null;
 				}
 			}
 			yield return null;
