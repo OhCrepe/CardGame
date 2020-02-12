@@ -126,8 +126,8 @@ public class DeckBuilder : MonoBehaviour
         Debug.Log("valid");
 
 
-        string[] deckCards = new string[deckSize];
-        for(int i = 0; i < deckSize; i++){
+        string[] deckCards = new string[deckSize+1];
+        for(int i = 0; i < deckSize+1; i++){
             deckCards[i] = deckView.transform.GetChild(i).Find("Name").GetComponent<Text>().text;
         }
 

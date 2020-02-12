@@ -1,8 +1,9 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.EventSystems;
 
-public class DeckBuilderClickable : MonoBehaviour
+public class DeckBuilderClickable : MonoBehaviour, IPointerClickHandler
 {
 
     DeckBuilder deckBuilder;
@@ -17,7 +18,7 @@ public class DeckBuilderClickable : MonoBehaviour
     /*
     *   Detect whether or not we're in the deck, and call the correct method accordingly.
     */
-    void OnMouseDown(){
+    public void OnPointerClick(PointerEventData eventData){
 
         if(transform.parent.gameObject.name == "CardSelection"){
             deckBuilder.AddToDeck(this.gameObject);
