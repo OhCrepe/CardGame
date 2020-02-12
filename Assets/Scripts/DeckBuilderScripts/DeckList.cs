@@ -13,6 +13,10 @@ public class DeckList
     private const string deckLocations = "/decks/";
     private const string fileExtension = ".dek";
 
+    public DeckList(){
+
+    }
+
     public DeckList(string name, string[] list){
 
         deckName = name;
@@ -30,6 +34,8 @@ public class DeckList
 
         string filepath = GetDeckPath(deck.deckName);
         FileStream file = File.Create(filepath);
+
+        Debug.Log("Saving - " + deck.deckList.Length);
 
         formatter.Serialize(file, deck);
         file.Close();
