@@ -38,13 +38,20 @@ public class DeckInteraction : MonoBehaviour {
 		if(deck == null){
 			return;
 		}
+		string message = "DECKLIST#";
+		string cards = "";
 		foreach(string name in deck.deckList){
 			if(CardMap.GetCardType(name) != "Lord"){
 				CardMap.InstantiateToZone(name, deckObject.transform);
+				cards += "#" + name;
 			}else{
 				CardMap.InstantiateToZone(name, GameObject.Find("Lord").transform);
+				message += name;
 			}
 		}
+		message += cards;
+		message = message.Replace("\r", "").Replace("\n", "");
+		GameObject.Find("NetworkManager").GetComponent<NetworkConnection>().SendMessage(message);
 
 
 	}
