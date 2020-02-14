@@ -70,11 +70,11 @@ public class DeckInteraction : MonoBehaviour {
 		foreach(GameObject go in deck){
 			Debug.Log(go.name);
 		}
-		ShuffleDeck();
+		//ShuffleDeck();
 		Debug.Log("The deck has " + deck.Count + " cards in it");
 
 		for(int i = 0; i < handSize; i++){
-			DrawCard();
+			//DrawCard();
 		}
 
 	}

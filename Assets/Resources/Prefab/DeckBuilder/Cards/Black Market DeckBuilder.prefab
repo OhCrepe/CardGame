@@ -171,6 +171,8 @@ MonoBehaviour:
   strength: 0
   health: 0
   cardType: 1
+  wageMod: 0
+  wageBonus: 0
 --- !u!61 &4183983292904072828
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -382,9 +384,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: 'Black Market
-
-'
+  m_Text: Black Market
 --- !u!1 &4237013699780708234
 GameObject:
   m_ObjectHideFlags: 0

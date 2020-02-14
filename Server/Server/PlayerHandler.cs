@@ -15,6 +15,7 @@ namespace Server
         private TcpClient client;
         private StreamReader input;
         private StreamWriter writer;
+        private GameState game;
 
         public PlayerHandler(TcpClient client)
         {
@@ -26,6 +27,7 @@ namespace Server
                 input = new StreamReader(stream);
                 writer = new StreamWriter(stream);
                 writer.AutoFlush = true;
+                game = new GameState(this);
             }
             catch (SocketException)
             {
@@ -56,7 +58,7 @@ namespace Server
                         {
                             case "DECKLIST":
                                 ReadDeckList(args);
-                                GameState.serverDeckList.PrintDeckList();
+                                game.InitializeGame();
                                 break;
 
                             default:
@@ -94,7 +96,13 @@ namespace Server
             {
                 deck[i - 2] = args[i];
             }
-            GameState.serverDeckList = new ServerDeckList(lord, deck);
+            game.player1Deck = new ServerDeckList(this, lord, deck);
+        }
+
+        public void SendMessage(string message)
+        {
+            Console.WriteLine("Sending Message: " + message);
+            writer.WriteLine(message);
         }
 
     }
