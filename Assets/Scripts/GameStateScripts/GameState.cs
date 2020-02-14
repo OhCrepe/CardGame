@@ -8,8 +8,9 @@ public class GameState : MonoBehaviour {
 	public static GameObject targettingCard = null, decidingCard = null;
 
 	public enum Phase {START, DEBT, GOLD, START_EFFECTS, DRAW, MAIN, END_EFFECTS, END};
-	public static GameObject currentPlayer;
 	public static Phase currentPhase;
+
+	public static GameObject currentPlayer;
 
 	static GameState(){
 		currentPlayer = GameObject.Find("PlayerField");
@@ -93,7 +94,7 @@ public class GameState : MonoBehaviour {
 			card.GetComponent<CardAbility>().EndOfTurnAbility();
 		}
 		EndPhase();
-		
+
 	}
 
 	/*
