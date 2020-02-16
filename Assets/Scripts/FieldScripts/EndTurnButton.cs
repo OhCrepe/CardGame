@@ -8,7 +8,7 @@ public class EndTurnButton : MonoBehaviour
     public void OnButton()
     {
         if(!GameState.targetting){
-            GameState.EndEffectsPhase();
+            GameObject.Find("NetworkManager").GetComponent<NetworkConnection>().SendMessage("ENDTURN");
         }
     }
 

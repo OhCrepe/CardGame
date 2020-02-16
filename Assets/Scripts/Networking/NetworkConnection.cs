@@ -13,7 +13,9 @@ public class NetworkConnection : MonoBehaviour
     private StreamReader reader;
     private StreamWriter writer;
     private TcpClient tcp;
+
     private DeckInteraction deck;
+    private PlayerField player;
 
     private List<string> commands;
 
@@ -23,6 +25,7 @@ public class NetworkConnection : MonoBehaviour
     void Awake()
     {
         deck = GameObject.Find("PlayerField").GetComponent<DeckInteraction>();
+        player = GameObject.Find("PlayerField").GetComponent<PlayerField>();
         commands = new List<string>();
         InitializeRemoteIO();
         InitializeListenThread();
@@ -37,6 +40,10 @@ public class NetworkConnection : MonoBehaviour
 
                 case "ATH":
                     deck.AddToHand(args[1]);
+                    break;
+
+                case "GOLD":
+                    player.SetGold(int.Parse(args[1]));
                     break;
 
                 default:

@@ -67,7 +67,6 @@ public class GameState : MonoBehaviour {
 	*/
 	public static void DrawPhase(){
 		currentPhase = Phase.DRAW;
-		currentPlayer.GetComponent<DeckInteraction>().DrawCard();
 		MainPhase();
 	}
 

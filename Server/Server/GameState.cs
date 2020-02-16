@@ -20,12 +20,18 @@ namespace Server
 
         public PlayerHandler currentPlayer;
 
+        private const int startingGold = 25;
+        private const int goldPerTurn = 5;
+
         public GameState(PlayerHandler p1)
         {
             player1 = p1;
             
         }
 
+        /*
+        *   Initialize the Game state
+        */
         public void InitializeGame()
         {
             currentPlayer = player1;
@@ -34,6 +40,7 @@ namespace Server
             {
                 player1Deck.DrawCard();
             }
+            player1.SetGold(startingGold);
             MainPhase();
         }
 
@@ -41,7 +48,7 @@ namespace Server
         /*
         *	Logic that handles the start of a player's turn
         */
-        public static void StartPhase()
+        public void StartPhase()
         {
             currentPhase = Phase.START;
             DebtPhase();
@@ -52,7 +59,7 @@ namespace Server
         * Give them a debt counter if no gold left, or they lose the game if they have
         * no gold AND a debt counter
         */
-        public static void DebtPhase()
+        public void DebtPhase()
         {
             currentPhase = Phase.DEBT;
             GoldPhase();
@@ -62,16 +69,17 @@ namespace Server
         *	Logic that handles the player's gold gained for the turn.
         * DEFUALT: Give 5 gold.
         */
-        public static void GoldPhase()
+        public void GoldPhase()
         {
             currentPhase = Phase.GOLD;
+            player1.SetGold(player1.gold += goldPerTurn);
             StartEffectsPhase();
         }
 
         /*
         * Resolve all effects that trigger at the beginning of a player's turn
         */
-        public static void StartEffectsPhase()
+        public void StartEffectsPhase()
         {
             currentPhase = Phase.START_EFFECTS;
             DrawPhase();
@@ -80,9 +88,10 @@ namespace Server
         /*
         *	Turn player draws a card
         */
-        public static void DrawPhase()
+        public void DrawPhase()
         {
             currentPhase = Phase.DRAW;
+            player1Deck.DrawCard();
             MainPhase();
         }
 
@@ -90,7 +99,7 @@ namespace Server
         *	In this phase the turn player gets to play their cards, hire units
         * and enter combat
         */
-        public static void MainPhase()
+        public void MainPhase()
         {
             currentPhase = Phase.MAIN;
         }
@@ -98,7 +107,7 @@ namespace Server
         /*
         *	Resolve all effects that trigger at the end of a player's turn
         */
-        public static void EndEffectsPhase()
+        public void EndEffectsPhase()
         {
 
             EndPhase();
@@ -108,10 +117,22 @@ namespace Server
         /*
         *	End the current player's turn, give control to their opponent
         */
-        public static void EndPhase()
+        public void EndPhase()
         {
             currentPhase = Phase.END;
             StartPhase();
+        }
+
+        /*
+        *   Validate that the turn player can legally end their turn
+        */
+        public bool ValidateEndMainPhase()
+        {
+
+            if (currentPhase != Phase.MAIN) return false;
+
+            return true;
+
         }
 
     }

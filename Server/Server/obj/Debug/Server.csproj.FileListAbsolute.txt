@@ -4,3 +4,9 @@ M:\ce301_thorn_t\Server\Server\bin\Debug\Server.pdb
 M:\ce301_thorn_t\Server\Server\obj\Debug\Server.csprojResolveAssemblyReference.cache
 M:\ce301_thorn_t\Server\Server\obj\Debug\Server.exe
 M:\ce301_thorn_t\Server\Server\obj\Debug\Server.pdb
+C:\Users\Tyler\Gits\ce301_thorn_t\Server\Server\bin\Debug\Server.exe.config
+C:\Users\Tyler\Gits\ce301_thorn_t\Server\Server\obj\Debug\Server.exe
+C:\Users\Tyler\Gits\ce301_thorn_t\Server\Server\obj\Debug\Server.pdb
+C:\Users\Tyler\Gits\ce301_thorn_t\Server\Server\bin\Debug\Server.exe
+C:\Users\Tyler\Gits\ce301_thorn_t\Server\Server\bin\Debug\Server.pdb
+C:\Users\Tyler\Gits\ce301_thorn_t\Server\Server\obj\Debug\Server.csprojResolveAssemblyReference.cache

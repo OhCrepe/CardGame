@@ -12,6 +12,8 @@ namespace Server
     class PlayerHandler : IDisposable
     {
 
+        public int gold;
+
         private TcpClient client;
         private StreamReader input;
         private StreamWriter writer;
@@ -56,9 +58,17 @@ namespace Server
                         String[] args = line.Trim().Split('#');
                         switch (args[0].ToUpper())
                         {
+
                             case "DECKLIST":
                                 ReadDeckList(args);
                                 game.InitializeGame();
+                                break;
+
+                            case "ENDTURN":
+                                if (game.ValidateEndMainPhase())
+                                {
+                                    game.EndEffectsPhase();
+                                }
                                 break;
 
                             default:
@@ -97,6 +107,12 @@ namespace Server
                 deck[i - 2] = args[i];
             }
             game.player1Deck = new ServerDeckList(this, lord, deck);
+        }
+
+        public void SetGold(int gold)
+        {
+            this.gold = gold;
+            SendMessage("GOLD#" + gold);
         }
 
         public void SendMessage(string message)
