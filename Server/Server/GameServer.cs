@@ -8,9 +8,9 @@ using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 
-namespace Server
+namespace GameServer
 {
-    class Server
+    class GameServer
     {
 
         private const int port = 8888;
