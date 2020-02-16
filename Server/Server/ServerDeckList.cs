@@ -8,7 +8,6 @@ using System.Security.Cryptography;
 namespace GameServer
 {
 
-
     class ServerDeckList
     {
 
