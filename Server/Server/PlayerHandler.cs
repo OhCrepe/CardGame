@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Server.Cards;
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
@@ -7,7 +8,7 @@ using System.Net.Sockets;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace GameServer
+namespace Server
 {
     class PlayerHandler : IDisposable
     {
@@ -100,11 +101,11 @@ namespace GameServer
 
         private void ReadDeckList(string[] args)
         {
-            string lord = args[1];
-            string[] deck = new string[25];
+            Card lord = new Card(CardReader.cardStats[args[1]]);
+            Card[] deck = new Card[25];
             for(int i = 2; i < args.Length; i++)
             {
-                deck[i - 2] = args[i];
+                deck[i - 2] = new Card(CardReader.cardStats[args[i]]);
             }
             game.player1Deck = new ServerDeckList(this, lord, deck);
         }

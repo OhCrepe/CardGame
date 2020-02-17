@@ -4,26 +4,27 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Security.Cryptography;
+using Server.Cards;
 
-namespace GameServer
+namespace Server
 {
 
     class ServerDeckList
     {
 
-        public string lord;
-        public List<string> deck;
-        public List<string> hand;
+        public Card lord;
+        public List<Card> deck;
+        public List<Card> hand;
         public PlayerHandler player;
 
         private static readonly RNGCryptoServiceProvider random = new RNGCryptoServiceProvider();
 
-        public ServerDeckList(PlayerHandler player, string lord, string[] deck)
+        public ServerDeckList(PlayerHandler player, Card lord, Card[] deck)
         {
             this.player = player;
             this.lord = lord;
-            this.deck = new List<string>(deck);
-            this.hand = new List<string>();
+            this.deck = new List<Card>(deck);
+            this.hand = new List<Card>();
         }
 
         /*
@@ -41,7 +42,7 @@ namespace GameServer
 
         public void ShuffleDeck()
         {
-            List<string> newDeck = new List<string>();
+            List<Card> newDeck = new List<Card>();
             for (int i = deck.Count - 1; i >= 0; i--)
             {
                 int cardIndex = (int) (GetNumberBetween(0, i));
@@ -55,14 +56,14 @@ namespace GameServer
         /*
         * Draws a card from the top of the deck if the deck isn't empty
         */
-        public string DrawCard()
+        public Card DrawCard()
         {
 
             if (deck.Count == 0)
             {
                 return null;
             }
-            string drawnCard = deck[0];
+            Card drawnCard = deck[0];
             MoveCardToHand(drawnCard);
             //CheckForDeck(); // Graphical and therefore doesn't matter so much
             return drawnCard;
@@ -72,12 +73,12 @@ namespace GameServer
         /*
         *	Helper function to handle common functionality between searching and drawing
         */
-        private void MoveCardToHand(string card)
+        private void MoveCardToHand(Card card)
         {
 
             deck.Remove(card);
             hand.Add(card);
-            player.SendMessage("ATH#" + card);
+            player.SendMessage("ATH#" + card.name);
         }
 
         /*

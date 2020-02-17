@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Server.Cards;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Net;
@@ -8,7 +9,7 @@ using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 
-namespace GameServer
+namespace Server
 {
     class GameServer
     {
@@ -18,6 +19,7 @@ namespace GameServer
         static void Main(string[] args)
         {
 
+            CardReader.StartReader();
             RunServer();
 
         }

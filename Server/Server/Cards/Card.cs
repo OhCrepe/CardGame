@@ -1,0 +1,37 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace Server.Cards
+{
+    class Card
+    {
+
+        public string name;
+        public int cost, strength, health;
+        public enum Type { MINION, UTILITY, LORD };
+        public Type cardType;
+        public int wageMod, wageBonus;
+
+        public int currentHealth, currentStrength;
+
+        public Card()
+        {
+
+        }
+
+        public Card(Card card)
+        {
+            this.name = card.name;
+            this.cost = card.cost;
+            this.strength = card.strength;
+            this.health = card.health;
+            this.cardType = card.cardType;
+            this.wageMod = card.wageMod;
+            this.wageBonus = card.wageBonus;
+        }
+
+    }
+}
