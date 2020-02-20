@@ -27,6 +27,7 @@ namespace Server.Cards
 
         public Card(Card card)
         {
+
             cardCount++;
             this.name = card.name;
             this.cost = card.cost;
@@ -43,6 +44,7 @@ namespace Server.Cards
             {
                 this.id = name + cardCount;
             }
+
         }
 
     }
