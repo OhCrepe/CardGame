@@ -79,20 +79,5 @@ public class PlayerField : MonoBehaviour {
 
 	}
 
-	/*
-	*	Assign the given id to the first card found with the given name that has no id
-	*/
-	public void AssignIdToCardWithName(string name, string id){
-		GameObject[] cards = GameObject.FindGameObjectsWithTag("Card");
-		foreach(GameObject card in cards){
-			if(name == card.transform.Find("Name").GetComponent<Text>().text){
-				CardData data = card.GetComponent<CardData>();
-				if(data.IsIdNull()){
-					data.SetId(id);
-					continue;
-				}
-			}
-		}
-	}
 
 }

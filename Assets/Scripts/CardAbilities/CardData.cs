@@ -13,7 +13,7 @@ public class CardData : MonoBehaviour {
 	public Type cardType;
 	public int wageMod, wageBonus;
 
-  private int currentHealth;
+  	private int currentHealth;
 	private int currentStrength;
 	private string id;
 

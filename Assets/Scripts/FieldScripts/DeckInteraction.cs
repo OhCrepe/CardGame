@@ -140,10 +140,10 @@ public class DeckInteraction : MonoBehaviour {
 	/*
 	*	Adds a copy of a card that is in the deck to the hand with the specified name
 	*/
-	public void AddToHand(string name){
+	public void AddToHand(string id){
 
 		foreach(GameObject card in deck){
-			if(card.transform.Find("Name").GetComponent<Text>().text == name){
+			if(card.GetComponent<CardData>().GetId() == id){
 				AddToHand(card);
 				return;
 			}
@@ -258,6 +258,21 @@ public class DeckInteraction : MonoBehaviour {
 
 	public int DeckCount(){
 		return deck.Count;
+	}
+
+	/*
+	*	Assign the given id to the first card found with the given name that has no id
+	*/
+	public void AssignIdToCardWithName(string name, string id){
+		foreach(GameObject card in deck){
+			if(name == card.transform.Find("Name").GetComponent<Text>().text){
+				CardData data = card.GetComponent<CardData>();
+				if(data.IsIdNull()){
+					data.SetId(id);
+					return;
+				}
+			}
+		}
 	}
 
 }

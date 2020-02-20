@@ -47,7 +47,7 @@ public class NetworkConnection : MonoBehaviour
                     break;
 
                 case "ID":
-                    player.AssignIdToCardWithName(args[1], args[2]);
+                    deck.AssignIdToCardWithName(args[1], args[2]);
                     break;
 
                 default:
