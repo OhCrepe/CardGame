@@ -82,7 +82,7 @@ namespace Server
 
             deck.Remove(card);
             hand.Add(card);
-            player.SendMessage("ATH#" + card.name);
+            player.SendMessage("ATH#" + card.id);
         }
 
         /*
