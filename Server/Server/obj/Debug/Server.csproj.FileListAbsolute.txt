@@ -12,3 +12,5 @@ C:\Users\Tyler\Gits\ce301_thorn_t\Server\Server\bin\Debug\Server.pdb
 C:\Users\Tyler\Gits\ce301_thorn_t\Server\Server\obj\Debug\Server.csprojResolveAssemblyReference.cache
 C:\Users\Tyler\Gits\ce301_thorn_t\Server\Server\obj\Debug\Server.Properties.Resources.resources
 C:\Users\Tyler\Gits\ce301_thorn_t\Server\Server\obj\Debug\Server.csproj.GenerateResource.Cache
+M:\ce301_thorn_t\Server\Server\obj\Debug\Server.Properties.Resources.resources
+M:\ce301_thorn_t\Server\Server\obj\Debug\Server.csproj.GenerateResource.Cache

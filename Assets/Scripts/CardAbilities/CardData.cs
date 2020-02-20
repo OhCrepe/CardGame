@@ -13,12 +13,14 @@ public class CardData : MonoBehaviour {
 	public Type cardType;
 	public int wageMod, wageBonus;
 
-	private int currentHealth;
+  private int currentHealth;
 	private int currentStrength;
+	private string id;
 
 	void Awake(){
 		currentHealth = health;
 		currentStrength = strength;
+		id = null;
 	}
 
 	public void Heal(int healthGained){
@@ -45,6 +47,20 @@ public class CardData : MonoBehaviour {
 		currentHealth = health;
 		GetComponent<GetCardStats>().SetHealth(currentHealth, health);
 		currentStrength = strength;
+	}
+
+	public void SetId(string id){
+		if(IsIdNull()){
+			this.id = id;
+		}
+	}
+
+	public bool IsIdNull(){
+		return id == null;
+	}
+
+	public string GetId(){
+		return id;
 	}
 
 }

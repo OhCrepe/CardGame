@@ -25,6 +25,10 @@ namespace Server
             this.lord = lord;
             this.deck = new List<Card>(deck);
             this.hand = new List<Card>();
+            foreach (Card card in this.deck)
+            {
+                player.SendMessage("ID#" + card.name + "#" + card.id);
+            }
         }
 
         /*

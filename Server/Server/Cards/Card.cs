@@ -9,6 +9,7 @@ namespace Server.Cards
     class Card
     {
 
+        public static int cardCount;
         public string name;
         public int cost, strength, health;
         public enum Type { MINION, UTILITY, LORD };
@@ -17,13 +18,16 @@ namespace Server.Cards
 
         public int currentHealth, currentStrength;
 
+        public readonly string id;
+
         public Card()
         {
-
+            cardCount++;
         }
 
         public Card(Card card)
         {
+            cardCount++;
             this.name = card.name;
             this.cost = card.cost;
             this.strength = card.strength;
@@ -31,6 +35,14 @@ namespace Server.Cards
             this.cardType = card.cardType;
             this.wageMod = card.wageMod;
             this.wageBonus = card.wageBonus;
+            if (cardType == Type.LORD)
+            {
+                this.id = name;
+            }
+            else
+            {
+                this.id = name + cardCount;
+            }
         }
 
     }

@@ -46,6 +46,10 @@ public class NetworkConnection : MonoBehaviour
                     player.SetGold(int.Parse(args[1]));
                     break;
 
+                case "ID":
+                    player.AssignIdToCardWithName(args[1], args[2]);
+                    break;
+
                 default:
                     break;
 
