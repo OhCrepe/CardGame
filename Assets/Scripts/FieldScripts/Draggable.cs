@@ -150,7 +150,8 @@ public class Draggable :  MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDr
 		}
 
 		if(parentToReturnTo.GetComponent<Dropzone>().zoneType == Dropzone.Zone.FIELD){
-			CallCard();
+			string id = gameObject.GetComponent<CardData>().GetId();
+			GameObject.Find("NetworkManager").GetComponent<NetworkConnection>().SendMessage("SUMMON#" + id);
 		}
 
 		this.startPosition = new Vector2(0f, 0f);

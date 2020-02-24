@@ -47,5 +47,12 @@ namespace Server.Cards
 
         }
 
+        public override bool Equals(Object obj)
+        {
+            Card card = (Card)obj;
+            if (id == null || card.id == null) return false;
+            return card.id == id;
+        }
+
     }
 }

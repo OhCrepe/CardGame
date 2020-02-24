@@ -56,6 +56,7 @@ namespace Server
                     String line = input.ReadLine();
                     if (line != null)
                     {
+                        Console.WriteLine("Recieved: " + line);
                         String[] args = line.Trim().Split('#');
                         switch (args[0].ToUpper())
                         {
@@ -69,6 +70,13 @@ namespace Server
                                 if (game.ValidateEndMainPhase())
                                 {
                                     game.EndEffectsPhase();
+                                }
+                                break;
+
+                            case "SUMMON":
+                                if (game.ValidateSummon(args[1]))
+                                {
+                                    game.SummonUnit(args[1]);
                                 }
                                 break;
 

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Server.Cards;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -133,6 +134,37 @@ namespace Server
 
             return true;
 
+        }
+
+        /*
+        *   Validate that a summon is legal
+        */ 
+        public bool ValidateSummon(string id)
+        {
+
+            Card card = player1Deck.GetCardFromHand(id);
+            if (card == null)
+            {
+                return false;
+            }
+            if(currentPlayer.gold < card.cost)
+            {
+                return false;
+            }
+            return true;
+
+        }
+
+        /*
+        *   Summon a unit to the field
+        */
+        public void SummonUnit(string id)
+        {
+            Card card = player1Deck.GetCardFromHand(id);
+            player1Deck.hand.Remove(card);
+            player1Deck.field.Add(card);
+            player1.SetGold(player1.gold -= card.cost);
+            player1.SendMessage("SUMMON#" + id);
         }
 
     }

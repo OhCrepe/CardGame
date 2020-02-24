@@ -50,6 +50,10 @@ public class NetworkConnection : MonoBehaviour
                     deck.AssignIdToCardWithName(args[1], args[2]);
                     break;
 
+                case "SUMMON":
+                    player.SummonUnitWithId(args[1]);
+                    break;
+
                 default:
                     break;
 

@@ -15,6 +15,7 @@ namespace Server
         public Card lord;
         public List<Card> deck;
         public List<Card> hand;
+        public List<Card> field;
         public PlayerHandler player;
 
         private static readonly RNGCryptoServiceProvider random = new RNGCryptoServiceProvider();
@@ -25,6 +26,7 @@ namespace Server
             this.lord = lord;
             this.deck = new List<Card>(deck);
             this.hand = new List<Card>();
+            this.field = new List<Card>();
             foreach (Card card in this.deck)
             {
                 player.SendMessage("ID#" + card.name + "#" + card.id);
@@ -99,6 +101,15 @@ namespace Server
             int range = max - min + 1;
             double randomValueInRange = Math.Floor(multiplier * range);
             return (int)(min+randomValueInRange);
+        }
+
+        public Card GetCardFromHand(string id)
+        {
+            foreach(Card card in hand)
+            {
+                if (card.id == id) return card;
+            }
+            return null;
         }
 
 

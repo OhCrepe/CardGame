@@ -79,5 +79,19 @@ public class PlayerField : MonoBehaviour {
 
 	}
 
+	/*
+	*	Summon a unit who is in the hand
+	*/
+	public void SummonUnitWithId(string id){
+
+		int handSize = hand.transform.childCount;
+		for(int i = 0; i < handSize; i++){
+			GameObject card = hand.transform.GetChild(i).gameObject;
+			if(card.GetComponent<CardData>().GetId() == id){
+				card.GetComponent<Draggable>().CallCard();
+			}
+		}
+
+	}
 
 }
