@@ -20,12 +20,17 @@ namespace Server.Cards
 
         public readonly string id;
 
+        public CardAbility ability;
+
+        public PlayerHandler player;
+        public GameState game;
+
         public Card()
         {
             cardCount++;
         }
 
-        public Card(Card card)
+        public Card(Card card, PlayerHandler player, GameState game)
         {
 
             cardCount++;
@@ -43,6 +48,27 @@ namespace Server.Cards
             else
             {
                 this.id = name + cardCount;
+            }
+
+            this.player = player;
+            this.game = game;
+
+            ability = AssignAbility();
+
+        }
+
+        public CardAbility AssignAbility()
+        {
+
+            switch (name)
+            {
+                case "Black Market":
+                    return new BlackMarketAbility(player, this, game);
+                    break;
+
+                default:
+                    return null;
+                    break;
             }
 
         }

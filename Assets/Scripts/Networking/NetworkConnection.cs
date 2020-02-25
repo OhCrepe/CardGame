@@ -54,6 +54,19 @@ public class NetworkConnection : MonoBehaviour
                     player.SummonUnitWithId(args[1]);
                     break;
 
+                case "TARGET":
+                    GameState.targetting = true;
+                    GameState.targettingCard = GameObject.Find(args[1]);
+                    break;
+
+                case "VALID_TARGET":
+                    GameState.targetting = false;
+                    break;
+
+                case "KILL":
+                    GameObject.Find("Discard").GetComponent<DiscardPile>().Discard(GameObject.Find(args[1]));
+                    break;
+
                 default:
                     break;
 

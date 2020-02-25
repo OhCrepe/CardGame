@@ -13,8 +13,8 @@ namespace Server
         public ServerDeckList player1Deck;
         public PlayerHandler player1, player2;
 
-        public static bool targetting = false, attacking = false, deciding = false, dragging = false;
-        public static string targettingCard = null, decidingCard = null;
+        public bool targetting = false, attacking = false, deciding = false;
+        public Card targettingCard = null, decidingCard = null;
 
         public enum Phase { START, DEBT, GOLD, START_EFFECTS, DRAW, MAIN, END_EFFECTS, END };
         public static Phase currentPhase;
@@ -165,6 +165,36 @@ namespace Server
             player1Deck.field.Add(card);
             player1.SetGold(player1.gold -= card.cost);
             player1.SendMessage("SUMMON#" + id);
+            card.ability.OnHire();
+        }
+
+        public Card FindCard(string id)
+        {
+            if (player1Deck.lord.id == id) return player1Deck.lord;
+            foreach(Card card in player1Deck.deck)
+            {
+                if (card.id == id) return card;
+            }
+            foreach (Card card in player1Deck.hand)
+            {
+                if (card.id == id) return card;
+            }
+            foreach (Card card in player1Deck.field)
+            {
+                if (card.id == id) return card;
+            }
+            foreach (Card card in player1Deck.discard)
+            {
+                if (card.id == id) return card;
+            }
+            return null;
+        }
+
+        public void TargetCard(CardAbility ability)
+        {
+            targetting = true;
+            targettingCard = ability.card;
+            player1.SendMessage("TARGET#" + targettingCard.id);
         }
 
     }

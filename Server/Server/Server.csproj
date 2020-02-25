@@ -43,7 +43,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Cards\BlackMarketAbility.cs" />
     <Compile Include="Cards\Card.cs" />
+    <Compile Include="Cards\CardAbility.cs" />
     <Compile Include="Cards\CardReader.cs" />
     <Compile Include="GameState.cs" />
     <Compile Include="PlayerHandler.cs" />

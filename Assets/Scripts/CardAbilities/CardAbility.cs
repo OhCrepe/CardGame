@@ -166,10 +166,14 @@ public class CardAbility : MonoBehaviour {
 					Debug.Log("We hit something");
 					if(ValidateTarget(hit.transform.gameObject)){
 						target = hit.transform.gameObject;
+						string message = "TARGET#" + target.GetComponent<CardData>().GetId();
+						GameObject.Find("NetworkManager").GetComponent<NetworkConnection>().SendMessage(message);
 					}
 				}
 
 			}
+
+
 
 		}
 

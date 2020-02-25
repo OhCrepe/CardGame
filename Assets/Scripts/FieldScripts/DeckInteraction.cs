@@ -269,6 +269,7 @@ public class DeckInteraction : MonoBehaviour {
 				CardData data = card.GetComponent<CardData>();
 				if(data.IsIdNull()){
 					data.SetId(id);
+					card.name = id;
 					return;
 				}
 			}

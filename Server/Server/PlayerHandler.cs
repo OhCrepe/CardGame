@@ -61,6 +61,7 @@ namespace Server
                         switch (args[0].ToUpper())
                         {
 
+
                             case "DECKLIST":
                                 ReadDeckList(args);
                                 game.InitializeGame();
@@ -77,6 +78,16 @@ namespace Server
                                 if (game.ValidateSummon(args[1]))
                                 {
                                     game.SummonUnit(args[1]);
+                                }
+                                break;
+
+                            case "TARGET":
+                                if (game.targetting == false) break;
+                                Card target = game.FindCard(args[1]);
+                                if (game.targettingCard.ability.ValidateTarget(target))
+                                {
+                                    SendMessage("VALID_TARGET");
+                                    game.targettingCard.ability.OnTargetSelect(target);
                                 }
                                 break;
 
@@ -109,11 +120,11 @@ namespace Server
 
         private void ReadDeckList(string[] args)
         {
-            Card lord = new Card(CardReader.cardStats[args[1]]);
+            Card lord = new Card(CardReader.cardStats[args[1]], this, game);
             Card[] deck = new Card[25];
             for(int i = 2; i < args.Length; i++)
             {
-                deck[i - 2] = new Card(CardReader.cardStats[args[i]]);
+                deck[i - 2] = new Card(CardReader.cardStats[args[i]], this, game);
             }
             game.player1Deck = new ServerDeckList(this, lord, deck);
         }

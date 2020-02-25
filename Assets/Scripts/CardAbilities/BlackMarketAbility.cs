@@ -9,7 +9,6 @@ public class BlackMarketAbility : CardAbility {
 	* In this case, we discard a card and gain it's cost as gold
 	*/
 	public override void OnHire(){
-		StartCoroutine(WaitForTarget());
 		//CheckUtility();
 	}
 
@@ -18,28 +17,33 @@ public class BlackMarketAbility : CardAbility {
 	* In this case discard that card, and give the player gold equal to it's cost
 	*/
 	public override void OnTargetSelect(GameObject card){
+		/*
 		Debug.Log(card.name + " selected, gaining " + card.GetComponent<CardData>().cost + " gold.");
 		player.GetComponent<PlayerField>().discard.GetComponent<DiscardPile>().Discard(card);
 		player.GetComponent<PlayerField>().GainGold(card.GetComponent<CardData>().cost);
-		CheckUtility();
+		*/
+		//CheckUtility();
 	}
 
 	/*
 	*	Check that black market can resolve. Makes sure there's a card in hand to discard.
 	*/
 	protected override bool ActivationRequirementsMet(){
+		/*
 		if(player.GetComponent<PlayerField>().hand.transform.childCount > 0){
 			return true;
 		}else{
 			return false;
 		}
+		*/
+		return true;
 	}
 
 	/*
 	* Validate that the target of this ability is correct
 	*/
 	public override bool ValidateTarget(GameObject card){
-
+		/*
 		if(card.tag != "Card"){
 			return false;
 		}
@@ -47,6 +51,7 @@ public class BlackMarketAbility : CardAbility {
 			return false;
 		}
 		Debug.Log("Valid target");
+		*/
 		return true;
 
 	}

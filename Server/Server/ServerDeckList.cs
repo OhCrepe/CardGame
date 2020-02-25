@@ -16,6 +16,7 @@ namespace Server
         public List<Card> deck;
         public List<Card> hand;
         public List<Card> field;
+        public List<Card> discard;
         public PlayerHandler player;
 
         private static readonly RNGCryptoServiceProvider random = new RNGCryptoServiceProvider();
@@ -27,6 +28,7 @@ namespace Server
             this.deck = new List<Card>(deck);
             this.hand = new List<Card>();
             this.field = new List<Card>();
+            this.discard = new List<Card>();
             foreach (Card card in this.deck)
             {
                 player.SendMessage("ID#" + card.name + "#" + card.id);
