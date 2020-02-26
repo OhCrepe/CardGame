@@ -6,10 +6,10 @@ using System.Threading.Tasks;
 
 namespace Server.Cards
 {
-    class BlackMarketAbility : CardAbility
+    class SleightOfHandAbility : CardAbility
     {
 
-        public BlackMarketAbility(PlayerHandler player, Card card, GameState game) : base(player, card, game)
+        public SleightOfHandAbility(PlayerHandler player, Card card, GameState game) : base(player, card, game)
         {
 
         }
@@ -21,7 +21,7 @@ namespace Server.Cards
 
         public override bool ValidActivation()
         {
-            return (game.player1Deck.hand.Count > 1 && game.player1Deck.hand.Contains(card));
+            return (game.player1Deck.hand.Count > 1 && game.player1Deck.deck.Count > 1 && game.player1Deck.hand.Contains(card));
         }
 
         public override bool ValidateTarget(Card card)
@@ -31,13 +31,11 @@ namespace Server.Cards
 
         public override void OnTargetSelect(Card card)
         {
-            game.player1Deck.hand.Remove(card);
-            game.player1Deck.discard.Add(card);
-            player.SendMessage("KILL#" + card.id);
-            player.SetGold(player.gold += card.cost);
+            game.player1Deck.ShuffleIntoDeck(card);
+            game.player1Deck.DrawCard();
+            game.player1Deck.DrawCard();
             base.OnTargetSelect(card);
             CheckUtility();
         }
-
     }
 }

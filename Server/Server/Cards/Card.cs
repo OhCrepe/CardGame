@@ -60,13 +60,17 @@ namespace Server.Cards
         public CardAbility AssignAbility()
         {
 
-            switch (name)
+            switch (name.ToUpper())
             {
-                case "Black Market":
+                case "BLACK MARKET":
                     return new BlackMarketAbility(player, this, game);
                     break;
 
-                case "Trinkets & Baubles":
+                case "SLEIGHT OF HAND":
+                    return new SleightOfHandAbility(player, this, game);
+                    break;
+
+                case "TRINKETS & BAUBLES":
                     return new TrinketsAndBaublesAbility(player, this, game);
                     break;
 

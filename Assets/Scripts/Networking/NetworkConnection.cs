@@ -54,6 +54,10 @@ public class NetworkConnection : MonoBehaviour
                     player.SummonUnitWithId(args[1]);
                     break;
 
+                case "PUTINDECK":
+                    deck.ShuffleIntoDeck(GameObject.Find(args[1]));
+                    break;
+
                 case "TARGET":
                     GameState.targetting = true;
                     GameState.targettingCard = GameObject.Find(args[1]);
@@ -61,6 +65,7 @@ public class NetworkConnection : MonoBehaviour
 
                 case "VALID_TARGET":
                     GameState.targetting = false;
+                    GameState.targettingCard = null;
                     break;
 
                 case "KILL":

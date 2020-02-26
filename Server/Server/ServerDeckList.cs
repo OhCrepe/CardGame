@@ -61,6 +61,26 @@ namespace Server
             deck = newDeck;
         }
 
+        public void ShuffleIntoDeck(Card card)
+        {
+            if (hand.Contains(card))
+            {
+                hand.Remove(card);
+            } else if (field.Contains(card))
+            {
+                field.Remove(card);
+            } else if (discard.Contains(card))
+            {
+                discard.Remove(card);
+            }
+            if (!deck.Contains(card))
+            {
+                deck.Add(card);
+            }
+            ShuffleDeck();
+            player.SendMessage("PUTINDECK#" + card.id);
+        }
+
         /*
         * Draws a card from the top of the deck if the deck isn't empty
         */

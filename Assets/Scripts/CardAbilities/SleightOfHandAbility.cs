@@ -9,7 +9,7 @@ public class SleightOfHandAbility : CardAbility {
 	* In this case, we discard a card and gain it's cost as gold
 	*/
 	public override void OnHire(){
-		StartCoroutine(WaitForTarget());
+		//StartCoroutine(WaitForTarget());
 		//CheckUtility();
 	}
 
@@ -18,11 +18,13 @@ public class SleightOfHandAbility : CardAbility {
 	* In this case discard that card, and give the player gold equal to it's cost
 	*/
 	public override void OnTargetSelect(GameObject card){
+		/*
 		Debug.Log(card.name + " selected, shuffling it into the deck.");
 		player.GetComponent<DeckInteraction>().ShuffleIntoDeck(card);
 		player.GetComponent<DeckInteraction>().DrawCard();
 		player.GetComponent<DeckInteraction>().DrawCard();
 		CheckUtility();
+		*/
 	}
 
 	/*
@@ -30,6 +32,7 @@ public class SleightOfHandAbility : CardAbility {
 	* into the deck, and that there'll be 2 card in deck after the card is shuffled in.
 	*/
 	protected override bool ActivationRequirementsMet(){
+		/*
 		PlayerField field = player.GetComponent<PlayerField>();
 		DeckInteraction deck = player.GetComponent<DeckInteraction>();
 		if(field.hand.transform.childCount > 0 && deck.DeckCount() > 0){
@@ -37,6 +40,8 @@ public class SleightOfHandAbility : CardAbility {
 		}else{
 			return false;
 		}
+		*/
+		return true;
 	}
 
 	/*
@@ -44,6 +49,7 @@ public class SleightOfHandAbility : CardAbility {
 	*/
 	public override bool ValidateTarget(GameObject card){
 
+		/*
 		if(card.tag != "Card"){
 			return false;
 		}
@@ -51,6 +57,7 @@ public class SleightOfHandAbility : CardAbility {
 			return false;
 		}
 		Debug.Log("Valid target");
+		*/
 		return true;
 
 	}

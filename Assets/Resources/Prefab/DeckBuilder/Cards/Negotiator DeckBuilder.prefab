@@ -863,7 +863,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 98dc2e9297b83144dba3fe348047cd3c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cost: 4
+  cost: 5
   strength: 1
   health: 2
   cardType: 0
