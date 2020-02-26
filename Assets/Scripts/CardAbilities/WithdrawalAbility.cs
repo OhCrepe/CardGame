@@ -11,8 +11,8 @@ public class WithdrawalAbility : CardAbility {
 	* In this case, we give the player who played it 2 gold
 	*/
 	public override void OnHire(){
-		player.GetComponent<PlayerField>().GainGold(goldGained);
-		CheckUtility();
+		//player.GetComponent<PlayerField>().GainGold(goldGained);
+		//CheckUtility();
 	}
 
 	/*

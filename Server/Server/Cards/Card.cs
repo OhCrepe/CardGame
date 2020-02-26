@@ -66,6 +66,10 @@ namespace Server.Cards
                     return new BlackMarketAbility(player, this, game);
                     break;
 
+                case "Trinkets & Baubles":
+                    return new TrinketsAndBaublesAbility(player, this, game);
+                    break;
+
                 default:
                     return null;
                     break;

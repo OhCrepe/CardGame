@@ -43,6 +43,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Cards\TrinketsAndBaublesAbility.cs" />
     <Compile Include="Cards\BlackMarketAbility.cs" />
     <Compile Include="Cards\Card.cs" />
     <Compile Include="Cards\CardAbility.cs" />
