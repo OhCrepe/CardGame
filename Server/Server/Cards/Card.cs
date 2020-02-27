@@ -62,12 +62,41 @@ namespace Server.Cards
 
             switch (name.ToUpper())
             {
+
                 case "BLACK MARKET":
                     return new BlackMarketAbility(player, this, game);
                     break;
 
+                case "BLOATED BODY":
+                    return new BloatedBodyAbility(player, this, game);
+                    break;
+
+                case "COMBAT MEDIC":
+                    return new CombatMedicAbility(player, this, game);
+                    break;
+
+                case "DYING NOBLEMAN":
+                    return new DyingNoblemanAbility(player, this, game);
+                    break;
+
+                case "FROG ELDER":
+                    return new FrogElderAbility(player, this, game);
+                    break;
+
+                case "ILLUSION FROG":
+                    return new IllusionFrogAbility(player, this, game);
+                    break;
+
                 case "SLEIGHT OF HAND":
                     return new SleightOfHandAbility(player, this, game);
+                    break;
+
+                case "THE EXECUTIONER":
+                    return new TheExecutionerAbility(player, this, game);
+                    break;
+
+                case "THE NEGOTIATOR":
+                    return new TheNegotiatorAbility(player, this, game);
                     break;
 
                 case "TRINKETS & BAUBLES":
@@ -77,6 +106,7 @@ namespace Server.Cards
                 default:
                     return null;
                     break;
+
             }
 
         }

@@ -43,6 +43,13 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Cards\TheNegotiatorAbility.cs" />
+    <Compile Include="Cards\CombatMedicAbility.cs" />
+    <Compile Include="Cards\IllusionFrogAbility.cs" />
+    <Compile Include="Cards\FrogElderAbility.cs" />
+    <Compile Include="Cards\TheExecutionerAbility.cs" />
+    <Compile Include="Cards\DyingNoblemanAbility.cs" />
+    <Compile Include="Cards\BloatedBodyAbility.cs" />
     <Compile Include="Cards\SleightOfHandAbility.cs" />
     <Compile Include="Cards\TrinketsAndBaublesAbility.cs" />
     <Compile Include="Cards\BlackMarketAbility.cs" />
