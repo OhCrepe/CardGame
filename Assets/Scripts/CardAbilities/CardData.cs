@@ -34,13 +34,15 @@ public class CardData : MonoBehaviour {
 	public void DealDamage(int damage, bool combat){
 		currentHealth-=damage;
 		GetComponent<GetCardStats>().SetHealth(currentHealth, health);
+		/*
 		if(currentHealth <= 0){
 			GetComponent<CardAbility>().Kill(combat);
 		}
+		*/
 	}
 
 	public void DealDamageTo(GameObject card, bool combat){
-		card.GetComponent<CardData>().DealDamage(currentStrength, combat);
+		//card.GetComponent<CardData>().DealDamage(currentStrength, combat);
 	}
 
 	public void Restore(){

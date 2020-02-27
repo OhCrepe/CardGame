@@ -198,6 +198,18 @@ namespace Server
             player1.SendMessage("TARGET#" + targettingCard.id);
         }
 
+        public bool ValidAttack(Card attacking, Card attacked)
+        {
+            if (attacking == attacked) return false;
+            return player1Deck.field.Contains(attacking) && player1Deck.field.Contains(attacked);
+        }
+
+        public void Attack(Card attacking, Card attacked)
+        {
+            attacking.DealDamage(attacked.currentStrength, true);
+            attacked.DealDamage(attacking.currentStrength, true);
+        }
+
     }
 
 }

@@ -61,6 +61,15 @@ namespace Server
                         switch (args[0].ToUpper())
                         {
 
+                            case "ATTACK":
+                                Card attackingCard = game.FindCard(args[1]);
+                                Card attackTarget = game.FindCard(args[2]);
+                                if (attackingCard == null || attackTarget == null) break;
+                                if (game.ValidAttack(attackingCard, attackTarget))
+                                {
+                                    game.Attack(attackingCard, attackTarget);
+                                }
+                                break;
 
                             case "DECKLIST":
                                 ReadDeckList(args);

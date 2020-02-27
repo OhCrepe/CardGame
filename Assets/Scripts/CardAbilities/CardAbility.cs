@@ -146,8 +146,8 @@ public class CardAbility : MonoBehaviour {
 
 	public void OnAttackTargetSelect(GameObject target){
 
-		GetComponent<CardData>().DealDamageTo(target, true);
-		target.GetComponent<CardData>().DealDamageTo(gameObject, true);
+		string message = "ATTACK#" + GetComponent<CardData>().GetId() + "#" + target.GetComponent<CardData>().GetId();
+		GameObject.Find("NetworkManager").GetComponent<NetworkConnection>().SendMessage(message);
 
 	}
 

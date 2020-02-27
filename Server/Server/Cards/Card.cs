@@ -41,6 +41,8 @@ namespace Server.Cards
             this.cardType = card.cardType;
             this.wageMod = card.wageMod;
             this.wageBonus = card.wageBonus;
+            this.currentHealth = card.health;
+            this.currentStrength = card.strength;
             if (cardType == Type.LORD)
             {
                 this.id = name;
@@ -116,6 +118,16 @@ namespace Server.Cards
             Card card = (Card)obj;
             if (id == null || card.id == null) return false;
             return card.id == id;
+        }
+
+        public void DealDamage(int damage, bool combat)
+        {
+            currentHealth -= damage;
+            player.SendMessage("DAMAGE#" + id + "#" + damage + "#" + combat);
+            if(currentHealth <= 0)
+            {
+                ability.Kill(combat);
+            }
         }
 
     }
