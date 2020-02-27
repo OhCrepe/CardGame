@@ -95,8 +95,8 @@ namespace Server.Cards
                     return new TheExecutionerAbility(player, this, game);
                     break;
 
-                case "THE NEGOTIATOR":
-                    return new TheNegotiatorAbility(player, this, game);
+                case "NEGOTIATOR":
+                    return new NegotiatorAbility(player, this, game);
                     break;
 
                 case "TRINKETS & BAUBLES":

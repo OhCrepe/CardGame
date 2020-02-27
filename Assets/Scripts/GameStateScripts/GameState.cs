@@ -103,7 +103,7 @@ public class GameState : MonoBehaviour {
 		if(currentPlayer == null){
 			Debug.Log("Player null");
 		}
-		currentPlayer.GetComponent<PlayerField>().PayWages();
+		//currentPlayer.GetComponent<PlayerField>().PayWages();
 		currentPhase = Phase.END;
 		StartPhase();
 	}

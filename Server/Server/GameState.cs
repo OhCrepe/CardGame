@@ -121,6 +121,7 @@ namespace Server
         public void EndPhase()
         {
             currentPhase = Phase.END;
+            player1Deck.PayWages();
             StartPhase();
         }
 

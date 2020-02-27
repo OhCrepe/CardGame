@@ -134,6 +134,23 @@ namespace Server
             return null;
         }
 
+        public void PayWages()
+        {
+
+            int wageMod = 1;
+            int wageBonus = 0;
+            int unitCount = 0;
+            foreach (Card card in field)
+            {
+                wageMod *= card.wageMod;
+                wageBonus += card.wageBonus;
+                unitCount++;
+            }
+            int finalWages = (unitCount + wageBonus) * wageMod;
+            player.SetGold(player.gold - finalWages);
+
+        }
+
 
     }
 }

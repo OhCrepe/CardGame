@@ -6,10 +6,10 @@ using System.Threading.Tasks;
 
 namespace Server.Cards
 {
-    class TheNegotiatorAbility : CardAbility
+    class NegotiatorAbility : CardAbility
     {
 
-        public TheNegotiatorAbility(PlayerHandler player, Card card, GameState game) : base(player, card, game)
+        public NegotiatorAbility(PlayerHandler player, Card card, GameState game) : base(player, card, game)
         {
 
         }
