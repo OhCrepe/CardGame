@@ -64,6 +64,7 @@ namespace Server
                         switch (args[0].ToUpper())
                         {
 
+                            // Player attempts to attack
                             case "ATTACK":
                                 Card attackingCard = game.FindCard(args[1]);
                                 Card attackTarget = game.FindCard(args[2]);
@@ -74,11 +75,13 @@ namespace Server
                                 }
                                 break;
 
+                            // Player sends decklist
                             case "DECKLIST":
                                 ReadDeckList(args);
                                 game.InitializeGame();
                                 break;
 
+                            // Player attempts to activate a field effect
                             case "FIELD_EFFECT":
                                 Card card = game.FindCard(args[1]);
                                 if (card.ability.ValidActivation())
@@ -87,6 +90,7 @@ namespace Server
                                 }
                                 break;
 
+                            // Player attempts to end their turn
                             case "ENDTURN":
                                 if (game.ValidateEndMainPhase())
                                 {
@@ -94,6 +98,7 @@ namespace Server
                                 }
                                 break;
 
+                            // Player attempts to summon
                             case "SUMMON":
                                 if (game.ValidateSummon(args[1]))
                                 {
@@ -101,6 +106,7 @@ namespace Server
                                 }
                                 break;
 
+                            // Player attempts to target
                             case "TARGET":
                                 if (game.targetting == false) break;
                                 Card target = game.FindCard(args[1]);

@@ -43,79 +43,95 @@ public class NetworkConnection : MonoBehaviour
             GameObject card;
             switch(args[0].ToUpper()){
 
+                // Add a card to hand
                 case "ATH":
                     deck.AddToHand(args[1]);
                     break;
 
+                // Bounce a card to hand
                 case "BOUNCE":
                     card = GameObject.Find(args[1]);
                     if(card == null) break;
                     card.GetComponent<CardAbility>().Bounce();
                     break;
 
-                case "GOLD":
-                    player.SetGold(int.Parse(args[1]));
-                    break;
-
-                case "ID":
-                    deck.AssignIdToCardWithName(args[1], args[2]);
-                    break;
-
-                case "SUMMON":
-                    player.SummonUnitWithId(args[1]);
-                    break;
-
-                case "PUTINDECK":
-                    deck.ShuffleIntoDeck(GameObject.Find(args[1]));
-                    break;
-
-                case "TARGET":
-                    GameState.targetting = true;
-                    GameState.targettingCard = GameObject.Find(args[1]);
-                    break;
-
-                case "VALID_TARGET":
-                    GameState.targetting = false;
-                    GameState.targettingCard = null;
-                    break;
-
-                case "HEAL":
-                    card = GameObject.Find(args[1]);
-                    if(card == null) break;
-                    card.GetComponent<CardData>().Heal(int.Parse(args[2]));
-                    break;
-
-                case "SEARCH":
-                    deck.SearchCardFromDeckByName(args[1]);
-                    break;
-
+                // Close the search window
                 case "CLOSE_SEARCH":
                     deck.CloseSearchWindow();
                     break;
 
-                case "KILL":
-                    card = GameObject.Find(args[1]);
-                    if(card == null) break;
-                    GameObject.Find("Discard").GetComponent<DiscardPile>().Discard(GameObject.Find(args[1]));
-                    break;
-
+                // Deal damage to a card
                 case "DAMAGE":
                     card = GameObject.Find(args[1]);
                     if(card == null) break;
                     card.GetComponent<CardData>().DealDamage(int.Parse(args[2]));
                     break;
 
+                // Change the value of a player's gold
+                case "GOLD":
+                    player.SetGold(int.Parse(args[1]));
+                    break;
+
+                // Heal a unit
+                case "HEAL":
+                    card = GameObject.Find(args[1]);
+                    if(card == null) break;
+                    card.GetComponent<CardData>().Heal(int.Parse(args[2]));
+                    break;
+
+                // Assign an id to a card
+                case "ID":
+                    deck.AssignIdToCardWithName(args[1], args[2]);
+                    break;
+
+                // Kill a card
+                case "KILL":
+                    card = GameObject.Find(args[1]);
+                    if(card == null) break;
+                    GameObject.Find("Discard").GetComponent<DiscardPile>().Discard(GameObject.Find(args[1]));
+                    break;
+
+                // Put a card into the deck
+                case "PUTINDECK":
+                    deck.ShuffleIntoDeck(GameObject.Find(args[1]));
+                    break;
+
+                // Restore a cards stats
                 case "RESTORE":
                     card = GameObject.Find(args[1]);
                     if(card == null) break;
                     card.GetComponent<CardData>().Restore();
                     break;
 
+                // Search for a card
+                case "SEARCH":
+                    deck.SearchCardFromDeckByName(args[1]);
+                    break;
+
+                // Summon a card
+                case "SUMMON":
+                    player.SummonUnitWithId(args[1]);
+                    break;
+
+                // Target a card
+                case "TARGET":
+                    GameState.targetting = true;
+                    GameState.targettingCard = GameObject.Find(args[1]);
+                    break;
+
+                // The given target is valid
+                case "VALID_TARGET":
+                    GameState.targetting = false;
+                    GameState.targettingCard = null;
+                    break;
+
                 default:
                     break;
 
             }
+
             commands.RemoveAt(0);
+
         }
     }
 
