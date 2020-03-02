@@ -123,7 +123,7 @@ namespace Server.Cards
         public void DealDamage(int damage, bool combat)
         {
             currentHealth -= damage;
-            player.SendMessage("DAMAGE#" + id + "#" + damage + "#" + combat);
+            player.SendMessage("DAMAGE#" + id + "#" + damage);
             if(currentHealth <= 0)
             {
                 ability.Kill(combat);

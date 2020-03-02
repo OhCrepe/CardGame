@@ -70,12 +70,7 @@ public class DeckInteraction : MonoBehaviour {
 		foreach(GameObject go in deck){
 			Debug.Log(go.name);
 		}
-		//ShuffleDeck();
 		Debug.Log("The deck has " + deck.Count + " cards in it");
-
-		for(int i = 0; i < handSize; i++){
-			//DrawCard();
-		}
 
 	}
 
@@ -153,15 +148,6 @@ public class DeckInteraction : MonoBehaviour {
 
 	}
 
-	public bool CheckForTargetByName(string substring){
-
-		foreach(GameObject card in deck){
-			if(card.transform.Find("Name").GetComponent<Text>().text.Contains(substring)) return true;
-		}
-		return false;
-
-	}
-
 	/*
 	*	Adds a specific card that is in the deck into the hand
 	*/
@@ -182,7 +168,6 @@ public class DeckInteraction : MonoBehaviour {
 
 		deck.Remove(card);
 		card.transform.SetParent(playerHand.transform);
-		//RpcMoveCardToParent(card, playerHand);
 		card.GetComponent<Draggable>().parentToReturnTo = playerHand.transform;
 		card.SetActive(true);
 	}
@@ -256,6 +241,9 @@ public class DeckInteraction : MonoBehaviour {
 		deckObject.transform.GetChild(0).gameObject.SetActive(visible);
 	}
 
+	/*
+	*	How many cards in the deck?
+	*/
 	public int DeckCount(){
 		return deck.Count;
 	}

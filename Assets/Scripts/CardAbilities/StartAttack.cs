@@ -25,7 +25,8 @@ public class StartAttack : MonoBehaviour, IPointerClickHandler {
 	*	Triggers the trigger ability of a card when clicked
 	*/
 	public void OnPointerClick(PointerEventData eventData){
-		ability.Attack();
+		if(!GameState.targetting)
+			ability.Attack();
 	}
 
 }

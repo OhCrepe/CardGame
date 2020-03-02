@@ -66,6 +66,9 @@ public class DeckList
 
     }
 
+    /*
+    *   Get the location of the deck stored in memory
+    */
     private static string GetDeckPath(string name){
         string location = Application.persistentDataPath + deckLocations;
         Directory.CreateDirectory(location);

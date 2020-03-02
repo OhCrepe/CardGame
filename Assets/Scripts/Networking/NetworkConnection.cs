@@ -21,7 +21,7 @@ public class NetworkConnection : MonoBehaviour
 
     private const int port = 8888;
 
-    // Start is called before the first frame update
+    // Initialize the network connection
     void Awake()
     {
         deck = GameObject.Find("PlayerField").GetComponent<DeckInteraction>();
@@ -31,6 +31,9 @@ public class NetworkConnection : MonoBehaviour
         InitializeListenThread();
     }
 
+    /*
+    *   Process commands given to use by the server
+    */
     void Update(){
 
         if(commands.Count > 0){
@@ -99,7 +102,7 @@ public class NetworkConnection : MonoBehaviour
                 case "DAMAGE":
                     card = GameObject.Find(args[1]);
                     if(card == null) break;
-                    card.GetComponent<CardData>().DealDamage(int.Parse(args[2]), bool.Parse(args[3]));
+                    card.GetComponent<CardData>().DealDamage(int.Parse(args[2]));
                     break;
 
                 case "RESTORE":
@@ -116,6 +119,9 @@ public class NetworkConnection : MonoBehaviour
         }
     }
 
+    /*
+    *   Initialize the stream reader/writer and tcp client
+    */
     private void InitializeRemoteIO(){
 
         tcp = new TcpClient("localhost", port);
@@ -126,12 +132,18 @@ public class NetworkConnection : MonoBehaviour
 
     }
 
+    /*
+    *   Start the thread that listens to the server
+    */
     private void InitializeListenThread(){
         Thread thread = new Thread(new ThreadStart(ListenThread));
         thread.Start();
         Console.WriteLine("Connection established");
     }
 
+    /*
+    *   Listen for commands given by the server and add them to the queue
+    */
     private void ListenThread(){
 
         bool connected = true;
@@ -148,6 +160,9 @@ public class NetworkConnection : MonoBehaviour
 
     }
 
+    /*
+    *   Send a message to the server
+    */
     public void SendMessage(string message){
         Debug.Log(message);
         writer.WriteLine(message);

@@ -8,6 +8,9 @@ public class DeckBuilderClickable : MonoBehaviour, IPointerClickHandler
 
     DeckBuilder deckBuilder;
 
+    /*
+    *   Initialize the deck builder card
+    */
     void Awake(){
         GameObject builder = GameObject.Find("DeckBuilder");
         if(builder != null){

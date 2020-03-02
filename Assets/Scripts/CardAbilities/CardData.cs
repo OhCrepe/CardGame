@@ -17,12 +17,18 @@ public class CardData : MonoBehaviour {
 	private int currentStrength;
 	private string id;
 
+	/*
+	*	Initialize the card
+	*/
 	void Awake(){
 		currentHealth = health;
 		currentStrength = strength;
 		id = null;
 	}
 
+	/*
+	*	Restore the given health to the card
+	*/
 	public void Heal(int healthGained){
 		currentHealth += healthGained;
 		if(currentHealth > health){
@@ -31,36 +37,43 @@ public class CardData : MonoBehaviour {
 		GetComponent<GetCardStats>().SetHealth(currentHealth, health);
 	}
 
-	public void DealDamage(int damage, bool combat){
+	/*
+	*	Deal the given health to the card
+	*/
+	public void DealDamage(int damage){
 		currentHealth-=damage;
 		GetComponent<GetCardStats>().SetHealth(currentHealth, health);
-		/*
-		if(currentHealth <= 0){
-			GetComponent<CardAbility>().Kill(combat);
-		}
-		*/
+
 	}
 
-	public void DealDamageTo(GameObject card, bool combat){
-		//card.GetComponent<CardData>().DealDamage(currentStrength, combat);
-	}
-
+	/*
+	*	Restore the unit to full health and strength
+	*/
 	public void Restore(){
 		currentHealth = health;
 		GetComponent<GetCardStats>().SetHealth(currentHealth, health);
 		currentStrength = strength;
 	}
 
+	/*
+	*	Set the id of the unit if it is not null
+	*/
 	public void SetId(string id){
 		if(IsIdNull()){
 			this.id = id;
 		}
 	}
 
+	/*
+	*	Check if the id is null
+	*/
 	public bool IsIdNull(){
 		return id == null;
 	}
 
+	/*
+	*	Return the id
+	*/
 	public string GetId(){
 		return id;
 	}
