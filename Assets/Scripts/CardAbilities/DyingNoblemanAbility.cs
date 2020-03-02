@@ -11,7 +11,7 @@ public class DyingNoblemanAbility : CardAbility {
 		*	Gains 6 gold. It doesn't matter how to unit dies in the case, so we override OnKillAbility()
 		*/
 		public override void OnKillAbility(bool combat){
-			player.GetComponent<PlayerField>().GainGold(goldGained);
+			//player.GetComponent<PlayerField>().GainGold(goldGained);
 		}
 
 }
