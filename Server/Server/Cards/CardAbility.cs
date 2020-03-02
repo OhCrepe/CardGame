@@ -166,6 +166,7 @@ namespace Server.Cards
             }
             game.player1Deck.discard.Add(card);
             player.SendMessage("KILL#" + card.id);
+            OnKillAbility(combat);
             //player.GetComponent<PlayerField>().discard.GetComponent<DiscardPile>().Discard(this.gameObject);
             //OnKillAbility(combat);
 

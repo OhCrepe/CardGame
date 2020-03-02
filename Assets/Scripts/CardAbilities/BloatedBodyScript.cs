@@ -12,7 +12,7 @@ public class BloatedBodyScript : CardAbility
     *	Gains 6 gold. It doesn't matter how to unit dies in the case, so we override OnKillAbility()
     */
     public override void OnKillAbility(bool combat){
-        GameObject[] cards = GameObject.FindGameObjectsWithTag("Card");
+        /*GameObject[] cards = GameObject.FindGameObjectsWithTag("Card");
         foreach(GameObject card in cards){
             CardData data = card.GetComponent<CardData>();
             if(data.cardType == CardData.Type.MINION){
@@ -20,7 +20,7 @@ public class BloatedBodyScript : CardAbility
                     data.DealDamage(damageDealt, false);
                 }
             }
-        }
+        }*/
     }
 
 }

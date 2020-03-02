@@ -37,6 +37,7 @@ public class NetworkConnection : MonoBehaviour
             string line = commands[0];
             string[] args = line.Trim().Split('#');
             Debug.Log("Receiving: " + line);
+            GameObject card;
             switch(args[0].ToUpper()){
 
                 case "ATH":
@@ -70,10 +71,14 @@ public class NetworkConnection : MonoBehaviour
                     break;
 
                 case "KILL":
+                    card = GameObject.Find(args[1]);
+                    if(card == null) break;
                     GameObject.Find("Discard").GetComponent<DiscardPile>().Discard(GameObject.Find(args[1]));
                     break;
 
                 case "DAMAGE":
+                    card = GameObject.Find(args[1]);
+                    if(card == null) break;
                     GameObject.Find(args[1]).GetComponent<CardData>().DealDamage(int.Parse(args[2]), bool.Parse(args[3]));
                     break;
 
