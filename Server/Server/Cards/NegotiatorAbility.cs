@@ -11,7 +11,7 @@ namespace Server.Cards
 
         public NegotiatorAbility(PlayerHandler player, Card card, GameState game) : base(player, card, game)
         {
-
+            //Doesn't actually do anything
         }
 
     }

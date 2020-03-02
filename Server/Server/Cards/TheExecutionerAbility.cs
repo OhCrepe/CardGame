@@ -14,5 +14,16 @@ namespace Server.Cards
 
         }
 
+        public override void EndOfTurnAbility()
+        {
+            foreach(Card card in game.player1Deck.field.ToList())
+            {
+                if(card.health == 1)
+                {
+                    card.ability.Kill(false);
+                }
+            }
+        }
+
     }
 }

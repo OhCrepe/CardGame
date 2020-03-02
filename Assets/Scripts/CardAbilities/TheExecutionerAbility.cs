@@ -12,7 +12,8 @@ public class TheExecutionerAbility : CardAbility
 
     // Ability that triggers on the field when clicked
   	public override void EndOfTurnAbility(){
-
+        
+        /*
         GameObject[] cards = GameObject.FindGameObjectsWithTag("Card");
         foreach(GameObject card in cards){
             if(card.GetComponent<Draggable>().parentToReturnTo.GetComponent<Dropzone>().zoneType == Dropzone.Zone.FIELD){
@@ -21,6 +22,7 @@ public class TheExecutionerAbility : CardAbility
                 }
             }
         }
+        */
 
   	}
 
