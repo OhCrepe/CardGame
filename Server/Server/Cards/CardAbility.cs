@@ -112,6 +112,7 @@ namespace Server.Cards
         public virtual void EndOfTurnAbility()
         {
             //DO NOTHING
+            oncePerTurnUsed = false;
         }
 
         public void CheckUtility()

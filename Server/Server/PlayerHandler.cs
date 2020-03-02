@@ -76,6 +76,14 @@ namespace Server
                                 game.InitializeGame();
                                 break;
 
+                            case "FIELD_EFFECT":
+                                Card card = game.FindCard(args[1]);
+                                if (card.ability.ValidActivation())
+                                {
+                                    card.ability.OnFieldTrigger();
+                                }
+                                break;
+
                             case "ENDTURN":
                                 if (game.ValidateEndMainPhase())
                                 {

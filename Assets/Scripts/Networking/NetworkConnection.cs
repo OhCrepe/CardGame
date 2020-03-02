@@ -76,6 +76,12 @@ public class NetworkConnection : MonoBehaviour
                     GameState.targettingCard = null;
                     break;
 
+                case "HEAL":
+                    card = GameObject.Find(args[1]);
+                    if(card == null) break;
+                    card.GetComponent<CardData>().Heal(int.Parse(args[2]));
+                    break;
+
                 case "KILL":
                     card = GameObject.Find(args[1]);
                     if(card == null) break;

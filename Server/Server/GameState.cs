@@ -111,6 +111,11 @@ namespace Server
         public void EndEffectsPhase()
         {
 
+            foreach(Card card in player1Deck.field)
+            {
+                card.ability.EndOfTurnAbility();
+            }
+            player1Deck.lord.ability.EndOfTurnAbility();
             EndPhase();
 
         }

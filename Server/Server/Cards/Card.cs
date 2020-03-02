@@ -130,6 +130,16 @@ namespace Server.Cards
             }
         }
 
+        public void Heal(int healthGained)
+        {
+            currentHealth += healthGained;
+            if (currentHealth > health)
+            {
+                currentHealth = health;
+            }
+            player.SendMessage("HEAL#" + id + "#" + healthGained);
+        }
+
         public void Restore()
         {
             currentHealth = health;
