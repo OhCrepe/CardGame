@@ -333,7 +333,7 @@ GameObject:
   - component: {fileID: 9124903712267419105}
   - component: {fileID: 9125337883975018833}
   - component: {fileID: 9127869440419868027}
-  - component: {fileID: 3806268343389588933}
+  - component: {fileID: 114863944575368850}
   m_Layer: 5
   m_Name: Combat Medic
   m_TagString: Card
@@ -570,7 +570,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   hoverScale: 1.2
---- !u!114 &3806268343389588933
+--- !u!114 &114863944575368850
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -579,17 +579,16 @@ MonoBehaviour:
   m_GameObject: {fileID: 9165207057987592397}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5716c21148e84614d98080b85e024493, type: 3}
+  m_Script: {fileID: 11500000, guid: 683a5e1b9ce97a849a930fd2952ad2d1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   player: {fileID: 0}
-  fieldTriggerCost: 1
+  fieldTriggerCost: 0
   hasTriggerAbility: 1
   hasStartOfTurnAbility: 0
   hasEndOfTurnAbility: 0
-  isOncePerTurn: 1
+  isOncePerTurn: 0
   oncePerTurnUsed: 0
-  healthGained: 2
 --- !u!1 &9165258243575671343
 GameObject:
   m_ObjectHideFlags: 0

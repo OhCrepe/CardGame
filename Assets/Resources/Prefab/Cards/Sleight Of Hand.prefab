@@ -17,10 +17,10 @@ GameObject:
   - component: {fileID: 223289416591700686}
   - component: {fileID: 114885886010632790}
   - component: {fileID: 114741432258349654}
-  - component: {fileID: 114420998391176408}
   - component: {fileID: 61143648944597894}
   - component: {fileID: 114673237667962268}
   - component: {fileID: 114895619674550230}
+  - component: {fileID: 114601678299314870}
   m_Layer: 5
   m_Name: Sleight Of Hand
   m_TagString: Card
@@ -188,23 +188,8 @@ MonoBehaviour:
   strength: 0
   health: 0
   cardType: 1
---- !u!114 &114420998391176408
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1356455944840686}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ff9bd55a2373543458a8df4b650896e6, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  player: {fileID: 0}
-  fieldTriggerCost: 0
-  hasTriggerAbility: 0
-  hasStartOfTurnAbility: 0
-  hasEndOfTurnAbility: 0
+  wageMod: 0
+  wageBonus: 0
 --- !u!61 &61143648944597894
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -256,6 +241,25 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   hoverScale: 1.2
+--- !u!114 &114601678299314870
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1356455944840686}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 683a5e1b9ce97a849a930fd2952ad2d1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  player: {fileID: 0}
+  fieldTriggerCost: 0
+  hasTriggerAbility: 0
+  hasStartOfTurnAbility: 0
+  hasEndOfTurnAbility: 0
+  isOncePerTurn: 0
+  oncePerTurnUsed: 0
 --- !u!1 &1443225309481436
 GameObject:
   m_ObjectHideFlags: 0

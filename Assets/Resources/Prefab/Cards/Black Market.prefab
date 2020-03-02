@@ -323,10 +323,10 @@ GameObject:
   - component: {fileID: 223942810265446400}
   - component: {fileID: 114161374980674724}
   - component: {fileID: 114097176095324494}
-  - component: {fileID: 114511583410691470}
   - component: {fileID: 61584856966044480}
   - component: {fileID: 114073997654962076}
   - component: {fileID: 114468530910632548}
+  - component: {fileID: 114424845710496064}
   m_Layer: 5
   m_Name: Black Market
   m_TagString: Card
@@ -496,25 +496,6 @@ MonoBehaviour:
   cardType: 1
   wageMod: 0
   wageBonus: 0
---- !u!114 &114511583410691470
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1835115329842476}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c2b5500558170e5408f7a6445e367d20, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  player: {fileID: 0}
-  fieldTriggerCost: 0
-  hasTriggerAbility: 0
-  hasStartOfTurnAbility: 0
-  hasEndOfTurnAbility: 0
-  isOncePerTurn: 0
-  oncePerTurnUsed: 0
 --- !u!61 &61584856966044480
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -566,6 +547,25 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   hoverScale: 1.2
+--- !u!114 &114424845710496064
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1835115329842476}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 683a5e1b9ce97a849a930fd2952ad2d1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  player: {fileID: 0}
+  fieldTriggerCost: 0
+  hasTriggerAbility: 0
+  hasStartOfTurnAbility: 0
+  hasEndOfTurnAbility: 0
+  isOncePerTurn: 0
+  oncePerTurnUsed: 0
 --- !u!1 &1937712258452830
 GameObject:
   m_ObjectHideFlags: 0
