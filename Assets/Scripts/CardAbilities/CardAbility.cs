@@ -191,7 +191,6 @@ public class CardAbility : MonoBehaviour {
 		GetComponent<Draggable>().parentToReturnTo = hand;
 		this.gameObject.transform.SetParent(hand);
 		gameObject.SetActive(true);
-		GetComponent<CardData>().Restore();
 	}
 
 	public void ResetOncePerTurn(){

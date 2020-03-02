@@ -130,5 +130,12 @@ namespace Server.Cards
             }
         }
 
+        public void Restore()
+        {
+            currentHealth = health;
+            currentStrength = strength;
+            player.SendMessage("RESTORE#" + id);
+        }
+
     }
 }

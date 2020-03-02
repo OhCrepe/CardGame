@@ -44,6 +44,12 @@ public class NetworkConnection : MonoBehaviour
                     deck.AddToHand(args[1]);
                     break;
 
+                case "BOUNCE":
+                    card = GameObject.Find(args[1]);
+                    if(card == null) break;
+                    card.GetComponent<CardAbility>().Bounce();
+                    break;
+
                 case "GOLD":
                     player.SetGold(int.Parse(args[1]));
                     break;
@@ -79,7 +85,13 @@ public class NetworkConnection : MonoBehaviour
                 case "DAMAGE":
                     card = GameObject.Find(args[1]);
                     if(card == null) break;
-                    GameObject.Find(args[1]).GetComponent<CardData>().DealDamage(int.Parse(args[2]), bool.Parse(args[3]));
+                    card.GetComponent<CardData>().DealDamage(int.Parse(args[2]), bool.Parse(args[3]));
+                    break;
+
+                case "RESTORE":
+                    card = GameObject.Find(args[1]);
+                    if(card == null) break;
+                    card.GetComponent<CardData>().Restore();
                     break;
 
                 default:

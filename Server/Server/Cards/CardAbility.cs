@@ -145,7 +145,7 @@ namespace Server.Cards
 
         }
 
-        public void Kill(bool combat)
+        public virtual void Kill(bool combat)
         {
 
             if (game.player1Deck.hand.Contains(card))
@@ -168,19 +168,31 @@ namespace Server.Cards
             player.SendMessage("KILL#" + card.id);
             OnKillAbility(combat);
             //player.GetComponent<PlayerField>().discard.GetComponent<DiscardPile>().Discard(this.gameObject);
-            //OnKillAbility(combat);
 
         }
 
         public void Bounce()
         {
-            /*
-            Transform hand = player.GetComponent<PlayerField>().hand.transform;
-            GetComponent<Draggable>().parentToReturnTo = hand;
-            this.gameObject.transform.SetParent(hand);
-            gameObject.SetActive(true);
-            GetComponent<CardData>().Restore();
-            */
+            if (game.player1Deck.discard.Contains(card))
+            {
+                game.player1Deck.discard.Remove(card);
+            }
+            if (game.player1Deck.deck.Contains(card))
+            {
+                game.player1Deck.deck.Remove(card);
+            }
+            if (game.player1Deck.field.Contains(card))
+            {
+                game.player1Deck.field.Remove(card);
+            }
+            if (game.player1Deck.hand.Contains(card))
+            {
+                return;
+            }
+            game.player1Deck.hand.Add(card);
+            player.SendMessage("BOUNCE#" + card.id);
+            card.Restore();
+
         }
 
         public void ResetOncePerTurn()

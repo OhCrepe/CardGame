@@ -14,5 +14,11 @@ namespace Server.Cards
 
         }
 
+        public override void Kill(bool combat)
+        {
+            if (combat) Bounce();
+            else base.Kill(combat);
+        }
+
     }
 }
