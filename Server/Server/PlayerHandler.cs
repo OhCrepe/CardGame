@@ -39,6 +39,9 @@ namespace Server
 
         }
 
+        /*
+         * Close the connection
+         */ 
         public void Dispose()
         {
             input.Close();
@@ -135,6 +138,9 @@ namespace Server
             }
         }
 
+        /*
+         * Read the decklist given by the client
+         */ 
         private void ReadDeckList(string[] args)
         {
             Card lord = new Card(CardReader.cardStats[args[1]], this, game);
@@ -146,12 +152,18 @@ namespace Server
             game.player1Deck = new ServerDeckList(this, lord, deck);
         }
 
+        /*
+         * Change the value of gold for this player
+         */ 
         public void SetGold(int gold)
         {
             this.gold = gold;
             SendMessage("GOLD#" + gold);
         }
 
+        /*
+         * Send a message to this player
+         */ 
         public void SendMessage(string message)
         {
             Console.WriteLine("Sending Message: " + message);

@@ -174,6 +174,9 @@ namespace Server
             card.ability.OnHire();
         }
 
+        /*
+         * Looks for the card with the given id
+         */ 
         public Card FindCard(string id)
         {
             if (player1Deck.lord.id == id) return player1Deck.lord;
@@ -196,6 +199,9 @@ namespace Server
             return null;
         }
 
+        /*
+         * Tell the client we are now targetting cards
+         */ 
         public void TargetCard(CardAbility ability)
         {
             targetting = true;
@@ -203,12 +209,18 @@ namespace Server
             player1.SendMessage("TARGET#" + targettingCard.id);
         }
 
+        /*
+         * Check that an attack is valid
+         */
         public bool ValidAttack(Card attacking, Card attacked)
         {
             if (attacking == attacked) return false;
             return player1Deck.field.Contains(attacking) && player1Deck.field.Contains(attacked);
         }
 
+        /*
+         * Resolve combat between 2 units
+         */ 
         public void Attack(Card attacking, Card attacked)
         {
             attacking.DealDamage(attacked.currentStrength, true);

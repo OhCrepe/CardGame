@@ -16,6 +16,9 @@ namespace Server.Cards
 
         }
 
+        /*
+         * Give gold on death
+         */ 
         public override void OnKillAbility(bool combat)
         {
             player.SetGold(player.gold + goldGained);

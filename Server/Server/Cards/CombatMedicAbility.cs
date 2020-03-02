@@ -16,16 +16,25 @@ namespace Server.Cards
             isOncePerTurn = true;
         }
 
+        /*
+         * Target a card on ability usage, assuming we haven't done so this turn already
+         */ 
         public override void OnFieldTrigger()
         {
             if(!oncePerTurnUsed) game.TargetCard(this);
         }
 
+        /*
+         *  Validate this target is on the field
+         */ 
         public override bool ValidateTarget(Card card)
         {
             return game.player1Deck.field.Contains(card) && card.cardType == Card.Type.MINION;
         }
 
+        /*
+         * Pay a little gold and heal the card on target select
+         */ 
         public override void OnTargetSelect(Card card)
         {
             player.SetGold(player.gold - abilityCost);

@@ -16,6 +16,9 @@ namespace Server.Cards
 
         }
 
+        /*
+        *   Upon dying, deal damage to every other unit on the field 
+        */
         public override void OnKillAbility(bool combat)
         {
 

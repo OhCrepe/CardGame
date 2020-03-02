@@ -24,6 +24,9 @@ namespace Server
 
         }
 
+        /*
+         * Listen for clients connecting
+         */ 
         private static void RunServer()
         {
 

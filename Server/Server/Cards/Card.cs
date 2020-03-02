@@ -59,6 +59,9 @@ namespace Server.Cards
 
         }
 
+        /*
+         *  Assign the correct ability to our card based on its name
+         */ 
         public CardAbility AssignAbility()
         {
 
@@ -113,6 +116,9 @@ namespace Server.Cards
 
         }
 
+        /*
+         *  2 cards are equal if they share an id
+         */ 
         public override bool Equals(Object obj)
         {
             Card card = (Card)obj;
@@ -120,6 +126,9 @@ namespace Server.Cards
             return card.id == id;
         }
 
+        /*
+         * Deal damage to this card. Combat is true if it was done through an attack.
+         */ 
         public void DealDamage(int damage, bool combat)
         {
             currentHealth -= damage;
@@ -130,6 +139,9 @@ namespace Server.Cards
             }
         }
 
+        /*
+         * Restore health to this card
+         */ 
         public void Heal(int healthGained)
         {
             currentHealth += healthGained;
@@ -140,6 +152,9 @@ namespace Server.Cards
             player.SendMessage("HEAL#" + id + "#" + healthGained);
         }
 
+        /*
+         * Restore this card to full health and strength
+         */ 
         public void Restore()
         {
             currentHealth = health;

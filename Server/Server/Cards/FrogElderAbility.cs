@@ -17,6 +17,9 @@ namespace Server.Cards
 
         }
 
+        /*
+         * Tell the client we're going to search for a card on trigger
+         */ 
         public override void OnFieldTrigger()
         {
             if (game.player1Deck.CardInDeckWithString(searchString))
@@ -26,11 +29,17 @@ namespace Server.Cards
             }
         }
 
+        /*
+         * Validate that the chosen card is in deck and a valid search target
+         */ 
         public override bool ValidateTarget(Card card)
         {
             return game.player1Deck.deck.Contains(card) && card.name.Contains(searchString);
         }
 
+        /*
+         * Add to chosen card to hand
+         */ 
         public override void OnTargetSelect(Card card)
         {
             player.SetGold(player.gold - abilityCost);

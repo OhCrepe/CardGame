@@ -29,12 +29,17 @@ namespace Server.Cards
             oncePerTurnUsed = false;
         }
 
+        /*
+         * Attack a card
+         */ 
         public virtual void Attack()
         {
 
         }
 
-
+        /*
+         * Ability that triggers on dying
+         */ 
         public virtual void OnKillAbility(bool combat)
         {
             if (combat)
@@ -52,39 +57,45 @@ namespace Server.Cards
         */
         public virtual bool ValidActivation()
         {
-            /*
-            PlayerField playerField = this.player.GetComponent<PlayerField>();
-            if (playerField.gold > GetComponent<CardData>().cost)
-            {
-                return ActivationRequirementsMet();
-            }
-            return false;
-            */
             return true;
         }
 
+        /*
+         *  Check the activation requirements of the card
+         */ 
         protected virtual bool ActivationRequirementsMet()
         {
             return true;
         }
 
+        /*
+         *  Triggers when killed by combat
+         */ 
         public virtual void OnKillByCombatAbility()
         {
             //DO NOTHING
         }
+
+        /*
+         *  Triggers when killed by card effect
+         */
         public virtual void OnKillByEffectAbility()
         {
             //DO NOTHING
         }
 
-        // What to do when a target is selected for this cards ability
+        /*
+         *  What to do when a target is selected
+         */
         public virtual void OnTargetSelect(Card card)
         {
             game.targetting = false;
             game.targettingCard = null;
         }
 
-        //Validate that the target for this ability is valid
+        /*
+         *  Validate that the target is a legal one
+         */
         public virtual bool ValidateTarget(Card card)
         {
             return true;
@@ -115,11 +126,19 @@ namespace Server.Cards
             oncePerTurnUsed = false;
         }
 
+
+        /*
+         *  Search for a card from deck
+         */
         public virtual void SearchCard(string searchString)
         {
             player.SendMessage("SEARCH#" + searchString);
         }
 
+
+        /*
+         *  If its a utility, destroy it
+         */
         public void CheckUtility()
         {
             if (card.cardType == Card.Type.UTILITY)
@@ -129,28 +148,19 @@ namespace Server.Cards
         }
 
 
+        /*
+         *  Check it's a valid attack target
+         */
         protected virtual bool ValidAttackTarget(Card target)
         {
 
-            /*
-            if (target.transform.parent.GetComponent<Dropzone>().zoneType == Dropzone.Zone.FIELD)
-            {
-                return true;
-            }
-            return false;
-            */
             return true;
 
         }
 
-        public void OnAttackTargetSelect(Card target)
-        {
-
-            //GetComponent<CardData>().DealDamageTo(target, true);
-            //target.GetComponent<CardData>().DealDamageTo(gameObject, true);
-
-        }
-
+        /*
+         * Kill this card
+         */ 
         public virtual void Kill(bool combat)
         {
 
@@ -173,10 +183,12 @@ namespace Server.Cards
             game.player1Deck.discard.Add(card);
             player.SendMessage("KILL#" + card.id);
             OnKillAbility(combat);
-            //player.GetComponent<PlayerField>().discard.GetComponent<DiscardPile>().Discard(this.gameObject);
 
         }
 
+        /*
+         * Bounce this card - return it to hand
+         */ 
         public void Bounce()
         {
             if (game.player1Deck.discard.Contains(card))
@@ -201,6 +213,9 @@ namespace Server.Cards
 
         }
 
+        /*
+         * Reset this cards once per turnness
+         */ 
         public void ResetOncePerTurn()
         {
             oncePerTurnUsed = false;

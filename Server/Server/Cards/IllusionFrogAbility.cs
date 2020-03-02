@@ -14,6 +14,9 @@ namespace Server.Cards
 
         }
 
+        /*
+         * Bounce instead of dying if by combat
+         */ 
         public override void Kill(bool combat)
         {
             if (combat) Bounce();

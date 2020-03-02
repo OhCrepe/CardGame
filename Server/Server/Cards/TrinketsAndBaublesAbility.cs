@@ -18,7 +18,7 @@ namespace Server.Cards
 
         /*
         * The ability of this card that triggers on summon
-        * In this case, we give the player who played it 2 gold
+        * In this case, we give the player who played it 5 gold
         */
         public override void OnHire()
         {

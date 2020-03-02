@@ -14,6 +14,9 @@ namespace Server.Cards
 
         }
 
+        /*
+         * At the end of the turn, kill everything with only 1 health remaining
+         */ 
         public override void EndOfTurnAbility()
         {
             foreach(Card card in game.player1Deck.field.ToList())

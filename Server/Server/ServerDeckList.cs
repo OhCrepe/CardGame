@@ -48,6 +48,9 @@ namespace Server
             }
         }
 
+        /*
+         * Shuffle the deck
+         */
         public void ShuffleDeck()
         {
             List<Card> newDeck = new List<Card>();
@@ -61,6 +64,9 @@ namespace Server
             deck = newDeck;
         }
 
+        /*
+         * Shuffle the card into deck
+         */
         public void ShuffleIntoDeck(Card card)
         {
             if (hand.Contains(card))
@@ -125,6 +131,9 @@ namespace Server
             return (int)(min+randomValueInRange);
         }
 
+        /*
+         * Get the given card from our hand
+         */
         public Card GetCardFromHand(string id)
         {
             foreach(Card card in hand)
@@ -134,6 +143,9 @@ namespace Server
             return null;
         }
 
+        /*
+         * Pay unit wages
+         */
         public void PayWages()
         {
 
@@ -151,6 +163,9 @@ namespace Server
 
         }
 
+        /*
+         * Check there are cards in deck with the given string
+         */
         public bool CardInDeckWithString(string searchString)
         {
             foreach (Card card in deck)
