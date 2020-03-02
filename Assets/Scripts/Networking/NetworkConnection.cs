@@ -82,6 +82,14 @@ public class NetworkConnection : MonoBehaviour
                     card.GetComponent<CardData>().Heal(int.Parse(args[2]));
                     break;
 
+                case "SEARCH":
+                    deck.SearchCardFromDeckByName(args[1]);
+                    break;
+
+                case "CLOSE_SEARCH":
+                    deck.CloseSearchWindow();
+                    break;
+
                 case "KILL":
                     card = GameObject.Find(args[1]);
                     if(card == null) break;

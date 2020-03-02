@@ -115,6 +115,11 @@ namespace Server.Cards
             oncePerTurnUsed = false;
         }
 
+        public virtual void SearchCard(string searchString)
+        {
+            player.SendMessage("SEARCH#" + searchString);
+        }
+
         public void CheckUtility()
         {
             if (card.cardType == Card.Type.UTILITY)

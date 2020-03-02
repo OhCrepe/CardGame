@@ -101,7 +101,7 @@ namespace Server
         /*
         *	Helper function to handle common functionality between searching and drawing
         */
-        private void MoveCardToHand(Card card)
+        public void MoveCardToHand(Card card)
         {
 
             deck.Remove(card);
@@ -151,6 +151,14 @@ namespace Server
 
         }
 
+        public bool CardInDeckWithString(string searchString)
+        {
+            foreach (Card card in deck)
+            {
+                if (card.name.Contains(searchString)) return true;
+            }
+            return false;
+        }
 
     }
 }
