@@ -38,6 +38,8 @@ namespace Server
             if (player1 != null && player2 != null)
             {
                 currentPlayer = player1;
+                player1.otherPlayer = player2;
+                player2.otherPlayer = player1;
                 player1.deck.ShuffleDeck();
                 for (int i = 0; i < 4; i++)
                 {

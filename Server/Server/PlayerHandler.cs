@@ -20,6 +20,7 @@ namespace Server
         private StreamReader input;
         private StreamWriter writer;
         public GameState game;
+        public PlayerHandler otherPlayer;
 
         public PlayerHandler(TcpClient client)
         {
@@ -168,6 +169,7 @@ namespace Server
         {
             this.gold = gold;
             SendMessage("GOLD#" + gold);
+            otherPlayer.SendMessage("GOLD_OPP#" + gold);
         }
 
         /*

@@ -15,7 +15,7 @@ public class NetworkConnection : MonoBehaviour, IDisposable
     private TcpClient tcp;
 
     private DeckInteraction deck;
-    private PlayerField player;
+    private PlayerField player, opponent;
 
     private List<string> commands;
 
@@ -26,6 +26,7 @@ public class NetworkConnection : MonoBehaviour, IDisposable
     {
         deck = GameObject.Find("PlayerField").GetComponent<DeckInteraction>();
         player = GameObject.Find("PlayerField").GetComponent<PlayerField>();
+        opponent = GameObject.Find("OpponentField").GetComponent<PlayerField>();
         commands = new List<string>();
         InitializeRemoteIO();
         InitializeListenThread();
@@ -70,6 +71,11 @@ public class NetworkConnection : MonoBehaviour, IDisposable
                 // Change the value of a player's gold
                 case "GOLD":
                     player.SetGold(int.Parse(args[1]));
+                    break;
+
+                    // Change the value of a player's gold
+                case "GOLD_OPP":
+                    opponent.SetGold(int.Parse(args[1]));
                     break;
 
                 // Heal a unit
