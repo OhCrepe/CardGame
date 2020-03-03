@@ -22,7 +22,7 @@ namespace Server.Cards
          */ 
         public override void OnFieldTrigger()
         {
-            if (game.player1.deck.CardInDeckWithString(searchString))
+            if (player.deck.CardInDeckWithString(searchString))
             {
                 game.TargetCard(this);
                 SearchCard(searchString);
@@ -34,7 +34,7 @@ namespace Server.Cards
          */ 
         public override bool ValidateTarget(Card card)
         {
-            return game.player1.deck.deck.Contains(card) && card.name.Contains(searchString);
+            return player.deck.deck.Contains(card) && card.name.Contains(searchString);
         }
 
         /*
@@ -43,7 +43,7 @@ namespace Server.Cards
         public override void OnTargetSelect(Card card)
         {
             player.SetGold(player.gold - abilityCost);
-            game.player1.deck.MoveCardToHand(card);
+            player.deck.MoveCardToHand(card);
             player.SendMessage("CLOSE_SEARCH");
             Bounce();
         }

@@ -27,7 +27,7 @@ namespace Server.Cards
         */
         public override bool ValidActivation()
         {
-            return (game.player1.deck.hand.Count > 1 && game.player1.deck.deck.Count > 1 && game.player1.deck.hand.Contains(card));
+            return (player.deck.hand.Count > 1 && player.deck.deck.Count > 1 && player.deck.hand.Contains(card));
         }
 
         /*
@@ -35,7 +35,7 @@ namespace Server.Cards
          */ 
         public override bool ValidateTarget(Card card)
         {
-            return game.player1.deck.hand.Contains(card);
+            return player.deck.hand.Contains(card);
         }
 
         /*
@@ -43,9 +43,9 @@ namespace Server.Cards
          */ 
         public override void OnTargetSelect(Card card)
         {
-            game.player1.deck.ShuffleIntoDeck(card);
-            game.player1.deck.DrawCard();
-            game.player1.deck.DrawCard();
+            player.deck.ShuffleIntoDeck(card);
+            player.deck.DrawCard();
+            player.deck.DrawCard();
             base.OnTargetSelect(card);
             CheckUtility();
         }

@@ -166,7 +166,7 @@ namespace Server
         public bool ValidateSummon(string id)
         {
 
-            Card card = player1.deck.GetCardFromHand(id);
+            Card card = currentPlayer.deck.GetCardFromHand(id);
             if (card == null)
             {
                 return false;
@@ -188,11 +188,11 @@ namespace Server
         */
         public void SummonUnit(string id)
         {
-            Card card = player1.deck.GetCardFromHand(id);
-            player1.deck.hand.Remove(card);
-            player1.deck.field.Add(card);
-            player1.SetGold(player1.gold -= card.cost);
-            player1.SendMessage("SUMMON#" + id);
+            Card card = currentPlayer.deck.GetCardFromHand(id);
+            currentPlayer.deck.hand.Remove(card);
+            currentPlayer.deck.field.Add(card);
+            currentPlayer.SetGold(player1.gold -= card.cost);
+            currentPlayer.SendMessage("SUMMON#" + id);
             card.ability.OnHire();
         }
 
@@ -218,6 +218,23 @@ namespace Server
             {
                 if (card.id == id) return card;
             }
+            if (player2.deck.lord.id == id) return player2.deck.lord;
+            foreach (Card card in player2.deck.deck)
+            {
+                if (card.id == id) return card;
+            }
+            foreach (Card card in player2.deck.hand)
+            {
+                if (card.id == id) return card;
+            }
+            foreach (Card card in player2.deck.field)
+            {
+                if (card.id == id) return card;
+            }
+            foreach (Card card in player2.deck.discard)
+            {
+                if (card.id == id) return card;
+            }
             return null;
         }
 
@@ -228,7 +245,7 @@ namespace Server
         {
             targetting = true;
             targettingCard = ability.card;
-            player1.SendMessage("TARGET#" + targettingCard.id);
+            currentPlayer.SendMessage("TARGET#" + targettingCard.id);
         }
 
         /*
@@ -237,7 +254,7 @@ namespace Server
         public bool ValidAttack(Card attacking, Card attacked)
         {
             if (attacking == attacked) return false;
-            return player1.deck.field.Contains(attacking) && player1.deck.field.Contains(attacked);
+            return currentPlayer.deck.field.Contains(attacking) && currentPlayer.otherPlayer.deck.field.Contains(attacked);
         }
 
         /*

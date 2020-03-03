@@ -22,11 +22,11 @@ namespace Server.Cards
         public override void OnKillAbility(bool combat)
         {
 
-            if (game.player1.deck.field.Contains(card))
+            if (player.deck.field.Contains(card))
             {
                 return;
             }
-            foreach(Card card in game.player1.deck.field.ToList())
+            foreach(Card card in player.deck.field.ToList())
             {
                 card.DealDamage(deathDamage, false);
             }
