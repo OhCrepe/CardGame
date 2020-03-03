@@ -49,7 +49,7 @@ public class CardAbility : MonoBehaviour {
 			if(target != null){
 				selected = true;
 				GameState.targetting = false;
-				GameState.attacking = true;
+				GameState.attacking = false;
 				GameState.targettingCard = null;
 				Debug.Log("Target selected");
 				if(ValidAttackTarget(target)){

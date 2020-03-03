@@ -7,7 +7,7 @@ using System.Text;
 using System.Threading;
 using UnityEngine;
 
-public class NetworkConnection : MonoBehaviour
+public class NetworkConnection : MonoBehaviour, IDisposable
 {
 
     private StreamReader reader;
@@ -82,6 +82,13 @@ public class NetworkConnection : MonoBehaviour
                 // Assign an id to a card
                 case "ID":
                     deck.AssignIdToCardWithName(args[1], args[2]);
+                    break;
+
+                // Invalid activation, put that card back on the field
+                case "INVALID":
+                    card = GameObject.Find(args[1]);
+                    if(card == null) break;
+                    card.GetComponent<CardAbility>().Bounce();
                     break;
 
                 // Kill a card
@@ -182,6 +189,16 @@ public class NetworkConnection : MonoBehaviour
     public void SendMessage(string message){
         Debug.Log(message);
         writer.WriteLine(message);
+    }
+
+    /*
+     * Close the connection
+     */
+    public void Dispose()
+    {
+        reader.Close();
+        writer.Close();
+        tcp.Close();
     }
 
 }

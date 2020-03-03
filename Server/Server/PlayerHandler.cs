@@ -103,6 +103,9 @@ namespace Server
                                 if (game.ValidateSummon(args[1]))
                                 {
                                     game.SummonUnit(args[1]);
+                                } else
+                                {
+                                    SendMessage("INVALID#" + args[1]);
                                 }
                                 break;
 

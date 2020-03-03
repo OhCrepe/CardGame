@@ -153,6 +153,10 @@ namespace Server
             {
                 return false;
             }
+            if(card.cardType == Card.Type.UTILITY && !card.ability.ValidActivation())
+            {
+                return false;
+            }
             if(currentPlayer.gold < card.cost)
             {
                 return false;
