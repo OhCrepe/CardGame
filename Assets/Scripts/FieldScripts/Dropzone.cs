@@ -45,7 +45,8 @@ public class Dropzone : MonoBehaviour, IDropHandler, IPointerEnterHandler, IPoin
     public void OnDrop(PointerEventData eventData){
 
         if(GameState.currentPhase != GameState.Phase.MAIN) return;
-        if(GameState.targetting)return;
+        if(GameState.targetting) return;
+        if(gameObject.name.Contains("Enemy")) return;
 
         Debug.Log(eventData.pointerDrag.name + " was dropped on " + gameObject.name);
 

@@ -10,6 +10,7 @@ public class DeckInteraction : MonoBehaviour {
 	public GameObject playerHand; // Hand of the player this deck belongs to
 	public GameObject deckObject; // The deck that we're using
 	public GameObject searchWindow; // The search window
+	public GameObject lordZone;
 	public int handSize;
 
 	/*
@@ -19,11 +20,15 @@ public class DeckInteraction : MonoBehaviour {
 
 	private List<GameObject> deck = new List<GameObject>();
 
+	void Awake(){
+		lordZone = transform.Find("FieldCanvas/Lord").gameObject;
+	}
+
 	/*
 	* Triggers at start of game
 	*/
 	void Start () {
-		LoadDeck();
+		if(gameObject.name == "PlayerField")LoadDeck();
 		InitDeck();
 		CheckForDeck();
 	}
@@ -45,7 +50,7 @@ public class DeckInteraction : MonoBehaviour {
 				CardMap.InstantiateToZone(name, deckObject.transform);
 				cards += "#" + name;
 			}else{
-				CardMap.InstantiateToZone(name, GameObject.Find("Lord").transform);
+				CardMap.InstantiateToZone(name, lordZone.transform);
 				message += name;
 			}
 		}

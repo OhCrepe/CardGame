@@ -14,6 +14,7 @@ namespace Server
     {
 
         public int gold;
+        public ServerDeckList deck;
 
         private TcpClient client;
         private StreamReader input;
