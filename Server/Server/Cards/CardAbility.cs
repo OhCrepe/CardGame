@@ -164,23 +164,23 @@ namespace Server.Cards
         public virtual void Kill(bool combat)
         {
 
-            if (game.player1Deck.hand.Contains(card))
+            if (game.player1.deck.hand.Contains(card))
             {
-                game.player1Deck.hand.Remove(card);
+                game.player1.deck.hand.Remove(card);
             }
-            if (game.player1Deck.deck.Contains(card))
+            if (game.player1.deck.deck.Contains(card))
             {
-                game.player1Deck.deck.Remove(card);
+                game.player1.deck.deck.Remove(card);
             }
-            if (game.player1Deck.field.Contains(card))
+            if (game.player1.deck.field.Contains(card))
             {
-                game.player1Deck.field.Remove(card);
+                game.player1.deck.field.Remove(card);
             }
-            if (game.player1Deck.discard.Contains(card))
+            if (game.player1.deck.discard.Contains(card))
             {
                 return;
             }
-            game.player1Deck.discard.Add(card);
+            game.player1.deck.discard.Add(card);
             player.SendMessage("KILL#" + card.id);
             OnKillAbility(combat);
 
@@ -191,23 +191,23 @@ namespace Server.Cards
          */ 
         public void Bounce()
         {
-            if (game.player1Deck.discard.Contains(card))
+            if (game.player1.deck.discard.Contains(card))
             {
-                game.player1Deck.discard.Remove(card);
+                game.player1.deck.discard.Remove(card);
             }
-            if (game.player1Deck.deck.Contains(card))
+            if (game.player1.deck.deck.Contains(card))
             {
-                game.player1Deck.deck.Remove(card);
+                game.player1.deck.deck.Remove(card);
             }
-            if (game.player1Deck.field.Contains(card))
+            if (game.player1.deck.field.Contains(card))
             {
-                game.player1Deck.field.Remove(card);
+                game.player1.deck.field.Remove(card);
             }
-            if (game.player1Deck.hand.Contains(card))
+            if (game.player1.deck.hand.Contains(card))
             {
                 return;
             }
-            game.player1Deck.hand.Add(card);
+            game.player1.deck.hand.Add(card);
             player.SendMessage("BOUNCE#" + card.id);
             card.Restore();
 

@@ -10,7 +10,6 @@ namespace Server
     class GameState
     {
 
-        public ServerDeckList player1Deck;
         public PlayerHandler player1, player2;
 
         public bool targetting = false, attacking = false, deciding = false;
@@ -27,22 +26,33 @@ namespace Server
         public GameState(PlayerHandler p1)
         {
             player1 = p1;
-            
+            p1.game = this;
         }
 
-        /*
+        /*  
         *   Initialize the Game state
         */
         public void InitializeGame()
         {
-            currentPlayer = player1;
-            player1Deck.ShuffleDeck();
-            for (int i = 0; i < 4; i++)
+
+            if (player1 != null && player2 != null)
             {
-                player1Deck.DrawCard();
+                currentPlayer = player1;
+                player1.deck.ShuffleDeck();
+                for (int i = 0; i < 4; i++)
+                {
+                    player1.deck.DrawCard();
+                }
+                player1.SetGold(startingGold);
+                player2.deck.ShuffleDeck();
+                for (int i = 0; i < 4; i++)
+                {
+                    player2.deck.DrawCard();
+                }
+                player2.SetGold(startingGold);
+                MainPhase();
             }
-            player1.SetGold(startingGold);
-            MainPhase();
+
         }
 
 
@@ -92,7 +102,7 @@ namespace Server
         public void DrawPhase()
         {
             currentPhase = Phase.DRAW;
-            player1Deck.DrawCard();
+            player1.deck.DrawCard();
             MainPhase();
         }
 
@@ -111,11 +121,11 @@ namespace Server
         public void EndEffectsPhase()
         {
 
-            foreach(Card card in player1Deck.field)
+            foreach(Card card in player1.deck.field)
             {
                 card.ability.EndOfTurnAbility();
             }
-            player1Deck.lord.ability.EndOfTurnAbility();
+            player1.deck.lord.ability.EndOfTurnAbility();
             EndPhase();
 
         }
@@ -126,7 +136,7 @@ namespace Server
         public void EndPhase()
         {
             currentPhase = Phase.END;
-            player1Deck.PayWages();
+            player1.deck.PayWages();
             StartPhase();
         }
 
@@ -148,7 +158,7 @@ namespace Server
         public bool ValidateSummon(string id)
         {
 
-            Card card = player1Deck.GetCardFromHand(id);
+            Card card = player1.deck.GetCardFromHand(id);
             if (card == null)
             {
                 return false;
@@ -170,9 +180,9 @@ namespace Server
         */
         public void SummonUnit(string id)
         {
-            Card card = player1Deck.GetCardFromHand(id);
-            player1Deck.hand.Remove(card);
-            player1Deck.field.Add(card);
+            Card card = player1.deck.GetCardFromHand(id);
+            player1.deck.hand.Remove(card);
+            player1.deck.field.Add(card);
             player1.SetGold(player1.gold -= card.cost);
             player1.SendMessage("SUMMON#" + id);
             card.ability.OnHire();
@@ -183,20 +193,20 @@ namespace Server
          */ 
         public Card FindCard(string id)
         {
-            if (player1Deck.lord.id == id) return player1Deck.lord;
-            foreach(Card card in player1Deck.deck)
+            if (player1.deck.lord.id == id) return player1.deck.lord;
+            foreach(Card card in player1.deck.deck)
             {
                 if (card.id == id) return card;
             }
-            foreach (Card card in player1Deck.hand)
+            foreach (Card card in player1.deck.hand)
             {
                 if (card.id == id) return card;
             }
-            foreach (Card card in player1Deck.field)
+            foreach (Card card in player1.deck.field)
             {
                 if (card.id == id) return card;
             }
-            foreach (Card card in player1Deck.discard)
+            foreach (Card card in player1.deck.discard)
             {
                 if (card.id == id) return card;
             }
@@ -219,7 +229,7 @@ namespace Server
         public bool ValidAttack(Card attacking, Card attacked)
         {
             if (attacking == attacked) return false;
-            return player1Deck.field.Contains(attacking) && player1Deck.field.Contains(attacked);
+            return player1.deck.field.Contains(attacking) && player1.deck.field.Contains(attacked);
         }
 
         /*

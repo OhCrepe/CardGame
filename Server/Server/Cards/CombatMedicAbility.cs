@@ -29,7 +29,7 @@ namespace Server.Cards
          */ 
         public override bool ValidateTarget(Card card)
         {
-            return game.player1Deck.field.Contains(card) && card.cardType == Card.Type.MINION;
+            return game.player1.deck.field.Contains(card) && card.cardType == Card.Type.MINION;
         }
 
         /*

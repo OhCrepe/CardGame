@@ -27,7 +27,7 @@ namespace Server.Cards
         */ 
         public override bool ValidActivation()
         {
-            return (game.player1Deck.hand.Count > 1 && game.player1Deck.hand.Contains(card));
+            return (game.player1.deck.hand.Count > 1 && game.player1.deck.hand.Contains(card));
         }
 
         /*
@@ -35,7 +35,7 @@ namespace Server.Cards
         */
         public override bool ValidateTarget(Card card)
         {
-            return game.player1Deck.hand.Contains(card);
+            return game.player1.deck.hand.Contains(card);
         }
 
         /*
@@ -43,8 +43,8 @@ namespace Server.Cards
         */
         public override void OnTargetSelect(Card card)
         {
-            game.player1Deck.hand.Remove(card);
-            game.player1Deck.discard.Add(card);
+            game.player1.deck.hand.Remove(card);
+            game.player1.deck.discard.Add(card);
             player.SendMessage("KILL#" + card.id);
             player.SetGold(player.gold += card.cost);
             base.OnTargetSelect(card);

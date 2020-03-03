@@ -29,7 +29,7 @@ namespace Server
          */ 
         private static void RunServer()
         {
-
+            GameState game = null;
             TcpListener listener = null;
             try
             {
@@ -40,6 +40,15 @@ namespace Server
                 {
                     TcpClient client = listener.AcceptTcpClient();
                     PlayerHandler handler = new PlayerHandler(client);
+                    if(game == null)
+                    {
+                        game = new GameState(handler);
+                    }else
+                    {
+                        game.player2 = handler;
+                        handler.game = game;
+                        game = null;
+                    }              
                     Thread thread = new Thread(new ThreadStart(handler.Run));
                     thread.Start();
                     Console.WriteLine("Connection established");

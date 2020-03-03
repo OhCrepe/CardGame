@@ -19,7 +19,7 @@ namespace Server
         private TcpClient client;
         private StreamReader input;
         private StreamWriter writer;
-        private GameState game;
+        public GameState game;
 
         public PlayerHandler(TcpClient client)
         {
@@ -31,7 +31,6 @@ namespace Server
                 input = new StreamReader(stream);
                 writer = new StreamWriter(stream);
                 writer.AutoFlush = true;
-                game = new GameState(this);
             }
             catch (SocketException)
             {
@@ -159,7 +158,7 @@ namespace Server
             {
                 deck[i - 2] = new Card(CardReader.cardStats[args[i]], this, game);
             }
-            game.player1Deck = new ServerDeckList(this, lord, deck);
+            this.deck = new ServerDeckList(this, lord, deck);
         }
 
         /*
