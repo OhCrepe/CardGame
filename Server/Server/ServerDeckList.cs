@@ -33,6 +33,7 @@ namespace Server
             {
                 player.SendMessage("ID#" + card.name + "#" + card.id);
             }
+            player.SendMessage("ID#" + lord.name + "#" + lord.id);
         }
 
         /*

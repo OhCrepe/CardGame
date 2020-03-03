@@ -47,10 +47,12 @@ public class DeckInteraction : MonoBehaviour {
 		string cards = "";
 		foreach(string name in deck.deckList){
 			if(CardMap.GetCardType(name) != "Lord"){
-				CardMap.InstantiateToZone(name, deckObject.transform);
+				GameObject card = CardMap.InstantiateToZone(name, deckObject.transform);
+				card.name = name;
 				cards += "#" + name;
 			}else{
-				CardMap.InstantiateToZone(name, lordZone.transform);
+				GameObject card = CardMap.InstantiateToZone(name, lordZone.transform);
+				card.name = name;
 				message += name;
 			}
 		}
@@ -267,6 +269,7 @@ public class DeckInteraction : MonoBehaviour {
 				}
 			}
 		}
+		GameObject.Find(name).name = id;
 	}
 
 }

@@ -30,6 +30,10 @@ namespace Server.Cards
             {
                 card.DealDamage(deathDamage, false);
             }
+            foreach (Card card in player.otherPlayer.deck.field.ToList())
+            {
+                card.DealDamage(deathDamage, false);
+            }
 
         }
 

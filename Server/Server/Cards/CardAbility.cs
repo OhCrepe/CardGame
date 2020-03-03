@@ -182,6 +182,7 @@ namespace Server.Cards
             }
             player.deck.discard.Add(card);
             player.SendMessage("KILL#" + card.id);
+            player.otherPlayer.SendMessage("KILL_OPP#" + card.id);
             OnKillAbility(combat);
 
         }
@@ -209,6 +210,7 @@ namespace Server.Cards
             }
             player.deck.hand.Add(card);
             player.SendMessage("BOUNCE#" + card.id);
+            player.otherPlayer.SendMessage("BOUNCE_OPP#" + card.id);
             card.Restore();
 
         }

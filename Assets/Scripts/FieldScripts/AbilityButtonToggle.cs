@@ -23,6 +23,7 @@ public class AbilityButtonToggle : MonoBehaviour, IPointerEnterHandler, IPointer
 	* set it's activeness as to which of the two it is.
 	*/
 	private void ConfigureAbilityButton(bool active){
+        if(transform.parent.name.Contains("Enemy")) return;
 		if(this.gameObject.GetComponent<CardData>().cardType == CardData.Type.UTILITY){
 			return;
 		}

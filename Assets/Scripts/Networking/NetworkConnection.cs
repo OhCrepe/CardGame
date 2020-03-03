@@ -63,6 +63,14 @@ public class NetworkConnection : MonoBehaviour, IDisposable
                     card.GetComponent<CardAbility>().Bounce();
                     break;
 
+                // Bounce an opponent's card to hand
+                case "BOUNCE_OPP":
+                    card = GameObject.Find(args[1]);
+                    if(card == null) break;
+                    Destroy(card);
+                    Instantiate(blank, opponent.hand.transform);
+                    break;
+
                 // Close the search window
                 case "CLOSE_SEARCH":
                     deck.CloseSearchWindow();
@@ -111,6 +119,19 @@ public class NetworkConnection : MonoBehaviour, IDisposable
                     GameObject.Find("Discard").GetComponent<DiscardPile>().Discard(GameObject.Find(args[1]));
                     break;
 
+                // Kill an opponent's card
+                case "KILL_OPP":
+                    card = GameObject.Find(args[1]);
+                    if(card == null) break;
+                    Destroy(card);
+                    break;
+
+                // Spawn the opponent's lord card
+                case "LORD_OPP":
+                    card = CardMap.InstantiateToZone(args[1], GameObject.Find("Enemy Lord").transform);
+                    card.name = args[2];
+                    break;
+
                 // Put a card into the deck
                 case "PUTINDECK":
                     deck.ShuffleIntoDeck(GameObject.Find(args[1]));
@@ -123,6 +144,7 @@ public class NetworkConnection : MonoBehaviour, IDisposable
                     card.GetComponent<CardData>().Restore();
                     break;
 
+                // Remove a card from the opponents hand
                 case "RFH":
                     Destroy(opponent.hand.transform.GetChild(0).gameObject);
                     break;
@@ -135,6 +157,13 @@ public class NetworkConnection : MonoBehaviour, IDisposable
                 // Summon a card
                 case "SUMMON":
                     player.SummonUnitWithId(args[1]);
+                    break;
+
+                // Summon a card
+                case "SUMMON_OPP":
+                    card = CardMap.InstantiateToZone(args[1], opponent.field.transform);
+                    card.name = args[2];
+                    card.GetComponent<CardData>().SetId(args[2]);
                     break;
 
                 // Target a card

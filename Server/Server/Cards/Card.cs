@@ -43,14 +43,9 @@ namespace Server.Cards
             this.wageBonus = card.wageBonus;
             this.currentHealth = card.health;
             this.currentStrength = card.strength;
-            if (cardType == Type.LORD)
-            {
-                this.id = name;
-            }
-            else
-            {
-                this.id = name + cardCount;
-            }
+ 
+            this.id = name + cardCount;
+            
 
             this.player = player;
             this.game = game;
@@ -132,7 +127,9 @@ namespace Server.Cards
         public void DealDamage(int damage, bool combat)
         {
             currentHealth -= damage;
-            player.SendMessage("DAMAGE#" + id + "#" + damage);
+            string message = "DAMAGE#" + id + "#" + damage;
+            player.SendMessage(message);
+            player.otherPlayer.SendMessage(message);
             if(currentHealth <= 0)
             {
                 ability.Kill(combat);
@@ -149,7 +146,9 @@ namespace Server.Cards
             {
                 currentHealth = health;
             }
-            player.SendMessage("HEAL#" + id + "#" + healthGained);
+            string message = "HEAL#" + id + "#" + healthGained;
+            player.SendMessage(message);
+            player.otherPlayer.SendMessage(message);
         }
 
         /*

@@ -26,6 +26,13 @@ namespace Server.Cards
                     card.ability.Kill(false);
                 }
             }
+            foreach (Card card in player.otherPlayer.deck.field.ToList())
+            {
+                if (card.currentHealth == 1)
+                {
+                    card.ability.Kill(false);
+                }
+            }
         }
 
     }

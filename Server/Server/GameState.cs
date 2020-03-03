@@ -52,6 +52,8 @@ namespace Server
                     player2.deck.DrawCard();
                 }
                 player2.SetGold(startingGold);
+                player1.SendMessage("LORD_OPP#" + player2.deck.lord.name + "#" + player2.deck.lord.id);
+                player2.SendMessage("LORD_OPP#" + player1.deck.lord.name + "#" + player1.deck.lord.id);
                 MainPhase();
             }
 
@@ -196,6 +198,7 @@ namespace Server
             currentPlayer.SetGold(player1.gold -= card.cost);
             currentPlayer.SendMessage("SUMMON#" + id);
             currentPlayer.otherPlayer.SendMessage("RFH");
+            currentPlayer.otherPlayer.SendMessage("SUMMON_OPP#" + card.name + "#" + id);
 
             card.ability.OnHire();
         }
