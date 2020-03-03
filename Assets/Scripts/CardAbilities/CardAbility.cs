@@ -12,52 +12,22 @@ public class CardAbility : MonoBehaviour {
 	public bool isOncePerTurn;
 
 	public bool oncePerTurnUsed;
+	private GameObject target = null;
 
+	/*
+	*	Locate the player object
+	*/
 	public void Awake(){
 		player = GameObject.Find("PlayerField");
 	}
 
+	/*
+	*	Beging waiting for an attack target
+	*/
 	public virtual void Attack(){
 
 		StartCoroutine(WaitForAttackTarget());
 
-	}
-
-	private GameObject target = null;
-
-	public virtual void OnKillAbility(bool combat){
-		if(combat){
-			OnKillByCombatAbility();
-		}else{
-			OnKillByEffectAbility();
-		}
-	}
-
-	/*
-	*	Check whether the activation of the card is legal
-	*/
-	public virtual bool ValidActivation(){
-		PlayerField playerField = this.player.GetComponent<PlayerField>();
-		if(playerField.gold > GetComponent<CardData>().cost){
-			return ActivationRequirementsMet();
-		}
-		return false;
-	}
-
-	protected virtual bool ActivationRequirementsMet(){
-		return true;
-	}
-
-	public virtual void OnKillByCombatAbility(){
-		//DO NOTHING
-	}
-	public virtual void OnKillByEffectAbility(){
-		//DO NOTHING
-	}
-
-	// What to do when a target is selected for this cards ability
-	public virtual void OnTargetSelect(GameObject card){
-		//DO NOTHING
 	}
 
 	//Validate that the target for this ability is valid
@@ -65,53 +35,9 @@ public class CardAbility : MonoBehaviour {
 		return true;
 	}
 
-	// Ability that triggers when hired
-	public virtual void OnHire(){
-		CheckUtility();
-	}
-
-	// Ability that triggers on the field when clicked
-	public virtual void OnFieldTrigger(){
-		//DO NOTHING
-	}
-
-	// Ability that triggers on the field when clicked
-	public virtual void StartOfTurnAbility(){
-		//DO NOTHING
-	}
-
-	// Ability that triggers on the field when clicked
-	public virtual void EndOfTurnAbility(){
-		//DO NOTHING
-	}
-
-	public void CheckUtility(){
-		if(this.transform.GetComponent<CardData>().cardType == CardData.Type.UTILITY){
-			Kill(false);
-		}
-	}
-
 	/*
-	*	Wait for the user to select a card
+	*	Wait for an attack target to be chosen by the player
 	*/
-	public IEnumerator WaitForTarget(){
-
-		bool selected = false;
-		GameState.targetting = true;
-		GameState.targettingCard = this.gameObject;
-		Debug.Log("Waiting for target");
-		while(!selected){
-			if(target != null){
-				selected = true;
-				GameState.targetting = false;
-				GameState.targettingCard = null;
-				Debug.Log("Target selected");
-				OnTargetSelect(target);
-				target = null;
-			}
-			yield return null;
-		}
-	}
 	public IEnumerator WaitForAttackTarget(){
 
 		bool selected = false;
@@ -123,7 +49,7 @@ public class CardAbility : MonoBehaviour {
 			if(target != null){
 				selected = true;
 				GameState.targetting = false;
-				GameState.attacking = true;
+				GameState.attacking = false;
 				GameState.targettingCard = null;
 				Debug.Log("Target selected");
 				if(ValidAttackTarget(target)){
@@ -135,6 +61,9 @@ public class CardAbility : MonoBehaviour {
 		}
 	}
 
+	/*
+	*	Validate that the chosen attack target is valid
+	*/
 	protected virtual bool ValidAttackTarget(GameObject target){
 
 		if(target.transform.parent.GetComponent<Dropzone>().zoneType == Dropzone.Zone.FIELD){
@@ -144,13 +73,19 @@ public class CardAbility : MonoBehaviour {
 
 	}
 
+	/*
+	*	Send the message to the server to indicate that we'd like to attack
+	*/
 	public void OnAttackTargetSelect(GameObject target){
 
-		GetComponent<CardData>().DealDamageTo(target, true);
-		target.GetComponent<CardData>().DealDamageTo(gameObject, true);
+		string message = "ATTACK#" + GetComponent<CardData>().GetId() + "#" + target.GetComponent<CardData>().GetId();
+		GameObject.Find("NetworkManager").GetComponent<NetworkConnection>().SendMessage(message);
 
 	}
 
+	/*
+	*	Checks for player input in the form of clicking on cards
+	*/
 	public void Update(){
 
 		if(GameState.targetting && GameState.targettingCard == this.gameObject){
@@ -164,34 +99,38 @@ public class CardAbility : MonoBehaviour {
 
 				if(hit.collider != null){
 					Debug.Log("We hit something");
-					if(ValidateTarget(hit.transform.gameObject)){
+					if ((!GameState.attacking && ValidateTarget(hit.transform.gameObject)) || (GameState.attacking && ValidAttackTarget(hit.transform.gameObject))){
 						target = hit.transform.gameObject;
+						string message = "TARGET#" + target.GetComponent<CardData>().GetId();
+						GameObject.Find("NetworkManager").GetComponent<NetworkConnection>().SendMessage(message);
 					}
 				}
 
 			}
 
+
+
 		}
 
 	}
 
+	/*
+	*	Kill this card - send it to the discard pile
+	*/
 	public void Kill(bool combat){
 
 		player.GetComponent<PlayerField>().discard.GetComponent<DiscardPile>().Discard(this.gameObject);
-		OnKillAbility(combat);
 
 	}
 
+	/*
+	*	Bounce the unit - return it to the hand
+	*/
 	public void Bounce(){
 		Transform hand = player.GetComponent<PlayerField>().hand.transform;
 		GetComponent<Draggable>().parentToReturnTo = hand;
 		this.gameObject.transform.SetParent(hand);
 		gameObject.SetActive(true);
-		GetComponent<CardData>().Restore();
-	}
-
-	public void ResetOncePerTurn(){
-		oncePerTurnUsed = false;
 	}
 
 }

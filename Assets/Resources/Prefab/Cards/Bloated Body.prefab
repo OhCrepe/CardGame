@@ -456,9 +456,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: 'Bloated Body
-
-'
+  m_Text: Bloated Body
 --- !u!1 &7300132349091284125
 GameObject:
   m_ObjectHideFlags: 0
@@ -478,9 +476,9 @@ GameObject:
   - component: {fileID: 7267769616248223727}
   - component: {fileID: 7319460961162375001}
   - component: {fileID: 7267769173147264071}
-  - component: {fileID: 4742423765427747191}
   - component: {fileID: 114022568495804032}
   - component: {fileID: 114010463773322174}
+  - component: {fileID: 2272470813802520538}
   m_Layer: 5
   m_Name: Bloated Body
   m_TagString: Card
@@ -692,26 +690,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1c8539eae9c0da74b9f419f21fa91486, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &4742423765427747191
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7300132349091284125}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c14c7494af0e6d8418a8bee0251370cd, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  player: {fileID: 0}
-  fieldTriggerCost: 0
-  hasTriggerAbility: 0
-  hasStartOfTurnAbility: 0
-  hasEndOfTurnAbility: 0
-  isOncePerTurn: 0
-  oncePerTurnUsed: 0
-  damageDealt: 3
 --- !u!114 &114022568495804032
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -737,6 +715,25 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   hoverScale: 1.2
+--- !u!114 &2272470813802520538
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7300132349091284125}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 683a5e1b9ce97a849a930fd2952ad2d1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  player: {fileID: 0}
+  fieldTriggerCost: 0
+  hasTriggerAbility: 0
+  hasStartOfTurnAbility: 0
+  hasEndOfTurnAbility: 0
+  isOncePerTurn: 0
+  oncePerTurnUsed: 0
 --- !u!1 &7300183875628551939
 GameObject:
   m_ObjectHideFlags: 0

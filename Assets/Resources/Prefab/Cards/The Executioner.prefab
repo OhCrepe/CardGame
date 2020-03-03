@@ -17,7 +17,7 @@ GameObject:
   - component: {fileID: 6154633518019135964}
   - component: {fileID: 7543850480652762036}
   - component: {fileID: 1239291609405985396}
-  - component: {fileID: 8517712053009040018}
+  - component: {fileID: 114434306043473832}
   m_Layer: 5
   m_Name: The Executioner
   m_TagString: Lord
@@ -191,7 +191,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   hoverScale: 1.05
---- !u!114 &8517712053009040018
+--- !u!114 &114434306043473832
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -200,7 +200,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1514071066928145481}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 34abef0ef75891c4cb30c2b4b6406d3a, type: 3}
+  m_Script: {fileID: 11500000, guid: 683a5e1b9ce97a849a930fd2952ad2d1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   player: {fileID: 0}
@@ -208,6 +208,8 @@ MonoBehaviour:
   hasTriggerAbility: 0
   hasStartOfTurnAbility: 0
   hasEndOfTurnAbility: 0
+  isOncePerTurn: 0
+  oncePerTurnUsed: 0
 --- !u!1 &2125751383858477820
 GameObject:
   m_ObjectHideFlags: 0

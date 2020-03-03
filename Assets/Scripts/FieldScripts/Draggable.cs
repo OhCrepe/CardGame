@@ -26,15 +26,7 @@ public class Draggable :  MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDr
 	*/
 	public void CallCard(){
 
-		int cost = this.gameObject.GetComponent<CardData>().cost;
-		if(GetComponent<CardAbility>().ValidActivation()){
-			player.GetComponent<PlayerField>().PayGold(cost);
-			parentToReturnTo = player.GetComponent<PlayerField>().field.transform;
-			this.gameObject.GetComponent<CardAbility>().OnHire();
-		}else{
-			parentToReturnTo = player.GetComponent<PlayerField>().hand.transform;
-			return;
-		}
+		parentToReturnTo = player.GetComponent<PlayerField>().field.transform;
 
 	}
 
@@ -150,7 +142,8 @@ public class Draggable :  MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDr
 		}
 
 		if(parentToReturnTo.GetComponent<Dropzone>().zoneType == Dropzone.Zone.FIELD){
-			CallCard();
+			string id = gameObject.GetComponent<CardData>().GetId();
+			GameObject.Find("NetworkManager").GetComponent<NetworkConnection>().SendMessage("SUMMON#" + id);
 		}
 
 		this.startPosition = new Vector2(0f, 0f);

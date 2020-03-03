@@ -18,7 +18,7 @@ public class GameStateReader : MonoBehaviour {
 		}
 
 		if(GameState.currentPhase == GameState.Phase.DEBT){
-			displayMessage.text = "Checking for " + activePlayer + "'s turn";
+			displayMessage.text = "Checking for " + activePlayer + "'s debt";
 			return;
 		}
 

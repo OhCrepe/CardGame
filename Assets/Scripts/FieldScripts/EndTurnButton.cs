@@ -5,10 +5,13 @@ using UnityEngine;
 public class EndTurnButton : MonoBehaviour
 {
 
+    /*
+    *   Request that we end our turn to the server
+    */
     public void OnButton()
     {
         if(!GameState.targetting){
-            GameState.EndEffectsPhase();
+            GameObject.Find("NetworkManager").GetComponent<NetworkConnection>().SendMessage("ENDTURN");
         }
     }
 

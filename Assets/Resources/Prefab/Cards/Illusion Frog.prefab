@@ -493,9 +493,9 @@ GameObject:
   - component: {fileID: 7172809894351064835}
   - component: {fileID: 7117182317134993333}
   - component: {fileID: 7172810217192938667}
-  - component: {fileID: 7068956916005043342}
   - component: {fileID: 114945724875202000}
   - component: {fileID: 114051658434461018}
+  - component: {fileID: 114483369160223614}
   m_Layer: 5
   m_Name: Illusion Frog
   m_TagString: Card
@@ -707,23 +707,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1c8539eae9c0da74b9f419f21fa91486, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &7068956916005043342
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7068956916005043313}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 87173bcc75977764ca3d053d00f94f8a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  player: {fileID: 0}
-  fieldTriggerCost: 0
-  hasTriggerAbility: 0
-  hasStartOfTurnAbility: 0
-  hasEndOfTurnAbility: 0
 --- !u!114 &114945724875202000
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -749,6 +732,25 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   hoverScale: 1.2
+--- !u!114 &114483369160223614
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7068956916005043313}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 683a5e1b9ce97a849a930fd2952ad2d1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  player: {fileID: 0}
+  fieldTriggerCost: 0
+  hasTriggerAbility: 0
+  hasStartOfTurnAbility: 0
+  hasEndOfTurnAbility: 0
+  isOncePerTurn: 0
+  oncePerTurnUsed: 0
 --- !u!1 &7068991222874564949
 GameObject:
   m_ObjectHideFlags: 0

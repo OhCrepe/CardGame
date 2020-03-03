@@ -145,6 +145,9 @@ public class DeckBuilder : MonoBehaviour
         return textField.GetComponent<Text>().text;
     }
 
+    /*
+    *   Return to the main menu
+    */
     public void MainMenu(){
         SceneManager.LoadScene("MainMenu");
     }

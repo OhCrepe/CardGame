@@ -30,7 +30,7 @@ public class PlayerField : MonoBehaviour {
 	*/
 	public void GainGold(int quantity){
 		gold+=quantity;
-		UpgradeGoldText();
+		UpdateGoldText();
 	}
 
 	/*
@@ -42,14 +42,22 @@ public class PlayerField : MonoBehaviour {
 		}else{
 			return false;
 		}
-		UpgradeGoldText();
+		UpdateGoldText();
 		return true;
+	}
+
+	/*
+	*	Set the player's gold amount
+	*/
+	public void SetGold(int gold){
+		this.gold = gold;
+		UpdateGoldText();
 	}
 
 	/*
 	*	Upgrade the gold counter for this player
 	*/
-	private void UpgradeGoldText(){
+	private void UpdateGoldText(){
 		goldCounter.GetComponent<Text>().text = "" + gold;
 	}
 
@@ -68,6 +76,21 @@ public class PlayerField : MonoBehaviour {
 		}
 		int finalWages = (unitCount + wageBonus) * wageMod;
 		PayGold(finalWages);
+
+	}
+
+	/*
+	*	Summon a unit who is in the hand
+	*/
+	public void SummonUnitWithId(string id){
+
+		int handSize = hand.transform.childCount;
+		for(int i = 0; i < handSize; i++){
+			GameObject card = hand.transform.GetChild(i).gameObject;
+			if(card.GetComponent<CardData>().GetId() == id){
+				card.GetComponent<Draggable>().CallCard();
+			}
+		}
 
 	}
 

@@ -25,7 +25,10 @@ public class StartTriggerAbility : MonoBehaviour, IPointerClickHandler {
 	*	Triggers the trigger ability of a card when clicked
 	*/
 	public void OnPointerClick(PointerEventData eventData){
-		ability.OnFieldTrigger();
+		if(!GameState.targetting){
+			string message = "FIELD_EFFECT#" + transform.parent.GetComponent<CardData>().GetId();
+			GameObject.Find("NetworkManager").GetComponent<NetworkConnection>().SendMessage(message);
+		}
 	}
 
 }

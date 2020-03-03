@@ -16,11 +16,11 @@ GameObject:
   - component: {fileID: 225622843955906496}
   - component: {fileID: 223788742436018186}
   - component: {fileID: 114054051186491560}
-  - component: {fileID: 114706808702674812}
   - component: {fileID: 114802448771782658}
   - component: {fileID: 61905497360412712}
   - component: {fileID: 114441527663566764}
   - component: {fileID: 114696158040532062}
+  - component: {fileID: 114045277938101214}
   m_Layer: 5
   m_Name: Trinkets & Baubles
   m_TagString: Card
@@ -172,24 +172,6 @@ MonoBehaviour:
   m_BlockingMask:
     serializedVersion: 2
     m_Bits: 4294967295
---- !u!114 &114706808702674812
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1270272842502648}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e4de66b85ec73cf4dae14672aef0c96f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  player: {fileID: 0}
-  fieldTriggerCost: 0
-  hasTriggerAbility: 0
-  hasStartOfTurnAbility: 0
-  hasEndOfTurnAbility: 0
-  goldGained: 5
 --- !u!114 &114802448771782658
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -259,6 +241,25 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   hoverScale: 1.2
+--- !u!114 &114045277938101214
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1270272842502648}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 683a5e1b9ce97a849a930fd2952ad2d1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  player: {fileID: 0}
+  fieldTriggerCost: 0
+  hasTriggerAbility: 0
+  hasStartOfTurnAbility: 0
+  hasEndOfTurnAbility: 0
+  isOncePerTurn: 0
+  oncePerTurnUsed: 0
 --- !u!1 &1292760616128118
 GameObject:
   m_ObjectHideFlags: 0

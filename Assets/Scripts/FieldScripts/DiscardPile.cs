@@ -24,7 +24,6 @@ public class DiscardPile : MonoBehaviour {
 		card.transform.SetParent(this.transform);
 		pile.Insert(pile.Count, card);
 		card.SetActive(false);
-		Debug.Log("Sorted");
 
 	}
 

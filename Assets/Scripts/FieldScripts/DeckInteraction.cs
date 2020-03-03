@@ -10,6 +10,7 @@ public class DeckInteraction : MonoBehaviour {
 	public GameObject playerHand; // Hand of the player this deck belongs to
 	public GameObject deckObject; // The deck that we're using
 	public GameObject searchWindow; // The search window
+	public GameObject lordZone;
 	public int handSize;
 
 	/*
@@ -19,11 +20,15 @@ public class DeckInteraction : MonoBehaviour {
 
 	private List<GameObject> deck = new List<GameObject>();
 
+	void Awake(){
+		lordZone = transform.Find("FieldCanvas/Lord").gameObject;
+	}
+
 	/*
 	* Triggers at start of game
 	*/
 	void Start () {
-		LoadDeck();
+		if(gameObject.name == "PlayerField")LoadDeck();
 		InitDeck();
 		CheckForDeck();
 	}
@@ -38,13 +43,22 @@ public class DeckInteraction : MonoBehaviour {
 		if(deck == null){
 			return;
 		}
+		string message = "DECKLIST#";
+		string cards = "";
 		foreach(string name in deck.deckList){
 			if(CardMap.GetCardType(name) != "Lord"){
-				CardMap.InstantiateToZone(name, deckObject.transform);
+				GameObject card = CardMap.InstantiateToZone(name, deckObject.transform);
+				card.name = name;
+				cards += "#" + name;
 			}else{
-				CardMap.InstantiateToZone(name, GameObject.Find("Lord").transform);
+				GameObject card = CardMap.InstantiateToZone(name, lordZone.transform);
+				card.name = name;
+				message += name;
 			}
 		}
+		message += cards;
+		message = message.Replace("\r", "").Replace("\n", "");
+		GameObject.Find("NetworkManager").GetComponent<NetworkConnection>().SendMessage(message);
 
 
 	}
@@ -63,12 +77,7 @@ public class DeckInteraction : MonoBehaviour {
 		foreach(GameObject go in deck){
 			Debug.Log(go.name);
 		}
-		ShuffleDeck();
 		Debug.Log("The deck has " + deck.Count + " cards in it");
-
-		for(int i = 0; i < handSize; i++){
-			DrawCard();
-		}
 
 	}
 
@@ -133,25 +142,16 @@ public class DeckInteraction : MonoBehaviour {
 	/*
 	*	Adds a copy of a card that is in the deck to the hand with the specified name
 	*/
-	public void AddToHand(string name){
+	public void AddToHand(string id){
 
 		foreach(GameObject card in deck){
-			if(card.transform.Find("Name").GetComponent<Text>().text == name){
+			if(card.GetComponent<CardData>().GetId() == id){
 				AddToHand(card);
 				return;
 			}
 		}
 
 		Debug.Log("Card with name: " + name + " could not be found");
-
-	}
-
-	public bool CheckForTargetByName(string substring){
-
-		foreach(GameObject card in deck){
-			if(card.transform.Find("Name").GetComponent<Text>().text.Contains(substring)) return true;
-		}
-		return false;
 
 	}
 
@@ -175,7 +175,6 @@ public class DeckInteraction : MonoBehaviour {
 
 		deck.Remove(card);
 		card.transform.SetParent(playerHand.transform);
-		//RpcMoveCardToParent(card, playerHand);
 		card.GetComponent<Draggable>().parentToReturnTo = playerHand.transform;
 		card.SetActive(true);
 	}
@@ -249,8 +248,28 @@ public class DeckInteraction : MonoBehaviour {
 		deckObject.transform.GetChild(0).gameObject.SetActive(visible);
 	}
 
+	/*
+	*	How many cards in the deck?
+	*/
 	public int DeckCount(){
 		return deck.Count;
+	}
+
+	/*
+	*	Assign the given id to the first card found with the given name that has no id
+	*/
+	public void AssignIdToCardWithName(string name, string id){
+		foreach(GameObject card in deck){
+			if(name == card.transform.Find("Name").GetComponent<Text>().text){
+				CardData data = card.GetComponent<CardData>();
+				if(data.IsIdNull()){
+					data.SetId(id);
+					card.name = id;
+					return;
+				}
+			}
+		}
+		GameObject.Find(name).name = id;
 	}
 
 }
