@@ -163,8 +163,10 @@ namespace Server
         /*
         *   Validate that a summon is legal
         */ 
-        public bool ValidateSummon(string id)
+        public bool ValidateSummon(string id, PlayerHandler player)
         {
+
+            if (currentPlayer != player) return false;
 
             Card card = currentPlayer.deck.GetCardFromHand(id);
             if (card == null)
@@ -193,6 +195,8 @@ namespace Server
             currentPlayer.deck.field.Add(card);
             currentPlayer.SetGold(player1.gold -= card.cost);
             currentPlayer.SendMessage("SUMMON#" + id);
+            currentPlayer.otherPlayer.SendMessage("RFH");
+
             card.ability.OnHire();
         }
 

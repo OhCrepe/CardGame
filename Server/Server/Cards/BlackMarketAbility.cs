@@ -45,6 +45,7 @@ namespace Server.Cards
         {
             player.deck.hand.Remove(card);
             player.deck.discard.Add(card);
+            player.otherPlayer.SendMessage("RFH");
             player.SendMessage("KILL#" + card.id);
             player.SetGold(player.gold += card.cost);
             base.OnTargetSelect(card);

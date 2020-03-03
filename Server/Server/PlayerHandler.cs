@@ -67,6 +67,7 @@ namespace Server
 
                             // Player attempts to attack
                             case "ATTACK":
+                                if (game.currentPlayer != this) break;
                                 Card attackingCard = game.FindCard(args[1]);
                                 Card attackTarget = game.FindCard(args[2]);
                                 if (attackingCard == null || attackTarget == null) break;
@@ -82,26 +83,28 @@ namespace Server
                                 game.InitializeGame();
                                 break;
 
-                            // Player attempts to activate a field effect
-                            case "FIELD_EFFECT":
-                                Card card = game.FindCard(args[1]);
-                                if (card.ability.ValidActivation())
-                                {
-                                    card.ability.OnFieldTrigger();
-                                }
-                                break;
-
                             // Player attempts to end their turn
                             case "ENDTURN":
+                                if (game.currentPlayer != this) break;
                                 if (game.ValidateEndMainPhase(this))
                                 {
                                     game.EndEffectsPhase();
                                 }
                                 break;
 
+                            // Player attempts to activate a field effect
+                            case "FIELD_EFFECT":
+                                if (game.currentPlayer != this) break;
+                                Card card = game.FindCard(args[1]);
+                                if (card.ability.ValidActivation())
+                                {
+                                    card.ability.OnFieldTrigger();
+                                }
+                                break;
+ 
                             // Player attempts to summon
                             case "SUMMON":
-                                if (game.ValidateSummon(args[1]))
+                                if (game.ValidateSummon(args[1], this))
                                 {
                                     game.SummonUnit(args[1]);
                                 } else
@@ -112,6 +115,7 @@ namespace Server
 
                             // Player attempts to target
                             case "TARGET":
+                                if (game.currentPlayer != this) break;
                                 if (game.targetting == false) break;
                                 Card target = game.FindCard(args[1]);
                                 if (game.targettingCard.ability.ValidateTarget(target))

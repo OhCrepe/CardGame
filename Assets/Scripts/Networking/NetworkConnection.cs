@@ -123,6 +123,10 @@ public class NetworkConnection : MonoBehaviour, IDisposable
                     card.GetComponent<CardData>().Restore();
                     break;
 
+                case "RFH":
+                    Destroy(opponent.hand.transform.GetChild(0).gameObject);
+                    break;
+
                 // Search for a card
                 case "SEARCH":
                     deck.SearchCardFromDeckByName(args[1]);

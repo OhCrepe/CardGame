@@ -85,6 +85,7 @@ namespace Server
             }
             ShuffleDeck();
             player.SendMessage("PUTINDECK#" + card.id);
+            player.otherPlayer.SendMessage("RFH");
         }
 
         /*
