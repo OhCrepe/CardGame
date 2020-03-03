@@ -93,7 +93,7 @@ namespace Server
 
                             // Player attempts to end their turn
                             case "ENDTURN":
-                                if (game.ValidateEndMainPhase())
+                                if (game.ValidateEndMainPhase(this))
                                 {
                                     game.EndEffectsPhase();
                                 }

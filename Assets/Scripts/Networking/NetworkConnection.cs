@@ -17,6 +17,8 @@ public class NetworkConnection : MonoBehaviour, IDisposable
     private DeckInteraction deck;
     private PlayerField player, opponent;
 
+    private GameObject blank;
+
     private List<string> commands;
 
     private const int port = 8888;
@@ -27,6 +29,7 @@ public class NetworkConnection : MonoBehaviour, IDisposable
         deck = GameObject.Find("PlayerField").GetComponent<DeckInteraction>();
         player = GameObject.Find("PlayerField").GetComponent<PlayerField>();
         opponent = GameObject.Find("OpponentField").GetComponent<PlayerField>();
+        blank = (GameObject)Resources.Load("Prefab/Blank", typeof(GameObject));
         commands = new List<string>();
         InitializeRemoteIO();
         InitializeListenThread();
@@ -47,6 +50,10 @@ public class NetworkConnection : MonoBehaviour, IDisposable
                 // Add a card to hand
                 case "ATH":
                     deck.AddToHand(args[1]);
+                    break;
+
+                case "ATH_OPP":
+                    Instantiate(blank, opponent.hand.transform);
                     break;
 
                 // Bounce a card to hand

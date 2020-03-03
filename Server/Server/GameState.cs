@@ -63,6 +63,11 @@ namespace Server
         */
         public void StartPhase()
         {
+            if (currentPlayer == player1)
+            {
+                currentPlayer = player2;
+            }
+            else currentPlayer = player1;
             currentPhase = Phase.START;
             DebtPhase();
         }
@@ -85,7 +90,7 @@ namespace Server
         public void GoldPhase()
         {
             currentPhase = Phase.GOLD;
-            player1.SetGold(player1.gold += goldPerTurn);
+            currentPlayer.SetGold(currentPlayer.gold += goldPerTurn);
             StartEffectsPhase();
         }
 
@@ -104,7 +109,7 @@ namespace Server
         public void DrawPhase()
         {
             currentPhase = Phase.DRAW;
-            player1.deck.DrawCard();
+            currentPlayer.deck.DrawCard();
             MainPhase();
         }
 
@@ -123,11 +128,11 @@ namespace Server
         public void EndEffectsPhase()
         {
 
-            foreach(Card card in player1.deck.field)
+            foreach(Card card in currentPlayer.deck.field)
             {
                 card.ability.EndOfTurnAbility();
             }
-            player1.deck.lord.ability.EndOfTurnAbility();
+            currentPlayer.deck.lord.ability.EndOfTurnAbility();
             EndPhase();
 
         }
@@ -138,16 +143,17 @@ namespace Server
         public void EndPhase()
         {
             currentPhase = Phase.END;
-            player1.deck.PayWages();
+            currentPlayer.deck.PayWages();
             StartPhase();
         }
 
         /*
         *   Validate that the turn player can legally end their turn
         */
-        public bool ValidateEndMainPhase()
+        public bool ValidateEndMainPhase(PlayerHandler player)
         {
 
+            if (currentPlayer != player) return false;
             if (currentPhase != Phase.MAIN) return false;
 
             return true;
