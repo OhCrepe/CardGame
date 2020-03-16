@@ -26,6 +26,7 @@ namespace Server.Cards
             {
                 card.DealDamage(damageDealt, false);
             }
+            CheckUtility();
         }
 
     }
