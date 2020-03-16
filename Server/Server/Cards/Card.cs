@@ -91,6 +91,10 @@ namespace Server.Cards
                     return new RainOfFireAbility(player, this, game);
                     break;
 
+                case "SEISMIC FROG":
+                    return new SeismicFrogAbility(player, this, game);
+                    break;
+
                 case "SLEIGHT OF HAND":
                     return new SleightOfHandAbility(player, this, game);
                     break;

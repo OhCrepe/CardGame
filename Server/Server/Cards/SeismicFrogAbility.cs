@@ -6,25 +6,27 @@ using System.Threading.Tasks;
 
 namespace Server.Cards
 {
-    class RainOfFireAbility : CardAbility
+    class SeismicFrogAbility : CardAbility
     {
 
-        private const int damageDealt = 2;
+        public const int damageDealt = 1;
 
-        public RainOfFireAbility(PlayerHandler player, Card card, GameState game) : base(player, card, game)
+        public SeismicFrogAbility(PlayerHandler player, Card card, GameState game) : base(player, card, game)
         {
 
         }
 
         /*
-        * The ability of this card that triggers on summon
-        * In this case, we deal 2 damage to all enemies cards
-        */
-        public override void OnHire()
+         * Deal damage to all opponent's cards
+         */ 
+        public override void OnFieldTrigger()
         {
+
+            Bounce();
             foreach (Card card in player.otherPlayer.deck.field.ToList())
             {
                 card.DealDamage(damageDealt, false);
+
             }
         }
 
