@@ -51,6 +51,7 @@
     <Compile Include="Cards\DyingNoblemanAbility.cs" />
     <Compile Include="Cards\BloatedBodyAbility.cs" />
     <Compile Include="Cards\SleightOfHandAbility.cs" />
+    <Compile Include="Cards\RainOfFireAbility.cs" />
     <Compile Include="Cards\TrinketsAndBaublesAbility.cs" />
     <Compile Include="Cards\BlackMarketAbility.cs" />
     <Compile Include="Cards\Card.cs" />

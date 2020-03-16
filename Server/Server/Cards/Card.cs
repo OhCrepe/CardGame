@@ -87,6 +87,10 @@ namespace Server.Cards
                     return new IllusionFrogAbility(player, this, game);
                     break;
 
+                case "RAIN OF FIRE":
+                    return new RainOfFireAbility(player, this, game);
+                    break;
+
                 case "SLEIGHT OF HAND":
                     return new SleightOfHandAbility(player, this, game);
                     break;
