@@ -69,7 +69,10 @@ namespace Server
             {
                 currentPlayer = player2;
             }
-            else currentPlayer = player1;
+            else if (currentPlayer == player2)
+            {
+                currentPlayer = player1;
+            }
             currentPhase = Phase.START;
             DebtPhase();
         }
@@ -195,7 +198,7 @@ namespace Server
             Card card = currentPlayer.deck.GetCardFromHand(id);
             currentPlayer.deck.hand.Remove(card);
             currentPlayer.deck.field.Add(card);
-            currentPlayer.SetGold(player1.gold -= card.cost);
+            currentPlayer.SetGold(currentPlayer.gold -= card.cost);
             currentPlayer.SendMessage("SUMMON#" + id);
             currentPlayer.otherPlayer.SendMessage("RFH");
             currentPlayer.otherPlayer.SendMessage("SUMMON_OPP#" + card.name + "#" + id);
