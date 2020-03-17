@@ -23,19 +23,23 @@ public class AbilityButtonToggle : MonoBehaviour, IPointerEnterHandler, IPointer
 	* set it's activeness as to which of the two it is.
 	*/
 	private void ConfigureAbilityButton(bool active){
+
+        CardAbility ability = GetComponent<CardAbility>();
         if(transform.parent.name.Contains("Enemy")) return;
 		if(this.gameObject.GetComponent<CardData>().cardType == CardData.Type.UTILITY){
 			return;
 		}
-		attackButton.SetActive(active);
-        if(!this.gameObject.GetComponent<CardAbility>().hasTriggerAbility){
-            return;
+
+        if(ability.hasAttacked){
+            attackButton.SetActive(false);
         }
-        if(this.gameObject.GetComponent<CardAbility>().oncePerTurnUsed){
+		else attackButton.SetActive(active);
+
+        if(ability.oncePerTurnUsed || !ability.hasTriggerAbility){
             abilityButton.SetActive(false);
-            return;
         }
-        abilityButton.SetActive(active);
+        else abilityButton.SetActive(active);
+
     }
 
     /*

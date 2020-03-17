@@ -15,6 +15,7 @@ namespace Server.Cards
         public enum Type { MINION, UTILITY, LORD };
         public Type cardType;
         public int wageMod, wageBonus;
+        public bool hasAttacked;
 
         public int currentHealth, currentStrength;
 
@@ -43,20 +44,21 @@ namespace Server.Cards
             this.wageBonus = card.wageBonus;
             this.currentHealth = card.health;
             this.currentStrength = card.strength;
- 
+
             this.id = name + cardCount;
-            
+
 
             this.player = player;
             this.game = game;
 
+            hasAttacked = false;
             ability = AssignAbility();
 
         }
 
         /*
          *  Assign the correct ability to our card based on its name
-         */ 
+         */
         public CardAbility AssignAbility()
         {
 
@@ -121,7 +123,7 @@ namespace Server.Cards
 
         /*
          *  2 cards are equal if they share an id
-         */ 
+         */
         public override bool Equals(Object obj)
         {
             Card card = (Card)obj;
@@ -131,14 +133,14 @@ namespace Server.Cards
 
         /*
          * Deal damage to this card. Combat is true if it was done through an attack.
-         */ 
+         */
         public void DealDamage(int damage, bool combat)
         {
             currentHealth -= damage;
             string message = "DAMAGE#" + id + "#" + damage;
             player.SendMessage(message);
             player.otherPlayer.SendMessage(message);
-            if(currentHealth <= 0)
+            if (currentHealth <= 0)
             {
                 ability.Kill(combat);
             }
@@ -146,7 +148,7 @@ namespace Server.Cards
 
         /*
          * Restore health to this card
-         */ 
+         */
         public void Heal(int healthGained)
         {
             currentHealth += healthGained;
@@ -161,12 +163,22 @@ namespace Server.Cards
 
         /*
          * Restore this card to full health and strength
-         */ 
+         */
         public void Restore()
         {
             currentHealth = health;
             currentStrength = strength;
             player.SendMessage("RESTORE#" + id);
+        }
+
+        /*
+         * Restore once per turns
+         */
+        public void ResetOncePerTurns()
+        {
+            ability.ResetOncePerTurn();
+            hasAttacked = false;
+            player.SendMessage("RESET_OPT#" + id);
         }
 
     }

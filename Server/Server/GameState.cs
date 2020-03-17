@@ -11,6 +11,7 @@ namespace Server
     {
 
         public PlayerHandler player1, player2;
+        public PlayerHandler[] players;
 
         public bool targetting = false, attacking = false, deciding = false;
         public Card targettingCard = null, decidingCard = null;
@@ -37,6 +38,7 @@ namespace Server
 
             if (player1 != null && player2 != null)
             {
+                players = new PlayerHandler[]{ player1, player2 };
                 currentPlayer = player1;
                 player1.otherPlayer = player2;
                 player2.otherPlayer = player1;
@@ -73,8 +75,37 @@ namespace Server
             {
                 currentPlayer = player1;
             }
+            ResetAllOncePerTurns();
             currentPhase = Phase.START;
             DebtPhase();
+        }
+        /*
+         * Reset all the once per turns capabilities in both players decks (abilities and attacks)
+         */ 
+        private void ResetAllOncePerTurns()
+        {
+
+            foreach(PlayerHandler player in players)
+            {
+                foreach (Card card in player.deck.deck)
+                {
+                    card.ResetOncePerTurns();
+                }
+                foreach (Card card in player.deck.field)
+                {
+                    card.ResetOncePerTurns();
+                }
+                foreach (Card card in player.deck.hand)
+                {
+                    card.ResetOncePerTurns();
+                }
+                foreach (Card card in player.deck.discard)
+                {
+                    card.ResetOncePerTurns();
+                }
+                player.deck.lord.ResetOncePerTurns();
+            }
+
         }
 
         /*
@@ -211,41 +242,29 @@ namespace Server
          */ 
         public Card FindCard(string id)
         {
-            if (player1.deck.lord.id == id) return player1.deck.lord;
-            foreach(Card card in player1.deck.deck)
+
+            foreach (PlayerHandler player in players)
             {
-                if (card.id == id) return card;
-            }
-            foreach (Card card in player1.deck.hand)
-            {
-                if (card.id == id) return card;
-            }
-            foreach (Card card in player1.deck.field)
-            {
-                if (card.id == id) return card;
-            }
-            foreach (Card card in player1.deck.discard)
-            {
-                if (card.id == id) return card;
-            }
-            if (player2.deck.lord.id == id) return player2.deck.lord;
-            foreach (Card card in player2.deck.deck)
-            {
-                if (card.id == id) return card;
-            }
-            foreach (Card card in player2.deck.hand)
-            {
-                if (card.id == id) return card;
-            }
-            foreach (Card card in player2.deck.field)
-            {
-                if (card.id == id) return card;
-            }
-            foreach (Card card in player2.deck.discard)
-            {
-                if (card.id == id) return card;
+                if (player.deck.lord.id == id) return player.deck.lord;
+                foreach (Card card in player.deck.deck)
+                {
+                    if (card.id == id) return card;
+                }
+                foreach (Card card in player.deck.hand)
+                {
+                    if (card.id == id) return card;
+                }
+                foreach (Card card in player.deck.field)
+                {
+                    if (card.id == id) return card;
+                }
+                foreach (Card card in player.deck.discard)
+                {
+                    if (card.id == id) return card;
+                }
             }
             return null;
+
         }
 
         /*
@@ -264,6 +283,7 @@ namespace Server
         public bool ValidAttack(Card attacking, Card attacked)
         {
             if (attacking == attacked) return false;
+            if (attacking.hasAttacked) return false;
             return currentPlayer.deck.field.Contains(attacking) && currentPlayer.otherPlayer.deck.field.Contains(attacked);
         }
 
@@ -272,6 +292,8 @@ namespace Server
          */ 
         public void Attack(Card attacking, Card attacked)
         {
+            attacking.hasAttacked = true;
+            attacking.player.SendMessage("ATK_USED#" + attacking.id);
             attacking.DealDamage(attacked.currentStrength, true);
             attacked.DealDamage(attacking.currentStrength, true);
         }

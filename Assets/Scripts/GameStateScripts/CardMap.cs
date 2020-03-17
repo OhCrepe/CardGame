@@ -6,6 +6,8 @@ using UnityEngine.UI;
 public class CardMap : MonoBehaviour
 {
 
+    public static SortedDictionary<string, GameObject> cardsInGame;
+
     private static SortedDictionary<string, GameObject> cards;
     private const string prefabPath = "Prefab/Cards";
 
@@ -14,6 +16,7 @@ public class CardMap : MonoBehaviour
     */
     static CardMap(){
         cards = new SortedDictionary<string, GameObject>();
+        cardsInGame = new SortedDictionary<string, GameObject>();
 
         Object[] cardArray;
         cardArray = Resources.LoadAll(prefabPath, typeof(GameObject));

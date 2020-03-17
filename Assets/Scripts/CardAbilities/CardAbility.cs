@@ -12,6 +12,7 @@ public class CardAbility : MonoBehaviour {
 	public bool isOncePerTurn;
 
 	public bool oncePerTurnUsed;
+	public bool hasAttacked;
 	private GameObject target = null;
 
 	/*
@@ -131,6 +132,14 @@ public class CardAbility : MonoBehaviour {
 		GetComponent<Draggable>().parentToReturnTo = hand;
 		this.gameObject.transform.SetParent(hand);
 		gameObject.SetActive(true);
+	}
+
+	/*
+	*	Rest the once per turns on this card
+	*/
+	public void ResetOncePerTurns(){
+		hasAttacked = false;
+		oncePerTurnUsed = false;
 	}
 
 }

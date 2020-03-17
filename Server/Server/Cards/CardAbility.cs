@@ -192,6 +192,7 @@ namespace Server.Cards
          */ 
         public void Bounce()
         {
+
             if (player.deck.discard.Contains(card))
             {
                 player.deck.discard.Remove(card);
@@ -212,6 +213,7 @@ namespace Server.Cards
             player.SendMessage("BOUNCE#" + card.id);
             player.otherPlayer.SendMessage("BOUNCE_OPP#" + card.id);
             card.Restore();
+            card.ResetOncePerTurns();
 
         }
 

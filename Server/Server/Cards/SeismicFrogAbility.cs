@@ -25,6 +25,7 @@ namespace Server.Cards
             Bounce();
             foreach (Card card in player.otherPlayer.deck.field.ToList())
             {
+
                 card.DealDamage(damageDealt, false);
 
             }

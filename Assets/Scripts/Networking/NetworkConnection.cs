@@ -49,16 +49,24 @@ public class NetworkConnection : MonoBehaviour, IDisposable
 
                 // Add a card to hand
                 case "ATH":
-                    deck.AddToHand(args[1]);
+                    card = CardMap.cardsInGame[args[1]];
+                    deck.AddToHand(card);
                     break;
 
                 case "ATH_OPP":
                     Instantiate(blank, opponent.hand.transform);
                     break;
 
+
+                case "ATK_USED":
+                    card = CardMap.cardsInGame[args[1]];
+                    if(card == null) break;
+                    card.GetComponent<CardAbility>().hasAttacked = true;
+                    break;
+
                 // Bounce a card to hand
                 case "BOUNCE":
-                    card = GameObject.Find(args[1]);
+                    card = CardMap.cardsInGame[args[1]];
                     if(card == null) break;
                     card.GetComponent<CardAbility>().Bounce();
                     break;
@@ -107,14 +115,14 @@ public class NetworkConnection : MonoBehaviour, IDisposable
 
                 // Invalid activation, put that card back on the field
                 case "INVALID":
-                    card = GameObject.Find(args[1]);
+                    card = CardMap.cardsInGame[args[1]];
                     if(card == null) break;
                     card.GetComponent<CardAbility>().Bounce();
                     break;
 
                 // Kill a card
                 case "KILL":
-                    card = GameObject.Find(args[1]);
+                    card = CardMap.cardsInGame[args[1]];
                     if(card == null) break;
                     GameObject.Find("Discard").GetComponent<DiscardPile>().Discard(GameObject.Find(args[1]));
                     break;
@@ -132,14 +140,28 @@ public class NetworkConnection : MonoBehaviour, IDisposable
                     card.name = args[2];
                     break;
 
+                case "OPT_USED":
+                    card = CardMap.cardsInGame[args[1]];
+                    if(card == null) break;
+                    card.GetComponent<CardAbility>().oncePerTurnUsed = true;
+                    break;
+
                 // Put a card into the deck
                 case "PUTINDECK":
-                    deck.ShuffleIntoDeck(GameObject.Find(args[1]));
+                    card = CardMap.cardsInGame[args[1]];
+                    if(card == null) break;
+                    deck.ShuffleIntoDeck(card);
+                    break;
+
+                case "RESET_OPT":
+                    card = CardMap.cardsInGame[args[1]];
+                    if(card == null) break;
+                    card.GetComponent<CardAbility>().ResetOncePerTurns();
                     break;
 
                 // Restore a cards stats
                 case "RESTORE":
-                    card = GameObject.Find(args[1]);
+                    card = CardMap.cardsInGame[args[1]];
                     if(card == null) break;
                     card.GetComponent<CardData>().Restore();
                     break;
@@ -169,7 +191,8 @@ public class NetworkConnection : MonoBehaviour, IDisposable
                 // Target a card
                 case "TARGET":
                     GameState.targetting = true;
-                    GameState.targettingCard = GameObject.Find(args[1]);
+                    card = CardMap.cardsInGame[args[1]];
+                    GameState.targettingCard = card;
                     break;
 
                 // The given target is valid

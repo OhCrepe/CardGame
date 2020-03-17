@@ -40,6 +40,7 @@ namespace Server.Cards
             player.SetGold(player.gold - abilityCost);
             card.Heal(healAmount);
             oncePerTurnUsed = true;
+            player.SendMessage("OPT_USED#" + this.card.id);
         }
 
     }

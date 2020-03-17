@@ -265,11 +265,13 @@ public class DeckInteraction : MonoBehaviour {
 				if(data.IsIdNull()){
 					data.SetId(id);
 					card.name = id;
+					CardMap.cardsInGame.Add(id, card);
 					return;
 				}
 			}
 		}
 		GameObject.Find(name).name = id;
+		CardMap.cardsInGame.Add(id, GameObject.Find(id));
 	}
 
 }
