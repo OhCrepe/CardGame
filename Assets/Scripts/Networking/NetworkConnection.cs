@@ -62,6 +62,7 @@ public class NetworkConnection : MonoBehaviour, IDisposable
                     card = CardMap.cardsInGame[args[1]];
                     if(card == null) break;
                     card.GetComponent<CardAbility>().hasAttacked = true;
+                    card.GetComponent<AbilityButtonToggle>().OnPointerEnter(null);
                     break;
 
                 // Bounce a card to hand
@@ -144,6 +145,7 @@ public class NetworkConnection : MonoBehaviour, IDisposable
                     card = CardMap.cardsInGame[args[1]];
                     if(card == null) break;
                     card.GetComponent<CardAbility>().oncePerTurnUsed = true;
+                    card.GetComponent<AbilityButtonToggle>().OnPointerEnter(null);
                     break;
 
                 // Put a card into the deck

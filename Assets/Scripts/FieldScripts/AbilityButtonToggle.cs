@@ -9,6 +9,8 @@ public class AbilityButtonToggle : MonoBehaviour, IPointerEnterHandler, IPointer
     private GameObject abilityButton, // The button that we press to trigger this cards ability
 						attackButton; // The button that we press to trigger this cards attack
 
+    private bool hover;
+
     // Start is called before the first frame update
     void Awake()
     {
@@ -39,6 +41,27 @@ public class AbilityButtonToggle : MonoBehaviour, IPointerEnterHandler, IPointer
             abilityButton.SetActive(false);
         }
         else abilityButton.SetActive(active);
+
+        if(active)PositionButtons();
+
+    }
+
+    /*
+    * Position the buttons depending on which ones are active
+    */
+    private void PositionButtons(){
+
+        RectTransform abilityRect = abilityButton.GetComponent<RectTransform>();
+        RectTransform attackRect = attackButton.GetComponent<RectTransform>();
+
+        if(abilityButton.activeSelf && attackButton.activeSelf){
+            abilityRect.localPosition = new Vector3(-25, 20, 0);
+            attackRect.localPosition = new Vector3(25, 20, 0);
+        }else if(abilityButton.activeSelf && !attackButton.activeSelf){
+            abilityRect.localPosition = new Vector3(0, 20, 0);
+        }else if(!abilityButton.activeSelf && attackButton.activeSelf){
+            attackRect.localPosition = new Vector3(0, 20, 0);
+        }
 
     }
 
