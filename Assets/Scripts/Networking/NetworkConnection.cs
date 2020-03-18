@@ -256,7 +256,7 @@ public class NetworkConnection : MonoBehaviour, IDisposable
     *   Send a message to the server
     */
     public void SendMessage(string message){
-        Debug.Log(message);
+        Debug.Log("Sending: " + message);
         writer.WriteLine(message);
     }
 

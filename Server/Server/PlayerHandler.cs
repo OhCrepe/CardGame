@@ -77,6 +77,16 @@ namespace Server
                                 }
                                 break;
 
+                            case "ATTACK_DIRECT":
+                                if (game.currentPlayer != this) break;
+                                Card directCard = game.FindCard(args[1]);
+                                if (directCard == null) break;
+                                if (game.ValidDirectAttack(directCard))
+                                {
+                                    game.DirectAttack(directCard);
+                                }
+                                break;
+
                             // Player sends decklist
                             case "DECKLIST":
                                 ReadDeckList(args);

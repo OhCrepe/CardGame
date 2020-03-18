@@ -282,6 +282,7 @@ namespace Server
          */
         public bool ValidAttack(Card attacking, Card attacked)
         {
+            if (attacking.player != currentPlayer) return false;
             if (attacking == attacked) return false;
             if (attacking.hasAttacked) return false;
             return currentPlayer.deck.field.Contains(attacking) && currentPlayer.otherPlayer.deck.field.Contains(attacked);
@@ -296,6 +297,27 @@ namespace Server
             attacking.player.SendMessage("ATK_USED#" + attacking.id);
             attacking.DealDamage(attacked.currentStrength, true);
             attacked.DealDamage(attacking.currentStrength, true);
+        }
+
+        /*
+         * Check that a direct attack on the opponent (a pillage) is valid
+         */ 
+        public bool ValidDirectAttack(Card attacking)
+        {
+            if (attacking.player != currentPlayer) return false;
+            if (attacking.hasAttacked) return false;
+            return currentPlayer.deck.field.Contains(attacking) && currentPlayer.otherPlayer.deck.field.Count == 0;
+        }
+
+        /*
+         * Resolve a pillage on the opponent's resources
+         */ 
+        public void DirectAttack(Card attacking)
+        {
+            attacking.hasAttacked = true;
+            attacking.player.SendMessage("ATK_USED#" + attacking.id);
+            PlayerHandler target = attacking.player.otherPlayer;
+            target.SetGold(target.gold -= attacking.strength);
         }
 
     }

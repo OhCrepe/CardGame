@@ -27,6 +27,11 @@ public class CardAbility : MonoBehaviour {
 	*/
 	public virtual void Attack(){
 
+		if(GameObject.Find("Enemy BattleField").transform.childCount == 0){
+			string message = "ATTACK_DIRECT#" + GetComponent<CardData>().GetId();
+			GameObject.Find("NetworkManager").GetComponent<NetworkConnection>().SendMessage(message);
+			return;
+		}
 		StartCoroutine(WaitForAttackTarget());
 
 	}
