@@ -80,6 +80,11 @@ public class NetworkConnection : MonoBehaviour, IDisposable
                     Instantiate(blank, opponent.hand.transform);
                     break;
 
+                // Tell the client they can now declare attacks
+                case "CAN_ATTACK":
+                    GameState.canAttack = true;
+                    break;
+
                 // Close the search window
                 case "CLOSE_SEARCH":
                     deck.CloseSearchWindow();

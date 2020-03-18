@@ -32,7 +32,7 @@ public class AbilityButtonToggle : MonoBehaviour, IPointerEnterHandler, IPointer
 			return;
 		}
 
-        if(ability.hasAttacked){
+        if(ability.hasAttacked || !GameState.canAttack){
             attackButton.SetActive(false);
         }
 		else attackButton.SetActive(active);

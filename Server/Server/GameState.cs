@@ -17,12 +17,13 @@ namespace Server
         public Card targettingCard = null, decidingCard = null;
 
         public enum Phase { START, DEBT, GOLD, START_EFFECTS, DRAW, MAIN, END_EFFECTS, END };
-        public static Phase currentPhase;
+        public Phase currentPhase;
 
         public PlayerHandler currentPlayer;
 
         private const int startingGold = 25;
         private const int goldPerTurn = 5;
+        private bool canAttack;
 
         public GameState(PlayerHandler p1)
         {
@@ -38,6 +39,7 @@ namespace Server
 
             if (player1 != null && player2 != null)
             {
+                canAttack = false;
                 players = new PlayerHandler[]{ player1, player2 };
                 currentPlayer = player1;
                 player1.otherPlayer = player2;
@@ -76,6 +78,16 @@ namespace Server
                 currentPlayer = player1;
             }
             ResetAllOncePerTurns();
+
+            if (!canAttack)
+            {
+                canAttack = true;
+                foreach(PlayerHandler player in players)
+                {
+                    player.SendMessage("CAN_ATTACK");
+                }
+            }
+
             currentPhase = Phase.START;
             DebtPhase();
         }
