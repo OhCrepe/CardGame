@@ -10,6 +10,8 @@ using UnityEngine;
 public class NetworkConnection : MonoBehaviour, IDisposable
 {
 
+    public GameObject menuButton;
+
     private StreamReader reader;
     private StreamWriter writer;
     private TcpClient tcp;
@@ -152,6 +154,7 @@ public class NetworkConnection : MonoBehaviour, IDisposable
                 case "LOSE":
                     GameState.gameOver = true;
                     stateReader.displayMessage.text = "Defeat!";
+                    menuButton.SetActive(true);
                     break;
 
                 case "OPT_USED":
@@ -220,6 +223,7 @@ public class NetworkConnection : MonoBehaviour, IDisposable
                 case "WIN":
                     GameState.gameOver = true;
                     stateReader.displayMessage.text = "Victory!";
+                    menuButton.SetActive(true);
                     break;
 
                 default:
