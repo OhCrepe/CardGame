@@ -10,7 +10,7 @@ public class GameStateReader : MonoBehaviour {
 	public String activePlayer = "Turn player"; // Name of the active player
 
 	// Update is called once per frame
-	void Update () {
+	void LetsNotUpdate () {
 
 		if(GameState.currentPhase == GameState.Phase.START){
 			displayMessage.text = "It is the start of " + activePlayer + "'s turn";

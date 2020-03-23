@@ -25,8 +25,11 @@ namespace Server
         private const int goldPerTurn = 5;
         private bool canAttack;
 
+        public bool gameOver;
+
         public GameState(PlayerHandler p1)
         {
+            gameOver = false;
             player1 = p1;
             p1.game = this;
         }

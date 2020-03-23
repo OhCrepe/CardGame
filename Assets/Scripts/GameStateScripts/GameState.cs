@@ -12,10 +12,13 @@ public class GameState : MonoBehaviour {
 
 	public static GameObject currentPlayer;
 
+	public static bool gameOver;
+
 	public static bool canAttack = false;
 
 	static GameState(){
 		currentPlayer = GameObject.Find("PlayerField");
+		gameOver = false;
 		MainPhase();
 	}
 

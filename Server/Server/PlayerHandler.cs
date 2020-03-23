@@ -181,9 +181,22 @@ namespace Server
          */ 
         public void SetGold(int gold)
         {
-            this.gold = gold;
+
+            if(gold <= 0)
+            {
+                gold = 0;
+                SendMessage("LOSE");
+                otherPlayer.SendMessage("WIN");
+            }
+            else {
+                this.gold = gold;
+            }
+
             SendMessage("GOLD#" + gold);
             otherPlayer.SendMessage("GOLD_OPP#" + gold);
+
+            if (gold <= 0) game.gameOver = true;
+
         }
 
         /*
@@ -191,6 +204,7 @@ namespace Server
          */ 
         public void SendMessage(string message)
         {
+            if (game.gameOver) return;
             Console.WriteLine("Sending Message: " + message);
             writer.WriteLine(message);
         }

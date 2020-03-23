@@ -16,6 +16,7 @@ public class NetworkConnection : MonoBehaviour, IDisposable
 
     private DeckInteraction deck;
     private PlayerField player, opponent;
+    private GameStateReader stateReader;
 
     private GameObject blank;
 
@@ -29,6 +30,7 @@ public class NetworkConnection : MonoBehaviour, IDisposable
         deck = GameObject.Find("PlayerField").GetComponent<DeckInteraction>();
         player = GameObject.Find("PlayerField").GetComponent<PlayerField>();
         opponent = GameObject.Find("OpponentField").GetComponent<PlayerField>();
+        stateReader = GameObject.Find("GameStateReader").GetComponent<GameStateReader>();
         blank = (GameObject)Resources.Load("Prefab/Blank", typeof(GameObject));
         commands = new List<string>();
         InitializeRemoteIO();
@@ -146,6 +148,12 @@ public class NetworkConnection : MonoBehaviour, IDisposable
                     card.name = args[2];
                     break;
 
+                // We lose
+                case "LOSE":
+                    GameState.gameOver = true;
+                    stateReader.displayMessage.text = "Defeat!";
+                    break;
+
                 case "OPT_USED":
                     card = CardMap.cardsInGame[args[1]];
                     if(card == null) break;
@@ -208,6 +216,12 @@ public class NetworkConnection : MonoBehaviour, IDisposable
                     GameState.targettingCard = null;
                     break;
 
+                // We win
+                case "WIN":
+                    GameState.gameOver = true;
+                    stateReader.displayMessage.text = "Victory!";
+                    break;
+
                 default:
                     break;
 
@@ -263,6 +277,7 @@ public class NetworkConnection : MonoBehaviour, IDisposable
     *   Send a message to the server
     */
     public void SendMessage(string message){
+        if(GameState.gameOver) return;
         Debug.Log("Sending: " + message);
         writer.WriteLine(message);
     }
@@ -276,5 +291,8 @@ public class NetworkConnection : MonoBehaviour, IDisposable
         writer.Close();
         tcp.Close();
     }
+
+    void OnApplicationQuit(){ Dispose(); }
+    void OnDestroy(){ Dispose(); }
 
 }
