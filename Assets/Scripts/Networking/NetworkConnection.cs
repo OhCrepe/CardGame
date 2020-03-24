@@ -24,6 +24,7 @@ public class NetworkConnection : MonoBehaviour, IDisposable
 
     private List<string> commands;
 
+    private const string ip = "86.30.74.235";
     private const int port = 8888;
 
     // Initialize the network connection
@@ -38,6 +39,21 @@ public class NetworkConnection : MonoBehaviour, IDisposable
         InitializeRemoteIO();
         InitializeListenThread();
     }
+
+
+    /*
+    *   Initialize the stream reader/writer and tcp client
+    */
+    private void InitializeRemoteIO(){
+
+        tcp = new TcpClient(ip, port);
+        NetworkStream stream = tcp.GetStream();
+        reader = new StreamReader(stream);
+        writer = new StreamWriter(stream);
+        writer.AutoFlush = true;
+
+    }
+
 
     /*
     *   Process commands given to use by the server
@@ -186,6 +202,7 @@ public class NetworkConnection : MonoBehaviour, IDisposable
 
                 // Remove a card from the opponents hand
                 case "RFH":
+                    if(opponent.hand.transform.childCount == 0) break;
                     Destroy(opponent.hand.transform.GetChild(0).gameObject);
                     break;
 
@@ -234,19 +251,6 @@ public class NetworkConnection : MonoBehaviour, IDisposable
             commands.RemoveAt(0);
 
         }
-    }
-
-    /*
-    *   Initialize the stream reader/writer and tcp client
-    */
-    private void InitializeRemoteIO(){
-
-        tcp = new TcpClient("localhost", port);
-        NetworkStream stream = tcp.GetStream();
-        reader = new StreamReader(stream);
-        writer = new StreamWriter(stream);
-        writer.AutoFlush = true;
-
     }
 
     /*

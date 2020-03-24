@@ -14,6 +14,7 @@ namespace Server
     class GameServer
     {
 
+        private const string ip = "192.168.0.16";
         private const int port = 8888;
 
         static void Main(string[] args)
@@ -33,7 +34,7 @@ namespace Server
             TcpListener listener = null;
             try
             {
-                listener = new TcpListener(IPAddress.Loopback, port);
+                listener = new TcpListener(IPAddress.Parse(ip), port);
                 listener.Start();
                 Console.WriteLine("Waiting for incoming connections...");
                 while (true)
