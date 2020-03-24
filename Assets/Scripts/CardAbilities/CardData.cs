@@ -37,6 +37,16 @@ public class CardData : MonoBehaviour {
 		GetComponent<GetCardStats>().SetHealth(currentHealth, health);
 	}
 
+
+	/*
+	*	Restore the given health to the card
+	*/
+	public void ChangeStrength(int changeBy){
+		currentStrength += changeBy;
+		GetComponent<GetCardStats>().SetStrength(currentStrength, strength);
+	}
+
+
 	/*
 	*	Deal the given health to the card
 	*/

@@ -101,6 +101,10 @@ namespace Server.Cards
                     return new SleightOfHandAbility(player, this, game);
                     break;
 
+                case "SWELLING FLESH":
+                    return new SwellingFleshAbility(player, this, game);
+                    break;
+
                 case "THE EXECUTIONER":
                     return new TheExecutionerAbility(player, this, game);
                     break;
@@ -157,6 +161,14 @@ namespace Server.Cards
                 currentHealth = health;
             }
             string message = "HEAL#" + id + "#" + healthGained;
+            player.SendMessage(message);
+            player.otherPlayer.SendMessage(message);
+        }
+
+        public void IncreaseStrength(int strengthGained)
+        {
+            currentStrength += strengthGained;
+            string message = "STRENGTH_UP#" + id + "#" + strengthGained;
             player.SendMessage(message);
             player.otherPlayer.SendMessage(message);
         }

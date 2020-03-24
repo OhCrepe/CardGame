@@ -73,11 +73,12 @@ public class NetworkConnection : MonoBehaviour, IDisposable
                     deck.AddToHand(card);
                     break;
 
+                // Instantiate a blank card in the opponents hand
                 case "ATH_OPP":
                     Instantiate(blank, opponent.hand.transform);
                     break;
 
-
+                // Mark this card as having attacked
                 case "ATK_USED":
                     card = CardMap.cardsInGame[args[1]];
                     if(card == null) break;
@@ -209,6 +210,13 @@ public class NetworkConnection : MonoBehaviour, IDisposable
                 // Search for a card
                 case "SEARCH":
                     deck.SearchCardFromDeckByName(args[1]);
+                    break;
+
+                // Buff this cards strength
+                case "STRENGTH_UP":
+                    card = GameObject.Find(args[1]);
+                    if(card == null) break;
+                    card.GetComponent<CardData>().ChangeStrength(int.Parse(args[2]));
                     break;
 
                 // Summon a card
