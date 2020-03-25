@@ -81,6 +81,10 @@ namespace Server.Cards
                     return new DyingNoblemanAbility(player, this, game);
                     break;
 
+                case "ENGORGEMENT":
+                    return new EngorgementAbility(player, this, game);
+                    break;
+
                 case "FROG ELDER":
                     return new FrogElderAbility(player, this, game);
                     break;

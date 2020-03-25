@@ -37,6 +37,7 @@ namespace Server.Cards
          */ 
         public override void OnTargetSelect(Card card)
         {
+            if (oncePerTurnUsed) return;
             player.SetGold(player.gold - abilityCost);
             card.Heal(healAmount);
             oncePerTurnUsed = true;
