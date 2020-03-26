@@ -22,6 +22,12 @@ public class DeckBuilder : MonoBehaviour
         deckView = GameObject.Find("DeckView").gameObject;
         cardSelect = GameObject.Find("CardSelection").gameObject;
         LoadCardSelection();
+        StartCoroutine(WaitThenFixScrollbar());
+    }
+
+    IEnumerator WaitThenFixScrollbar(){
+        yield return new WaitForSeconds(0.01f);
+        GameObject.Find("SelectionScrollbar").GetComponent<Scrollbar>().value = 1;
     }
 
     /*
@@ -36,6 +42,9 @@ public class DeckBuilder : MonoBehaviour
             Instantiate(card, cardSelect.transform);
 
         }
+
+
+
     }
 
     /*
