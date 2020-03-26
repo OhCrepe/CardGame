@@ -12,6 +12,9 @@ public class SearchBar : MonoBehaviour
         cardView = GameObject.Find("CardSelection");
     }
 
+    /*
+    *   Update the card view with the currently searched for cards
+    */
     public void UpdateCardView(){
 
         //string search = transform.Find("Text").GetComponent<Text>().text.ToUpper();

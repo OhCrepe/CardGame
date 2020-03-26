@@ -25,6 +25,9 @@ public class DeckBuilder : MonoBehaviour
         StartCoroutine(WaitThenFixScrollbar());
     }
 
+    /*
+    *   Adjust the scrollbar after a short period of time
+    */
     IEnumerator WaitThenFixScrollbar(){
         yield return new WaitForSeconds(0.01f);
         GameObject.Find("SelectionScrollbar").GetComponent<Scrollbar>().value = 1;
@@ -42,8 +45,6 @@ public class DeckBuilder : MonoBehaviour
             Instantiate(card, cardSelect.transform);
 
         }
-
-
 
     }
 
