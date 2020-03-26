@@ -332,7 +332,7 @@ namespace Server
             attacking.hasAttacked = true;
             attacking.player.SendMessage("ATK_USED#" + attacking.id);
             PlayerHandler target = attacking.player.otherPlayer;
-            target.SetGold(target.gold -= attacking.strength);
+            target.SetGold(target.gold -= attacking.currentStrength);
         }
 
     }

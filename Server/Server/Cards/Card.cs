@@ -105,6 +105,10 @@ namespace Server.Cards
                     return new SleightOfHandAbility(player, this, game);
                     break;
 
+                case "SWARM OF RATS":
+                    return new SwarmOfRatsAbility(player, this, game);
+                    break;
+
                 case "SWELLING FLESH":
                     return new SwellingFleshAbility(player, this, game);
                     break;
