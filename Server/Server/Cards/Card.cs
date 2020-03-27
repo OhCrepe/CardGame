@@ -93,6 +93,14 @@ namespace Server.Cards
                     return new IllusionFrogAbility(player, this, game);
                     break;
 
+                case "MEDICINE":
+                    return new MedicineAbility(player, this, game);
+                    break;
+
+                case "NEGOTIATOR":
+                    return new NegotiatorAbility(player, this, game);
+                    break;
+
                 case "RAIN OF FIRE":
                     return new RainOfFireAbility(player, this, game);
                     break;
@@ -119,10 +127,6 @@ namespace Server.Cards
 
                 case "THE FROG LORD":
                     return new TheFrogLordAbility(player, this, game);
-                    break;
-
-                case "NEGOTIATOR":
-                    return new NegotiatorAbility(player, this, game);
                     break;
 
                 case "TRINKETS & BAUBLES":
