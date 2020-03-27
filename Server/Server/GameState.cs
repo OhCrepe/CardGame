@@ -335,6 +335,29 @@ namespace Server
             target.SetGold(target.gold -= attacking.currentStrength);
         }
 
+        public void SendTrigger(CardAbility.Trigger trigger, Card triggeringCard)
+        {
+
+            foreach (PlayerHandler player in players)
+            {
+                foreach (Card card in player.deck.field)
+                {
+                    card.ability.TriggerOnEvent(trigger, triggeringCard);
+                }
+                foreach (Card card in player.deck.hand)
+                {
+                    card.ability.TriggerOnEvent(trigger, triggeringCard);
+                }
+                foreach (Card card in player.deck.discard)
+                {
+                    card.ability.TriggerOnEvent(trigger, triggeringCard);
+                }
+                player.deck.lord.ability.TriggerOnEvent(trigger, triggeringCard);
+
+            }
+
+        }
+
     }
 
 }

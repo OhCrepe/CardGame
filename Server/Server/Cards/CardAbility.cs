@@ -21,6 +21,8 @@ namespace Server.Cards
         public bool oncePerTurnUsed;
         public Card target = null;
 
+        public enum Trigger { BOUNCE };
+
         public CardAbility(PlayerHandler player, Card card, GameState game)
         {
             this.player = player;
@@ -111,6 +113,11 @@ namespace Server.Cards
         public virtual void OnFieldTrigger()
         {
             //DO NOTHING
+        }
+
+        // Ability that triggers when a specific game event happens
+        public virtual void TriggerOnEvent(Trigger trigger, Card triggeringCard){
+
         }
 
         // Ability that triggers on the field when clicked
@@ -214,6 +221,7 @@ namespace Server.Cards
             player.otherPlayer.SendMessage("BOUNCE_OPP#" + card.id);
             card.Restore();
             card.ResetOncePerTurns();
+            game.SendTrigger(Trigger.BOUNCE, card);
 
         }
 
