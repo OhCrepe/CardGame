@@ -111,13 +111,14 @@ namespace Server
                                     card.ability.OnFieldTrigger();
                                 }
                                 break;
- 
+
                             // Player attempts to summon
                             case "SUMMON":
                                 if (game.ValidateSummon(args[1], this))
                                 {
                                     game.SummonUnit(args[1]);
-                                } else
+                                }
+                                else
                                 {
                                     SendMessage("INVALID#" + args[1]);
                                 }
@@ -128,20 +129,23 @@ namespace Server
                                 if (game.currentPlayer != this) break;
                                 if (game.targetting == false) break;
                                 Card target = game.FindCard(args[1]);
+                                if(target == null)
+                                {
+                                    Console.WriteLine("Null");
+                                }
                                 if (game.targettingCard.ability.ValidateTarget(target))
                                 {
                                     SendMessage("VALID_TARGET");
                                     game.targettingCard.ability.OnTargetSelect(target);
                                 }
+                                Console.WriteLine("Invalid");
                                 break;
 
                             default:
                                 break;
 
                         }
-
                     }
-
                 }
             }
             catch (Exception e)

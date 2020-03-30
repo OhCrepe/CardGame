@@ -43,6 +43,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Cards\AssassinationAbility.cs" />
     <Compile Include="Cards\MedicineAbility.cs" />
     <Compile Include="Cards\SwarmOfRats.cs" />
     <Compile Include="Cards\SeismicFrogAbility.cs" />
@@ -52,6 +53,7 @@
     <Compile Include="Cards\FrogElderAbility.cs" />
     <Compile Include="Cards\EngorgementAbility.cs" />
     <Compile Include="Cards\SwellingFleshAbility.cs" />
+    <Compile Include="Cards\TheDoctorAbility.cs" />
     <Compile Include="Cards\TheFrogLordAbility.cs" />
     <Compile Include="Cards\TheExecutionerAbility.cs" />
     <Compile Include="Cards\DyingNoblemanAbility.cs" />

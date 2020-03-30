@@ -151,6 +151,11 @@ namespace Server
         public void StartEffectsPhase()
         {
             currentPhase = Phase.START_EFFECTS;
+            currentPlayer.deck.lord.ability.StartOfTurnAbility();
+            foreach (Card card in currentPlayer.deck.field)
+            {
+                card.ability.StartOfTurnAbility();
+            }
             DrawPhase();
         }
 
@@ -179,11 +184,12 @@ namespace Server
         public void EndEffectsPhase()
         {
 
-            foreach(Card card in currentPlayer.deck.field)
+            currentPhase = Phase.END_EFFECTS;
+            currentPlayer.deck.lord.ability.EndOfTurnAbility();
+            foreach (Card card in currentPlayer.deck.field)
             {
                 card.ability.EndOfTurnAbility();
             }
-            currentPlayer.deck.lord.ability.EndOfTurnAbility();
             EndPhase();
 
         }

@@ -120,13 +120,13 @@ namespace Server.Cards
 
         }
 
-        // Ability that triggers on the field when clicked
+        // Ability that triggers at the beginning of the turn
         public virtual void StartOfTurnAbility()
         {
             //DO NOTHING
         }
 
-        // Ability that triggers on the field when clicked
+        // Ability that triggers at the end of the turn
         public virtual void EndOfTurnAbility()
         {
             //DO NOTHING

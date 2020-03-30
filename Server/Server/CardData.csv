@@ -1,6 +1,7 @@
 Name,Type,Cost,Health,Strength,WageMod,WageBonus
-Bloated Body,MINION,4,1,1,1,0
+Assassination,UTILITY,5,0,0,1,0
 Black Market,UTILITY,0,0,0,1,0
+Bloated Body,MINION,4,1,1,1,0
 Combat Medic,MINION,4,2,2,1,0
 Dying Nobleman,MINION,3,1,1,1,0
 Engorgement,UTILITY,3,0,0,1,0
@@ -13,6 +14,7 @@ Seismic Frog,MINION,6,5,5,1,0
 Sleight of Hand,UTILITY,4,0,0,1,0
 Swarm of Rats,MINION,3,2,2,1,0
 Swelling Flesh,MINION,6,5,2,1,0
+The Doctor,LORD,0,0,0,1,0
 The Executioner,LORD,0,0,0,1,0
 The Frog Lord,LORD,0,0,0,1,0
 Trinkets & Baubles,UTILITY,0,0,0,1,0

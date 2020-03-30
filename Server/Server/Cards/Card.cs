@@ -65,6 +65,10 @@ namespace Server.Cards
             switch (name.ToUpper())
             {
 
+                case "ASSASSINATION":
+                    return new AssassinationAbility(player, this, game);
+                    break;
+
                 case "BLACK MARKET":
                     return new BlackMarketAbility(player, this, game);
                     break;
@@ -119,6 +123,10 @@ namespace Server.Cards
 
                 case "SWELLING FLESH":
                     return new SwellingFleshAbility(player, this, game);
+                    break;
+
+                case "THE DOCTOR":
+                    return new TheDoctorAbility(player, this, game);
                     break;
 
                 case "THE EXECUTIONER":
