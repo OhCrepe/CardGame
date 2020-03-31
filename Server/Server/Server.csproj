@@ -45,6 +45,7 @@
   <ItemGroup>
     <Compile Include="Cards\AssassinationAbility.cs" />
     <Compile Include="Cards\MedicineAbility.cs" />
+    <Compile Include="Cards\AssassinAbility.cs" />
     <Compile Include="Cards\SwarmOfRats.cs" />
     <Compile Include="Cards\SeismicFrogAbility.cs" />
     <Compile Include="Cards\NegotiatorAbility.cs" />

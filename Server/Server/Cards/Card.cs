@@ -65,6 +65,10 @@ namespace Server.Cards
             switch (name.ToUpper())
             {
 
+                case "ASSASSIN":
+                    return new AssassinAbility(player, this, game);
+                    break;
+
                 case "ASSASSINATION":
                     return new AssassinationAbility(player, this, game);
                     break;

@@ -1,4 +1,5 @@
 Name,Type,Cost,Health,Strength,WageMod,WageBonus
+Assassin,MINION,3,1,4,1,0
 Assassination,UTILITY,5,0,0,1,0
 Black Market,UTILITY,0,0,0,1,0
 Bloated Body,MINION,4,1,1,1,0
