@@ -21,7 +21,7 @@ namespace Server.Cards
          */
         public override void EndOfTurnAbility()
         {
-            
+            if (game.currentPlayer != player) return;
             foreach(Card card in player.deck.field.ToList())
             {
                 card.Heal(healAmount);

@@ -19,7 +19,9 @@ namespace Server.Cards
          */ 
         public override void EndOfTurnAbility()
         {
-            foreach(Card card in player.deck.field.ToList())
+            if (game.currentPlayer != player) return;
+
+            foreach (Card card in player.deck.field.ToList())
             {
                 if(card.currentHealth == 1)
                 {

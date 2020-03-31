@@ -152,7 +152,12 @@ namespace Server
         {
             currentPhase = Phase.START_EFFECTS;
             currentPlayer.deck.lord.ability.StartOfTurnAbility();
+            currentPlayer.otherPlayer.deck.lord.ability.StartOfTurnAbility();
             foreach (Card card in currentPlayer.deck.field)
+            {
+                card.ability.StartOfTurnAbility();
+            }
+            foreach (Card card in currentPlayer.otherPlayer.deck.field)
             {
                 card.ability.StartOfTurnAbility();
             }
@@ -186,7 +191,12 @@ namespace Server
 
             currentPhase = Phase.END_EFFECTS;
             currentPlayer.deck.lord.ability.EndOfTurnAbility();
+            currentPlayer.otherPlayer.deck.lord.ability.EndOfTurnAbility();
             foreach (Card card in currentPlayer.deck.field)
+            {
+                card.ability.EndOfTurnAbility();
+            }
+            foreach (Card card in currentPlayer.otherPlayer.deck.field)
             {
                 card.ability.EndOfTurnAbility();
             }

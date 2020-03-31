@@ -19,6 +19,8 @@ namespace Server.Cards
          */ 
         public override void EndOfTurnAbility()
         {
+            if (game.currentPlayer != player) return;
+
             if (!player.deck.field.Contains(card)) return;
             card.Heal(1);
             card.IncreaseStrength(1);
