@@ -129,6 +129,10 @@ namespace Server.Cards
                     return new SwellingFleshAbility(player, this, game);
                     break;
 
+                case "THE CONTRACT":
+                    return new TheContractAbility(player, this, game);
+                    break;
+
                 case "THE DOCTOR":
                     return new TheDoctorAbility(player, this, game);
                     break;

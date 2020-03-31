@@ -54,6 +54,7 @@
     <Compile Include="Cards\FrogElderAbility.cs" />
     <Compile Include="Cards\EngorgementAbility.cs" />
     <Compile Include="Cards\SwellingFleshAbility.cs" />
+    <Compile Include="Cards\TheContract.cs" />
     <Compile Include="Cards\TheDoctorAbility.cs" />
     <Compile Include="Cards\TheFrogLordAbility.cs" />
     <Compile Include="Cards\TheExecutionerAbility.cs" />
