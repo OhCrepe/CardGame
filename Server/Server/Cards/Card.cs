@@ -73,6 +73,9 @@ namespace Server.Cards
                     return new AssassinationAbility(player, this, game);
                     break;
 
+                case "BANISHMENT":
+                    return new BanishmentAbility(player, this, game);
+
                 case "BLACK MARKET":
                     return new BlackMarketAbility(player, this, game);
                     break;

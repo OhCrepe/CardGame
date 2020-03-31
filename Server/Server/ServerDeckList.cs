@@ -73,9 +73,11 @@ namespace Server
             if (hand.Contains(card))
             {
                 hand.Remove(card);
+                player.otherPlayer.SendMessage("RFH");
             } else if (field.Contains(card))
             {
                 field.Remove(card);
+                player.otherPlayer.SendMessage("KILL_OPP#" + card.id);
             } else if (discard.Contains(card))
             {
                 discard.Remove(card);
@@ -86,7 +88,7 @@ namespace Server
             }
             ShuffleDeck();
             player.SendMessage("PUTINDECK#" + card.id);
-            player.otherPlayer.SendMessage("RFH");
+            
         }
 
         /*

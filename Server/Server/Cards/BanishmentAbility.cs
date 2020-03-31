@@ -6,10 +6,10 @@ using System.Threading.Tasks;
 
 namespace Server.Cards
 {
-    class AssassinationAbility : CardAbility
+    class BanishmentAbility : CardAbility
     {
 
-        public AssassinationAbility(PlayerHandler player, Card card, GameState game) : base(player, card, game)
+        public BanishmentAbility(PlayerHandler player, Card card, GameState game) : base(player, card, game)
         {
 
         }
@@ -29,21 +29,7 @@ namespace Server.Cards
         {
             if ((player.deck.field.Count > 0 || player.otherPlayer.deck.field.Count > 0) && player.deck.hand.Contains(card))
             {
-                foreach(Card card in player.deck.field)
-                {
-                    if(card.currentHealth >= card.health)
-                    {
-                        return true;
-                    }
-                }
-                foreach (Card card in player.otherPlayer.deck.field)
-                {
-                    if (card.currentHealth >= card.health)
-                    {
-                        return true;
-                    }
-                }
-                return false;
+                return true;
             }
             else return false;
         }
@@ -54,7 +40,6 @@ namespace Server.Cards
         public override bool ValidateTarget(Card card)
         {
             if (card.cardType != Card.Type.MINION) return false;
-            if (card.currentHealth < card.health) return false;
             return (player.deck.field.Contains(card) || player.otherPlayer.deck.field.Contains(card));
         }
 
@@ -63,7 +48,8 @@ namespace Server.Cards
         */
         public override void OnTargetSelect(Card card)
         {
-            card.DealDamage(card.currentHealth, false);
+            card.Restore();
+            card.player.deck.ShuffleIntoDeck(card);
             base.OnTargetSelect(card);
             CheckUtility();
         }

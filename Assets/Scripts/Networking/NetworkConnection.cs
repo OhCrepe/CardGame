@@ -184,7 +184,7 @@ public class NetworkConnection : MonoBehaviour, IDisposable
                 // Put a card into the deck
                 case "PUTINDECK":
                     card = CardMap.cardsInGame[args[1]];
-                    if(card == null) break;
+                    if(card == null)break;
                     deck.ShuffleIntoDeck(card);
                     break;
 

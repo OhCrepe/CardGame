@@ -43,6 +43,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Cards\BanishmentAbility.cs" />
     <Compile Include="Cards\AssassinationAbility.cs" />
     <Compile Include="Cards\MedicineAbility.cs" />
     <Compile Include="Cards\AssassinAbility.cs" />
