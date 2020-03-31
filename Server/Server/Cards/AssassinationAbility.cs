@@ -27,7 +27,7 @@ namespace Server.Cards
         */ 
         public override bool ValidActivation()
         {
-            if ((player.deck.field.Count > 1 || player.otherPlayer.deck.field.Count > 1) && player.deck.hand.Contains(card))
+            if ((player.deck.field.Count > 0 || player.otherPlayer.deck.field.Count > 0) && player.deck.hand.Contains(card))
             {
                 foreach(Card card in player.deck.field)
                 {
