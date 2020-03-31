@@ -42,7 +42,6 @@ public class DeckBuilder : MonoBehaviour
         foreach(GameObject cardObject in cardArray){
 
             GameObject card = (GameObject)cardObject;
-            if(cardObject.transform.Find("Name").GetComponent<Text>().text == "The Doctor") continue;
             Instantiate(card, cardSelect.transform);
 
         }

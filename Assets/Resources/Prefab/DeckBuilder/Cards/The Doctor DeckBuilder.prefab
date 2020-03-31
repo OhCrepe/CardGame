@@ -356,7 +356,8 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: At the end of your turn, heal 1 unit you control to full health.
+  m_Text: At the end of your turn, restore 1 health to all units on your side of the
+    field.
 --- !u!1 &6658220152755984197
 GameObject:
   m_ObjectHideFlags: 0

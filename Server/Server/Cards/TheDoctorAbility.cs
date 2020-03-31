@@ -9,44 +9,26 @@ namespace Server.Cards
     class TheDoctorAbility : CardAbility
     {
 
+        private const int healAmount = 1;
+
         public TheDoctorAbility(PlayerHandler player, Card card, GameState game) : base(player, card, game)
         {
 
         }
 
         /*
-        * Ensure this card is in hand and that there is a target for it's effect, and that there are cards to draw
-        */
-        public override bool ValidActivation()
-        {
-            return (player.deck.field.Count > 0);
-        }
-
-        /*
-         * At the end of the turn, kill everything with only 1 health remaining
+         * At the end of the turn, heal all your units for 1 hp
          */
         public override void EndOfTurnAbility()
         {
-            if (!ValidActivation()) return;
-            game.TargetCard(this);
+            
+            foreach(Card card in player.deck.field.ToList())
+            {
+                card.Heal(healAmount);
+            }
+
         }
 
-        /*
-         *  What to do when a target is selected
-         */
-        public override void OnTargetSelect(Card card)
-        {
-            card.Heal(card.health);
-            base.OnTargetSelect(card);
-        }
-
-        /*
-         *  Validate that the target is a legal one
-         */
-        public override bool ValidateTarget(Card card)
-        {
-            return player.deck.field.Contains(card);
-        }
 
     }
 }
