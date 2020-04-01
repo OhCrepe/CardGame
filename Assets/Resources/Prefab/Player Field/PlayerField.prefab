@@ -254,6 +254,8 @@ MonoBehaviour:
   discard: {fileID: 1979263793175484}
   startingGold: 25
   gold: 0
+  floatingTextPrefab: {fileID: 8548321112537138752, guid: 649d811287c8be54cbe1efe24795b622,
+    type: 3}
 --- !u!114 &114319324244482588
 MonoBehaviour:
   m_ObjectHideFlags: 0

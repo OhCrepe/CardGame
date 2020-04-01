@@ -13,6 +13,7 @@ public class PlayerField : MonoBehaviour {
 										discard;      // This player's discard pile
 	public int startingGold = 25;		// The amount of gold this player starts with
 	public int gold = 0;						// This player's gold quantity
+	public GameObject floatingTextPrefab;
 
 	/*
 	* Initiate the players game state
@@ -22,6 +23,7 @@ public class PlayerField : MonoBehaviour {
 		GainGold(startingGold);
 		this.transform.GetChild(0).SetParent(this.transform.parent);
 		GameState.currentPlayer = gameObject;
+		FloatingTextController.Initialize();
 
 	}
 
@@ -50,6 +52,14 @@ public class PlayerField : MonoBehaviour {
 	*	Set the player's gold amount
 	*/
 	public void SetGold(int gold){
+		if(gold == this.gold)return;
+		string floatingText = "";
+		if(gold >= this.gold){
+			goldCounter.GetComponent<AudioSource>().Play();
+			floatingText = "+";
+		}
+		floatingText += gold-this.gold;
+		FloatingTextController.CreateFloatingText(floatingText, Color.yellow, goldCounter.transform);
 		this.gold = gold;
 		UpdateGoldText();
 	}
