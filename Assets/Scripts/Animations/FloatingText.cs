@@ -14,6 +14,7 @@ public class FloatingText : MonoBehaviour
         AnimatorClipInfo[] clipInfo = anim.GetCurrentAnimatorClipInfo(0);
         Destroy(gameObject, clipInfo[0].clip.length);
         textComponent = anim.GetComponent<Text>();
+
     }
 
     public void SetText(string text, Color color){

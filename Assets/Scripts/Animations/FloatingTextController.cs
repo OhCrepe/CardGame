@@ -5,6 +5,8 @@ using UnityEngine;
 public class FloatingTextController : MonoBehaviour
 {
 
+    public static float floatingTextLength = 1.1f;
+
     private static FloatingText floatingText;
     private static GameObject canvas;
 
@@ -15,6 +17,7 @@ public class FloatingTextController : MonoBehaviour
         floatingText = Resources.Load<FloatingText>("Prefab/FloatingTextParent");
         if(canvas == null)
             canvas = GameObject.Find("FloatingTextCanvas");
+
     }
 
     // Update is called once per frame

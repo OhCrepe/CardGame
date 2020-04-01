@@ -158,7 +158,7 @@ public class NetworkConnection : MonoBehaviour, IDisposable
                 case "KILL_OPP":
                     card = GameObject.Find(args[1]);
                     if(card == null) break;
-                    Destroy(card);
+                    Destroy(card, FloatingTextController.floatingTextLength);
                     break;
 
                 // Spawn the opponent's lord card

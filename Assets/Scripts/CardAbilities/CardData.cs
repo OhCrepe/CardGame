@@ -16,6 +16,7 @@ public class CardData : MonoBehaviour {
   	private int currentHealth;
 	private int currentStrength;
 	private string id;
+	private Color orange;
 
 	/*
 	*	Initialize the card
@@ -24,6 +25,7 @@ public class CardData : MonoBehaviour {
 		currentHealth = health;
 		currentStrength = strength;
 		id = null;
+		orange = new Color(248/255f, 140/255f, 0f, 1f);
 	}
 
 	/*
@@ -35,6 +37,8 @@ public class CardData : MonoBehaviour {
 			currentHealth = health;
 		}
 		GetComponent<GetCardStats>().SetHealth(currentHealth, health);
+		string floatingText = "+" + healthGained;
+		FloatingTextController.CreateFloatingText(floatingText, Color.green, transform.Find("Health"));
 	}
 
 
@@ -44,6 +48,11 @@ public class CardData : MonoBehaviour {
 	public void ChangeStrength(int changeBy){
 		currentStrength += changeBy;
 		GetComponent<GetCardStats>().SetStrength(currentStrength, strength);
+		string floatingText = ""+ changeBy;
+		if(changeBy > 0){
+			floatingText = "+" + changeBy;
+		}
+		FloatingTextController.CreateFloatingText(floatingText, orange, transform.Find("Strength"));
 	}
 
 
@@ -53,7 +62,8 @@ public class CardData : MonoBehaviour {
 	public void DealDamage(int damage){
 		currentHealth-=damage;
 		GetComponent<GetCardStats>().SetHealth(currentHealth, health);
-
+		string floatingText = "-"  + damage;
+		FloatingTextController.CreateFloatingText(floatingText, Color.red, transform.Find("Health"));
 	}
 
 	/*

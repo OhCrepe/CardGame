@@ -19,8 +19,15 @@ public class DiscardPile : MonoBehaviour {
 			return;
 		}
 
-		card.GetComponent<Draggable>().parentToReturnTo = this.transform;
+		StartCoroutine(DiscardDelay(card));
 
+	}
+
+	IEnumerator DiscardDelay(GameObject card){
+
+		yield return new WaitForSeconds(FloatingTextController.floatingTextLength);
+
+		card.GetComponent<Draggable>().parentToReturnTo = this.transform;
 		card.transform.SetParent(this.transform);
 		pile.Insert(pile.Count, card);
 		card.SetActive(false);
