@@ -10,6 +10,8 @@ public class DeckBuilder : MonoBehaviour
     private Dictionary<string, int> deck;
     private GameObject deckView, cardSelect;
 
+    private Text lordText, cardText;
+
     private int containsLord;
 
     private const string prefabPath = "Prefab/DeckBuilder/Cards";
@@ -19,8 +21,10 @@ public class DeckBuilder : MonoBehaviour
     void Start()
     {
         deck = new Dictionary<string, int>();
-        deckView = GameObject.Find("DeckView").gameObject;
-        cardSelect = GameObject.Find("CardSelection").gameObject;
+        deckView = GameObject.Find("DeckView");
+        cardSelect = GameObject.Find("CardSelection");
+        lordText = GameObject.Find("LordNumberText").GetComponent<Text>();
+        cardText = GameObject.Find("CardNumberText").GetComponent<Text>();
         LoadCardSelection();
         StartCoroutine(WaitThenFixScrollbar());
     }
@@ -71,6 +75,7 @@ public class DeckBuilder : MonoBehaviour
                 CopyToDeckView(card);
             }else{
                 Debug.Log("You can't have more than 3 copies of a card in your deck!");
+                return;
             }
         }else{
             if(card.tag == "Lord"){
@@ -79,6 +84,7 @@ public class DeckBuilder : MonoBehaviour
             deck.Add(cardName, 1);
             CopyToDeckView(card);
         }
+        UpdateNumbersText();
 
     }
 
@@ -107,8 +113,22 @@ public class DeckBuilder : MonoBehaviour
                 deck.Remove(cardName);
             }
             Destroy(card);
+            UpdateNumbersText();
         }
 
+    }
+
+    /*
+    *   Update the decks card number text (Lords: x/1, Cards: y/25)
+    */
+    private void UpdateNumbersText(){
+        lordText.text = "Lord Cards: " + containsLord + "/1";
+        int totalCards = 0;
+        foreach(KeyValuePair<string, int> entry in deck){
+            totalCards += entry.Value;
+        }
+        int otherCards = totalCards - containsLord;
+        cardText.text = "Cards: " + otherCards + "/25";
     }
 
     /*
