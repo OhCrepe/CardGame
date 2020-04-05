@@ -94,6 +94,9 @@ public class DeckBuilder : MonoBehaviour
     private void CopyToDeckView(GameObject card){
         GameObject newCard = Instantiate(card, deckView.transform);
         newCard.GetComponent<Hoverable>().OnPointerExit(null);
+        if(newCard.GetComponent<CardData>().cardType == CardData.Type.LORD){
+            newCard.transform.SetSiblingIndex(0);
+        }
     }
 
     /*
@@ -122,6 +125,8 @@ public class DeckBuilder : MonoBehaviour
     *   Update the decks card number text (Lords: x/1, Cards: y/25)
     */
     private void UpdateNumbersText(){
+        cardText.color = Color.white;
+        lordText.color = Color.white;
         lordText.text = "Lord Cards: " + containsLord + "/1";
         int totalCards = 0;
         foreach(KeyValuePair<string, int> entry in deck){
@@ -143,16 +148,31 @@ public class DeckBuilder : MonoBehaviour
     */
     public void SaveDeck(){
 
-        string deckName = GetDeckName();
-        if(deckName.Length <= 0){
-            // TODO Tell the user that the deck name is invalid
-            return;
-        }
+        bool deckValid = true, nameValid = true;
+
         int thisDeckSize = deckView.transform.childCount;
+        cardText.color = Color.green;
+        lordText.color = Color.green;
         if(thisDeckSize != 26){
-            Debug.Log("The deck must contain 25 regular cards plus one Lord card!");
-            return;
+            if(thisDeckSize - containsLord != 25){
+                cardText.color = Color.red;
+            }
+            if(containsLord == 0){
+                lordText.color = Color.red;
+            }
+            deckValid = false;
         }
+
+        string deckName = GetDeckName().Trim();
+        if(deckName.Length <= 0){
+            GameObject input = GameObject.Find("DeckName");
+            input.GetComponent<InputField>().text = "";
+            input.transform.Find("Placeholder").GetComponent<Text>().color = new Color(1f, 0f, 0f, 1/2f);
+            nameValid = false;
+        }
+
+        if(!deckValid || !nameValid) return;
+
         Debug.Log("valid");
 
 
@@ -180,6 +200,11 @@ public class DeckBuilder : MonoBehaviour
     */
     public void MainMenu(){
         SceneManager.LoadScene("MainMenu");
+    }
+
+    public void MakePlaceholderTextWhite(){
+        GameObject input = GameObject.Find("DeckName");
+        input.transform.Find("Placeholder").GetComponent<Text>().color = new Color(1f, 1f, 1f, 1/2f);
     }
 
 

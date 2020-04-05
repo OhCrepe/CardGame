@@ -536,6 +536,18 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 269511550}
   m_CullTransparentMesh: 0
+--- !u!114 &344534763 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 6430284718397685942, guid: 0943cb35b3ff87540a4ef26f2277026b,
+    type: 3}
+  m_PrefabInstance: {fileID: 2391922340010494025}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 727cf484493581d4d82d46d2fbb98542, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &539365626
 GameObject:
   m_ObjectHideFlags: 0
@@ -1944,6 +1956,41 @@ PrefabInstance:
       propertyPath: m_OnValueChanged.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
       value: UpdateCardView
       objectReference: {fileID: 0}
+    - target: {fileID: 2391922339304801342, guid: 0943cb35b3ff87540a4ef26f2277026b,
+        type: 3}
+      propertyPath: m_FillCenter
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2391922339304801343, guid: 0943cb35b3ff87540a4ef26f2277026b,
+        type: 3}
+      propertyPath: m_OnValueChanged.m_PersistentCalls.m_Calls.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2391922339304801343, guid: 0943cb35b3ff87540a4ef26f2277026b,
+        type: 3}
+      propertyPath: m_OnValueChanged.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2391922339304801343, guid: 0943cb35b3ff87540a4ef26f2277026b,
+        type: 3}
+      propertyPath: m_OnValueChanged.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 2391922339304801343, guid: 0943cb35b3ff87540a4ef26f2277026b,
+        type: 3}
+      propertyPath: m_OnValueChanged.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 344534763}
+    - target: {fileID: 2391922339304801343, guid: 0943cb35b3ff87540a4ef26f2277026b,
+        type: 3}
+      propertyPath: m_OnValueChanged.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: MakePlaceholderTextWhite
+      objectReference: {fileID: 0}
+    - target: {fileID: 2391922339304801343, guid: 0943cb35b3ff87540a4ef26f2277026b,
+        type: 3}
+      propertyPath: m_OnValueChanged.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
     - target: {fileID: 2070455203, guid: 0943cb35b3ff87540a4ef26f2277026b, type: 3}
       propertyPath: m_FontData.m_LineSpacing
       value: 1
@@ -1969,6 +2016,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_FontData.m_FontSize
       value: 17
+      objectReference: {fileID: 0}
+    - target: {fileID: 2391922338611169777, guid: 0943cb35b3ff87540a4ef26f2277026b,
+        type: 3}
+      propertyPath: m_FontData.m_BestFit
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0943cb35b3ff87540a4ef26f2277026b, type: 3}
