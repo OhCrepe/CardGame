@@ -95,6 +95,7 @@ GameObject:
   - component: {fileID: 8322035695819896566}
   - component: {fileID: 1294978804711993252}
   - component: {fileID: 8031127616539783344}
+  - component: {fileID: 114546598165594326}
   m_Layer: 5
   m_Name: The Doctor DeckBuilder
   m_TagString: Lord
@@ -280,6 +281,24 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e6ba622aeb0b9ae4d8326f106fd26916, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &114546598165594326
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4441482634981559342}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 98dc2e9297b83144dba3fe348047cd3c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  cost: 0
+  strength: 0
+  health: 0
+  cardType: 0
+  wageMod: 0
+  wageBonus: 0
 --- !u!1 &5421721844951856033
 GameObject:
   m_ObjectHideFlags: 0

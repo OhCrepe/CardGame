@@ -666,7 +666,7 @@ MonoBehaviour:
   cost: 3
   strength: 2
   health: 2
-  cardType: 0
+  cardType: 1
   wageMod: 1
   wageBonus: 0
 --- !u!61 &7117182317134993333
@@ -751,6 +751,7 @@ MonoBehaviour:
   hasEndOfTurnAbility: 0
   isOncePerTurn: 0
   oncePerTurnUsed: 0
+  hasAttacked: 0
 --- !u!1 &7068991222874564949
 GameObject:
   m_ObjectHideFlags: 0

@@ -9,7 +9,7 @@ public class CardData : MonoBehaviour {
 	*/
 
 	public int cost, strength, health; // Cost to hire this warrior/activate this utility
-	public enum Type { MINION, UTILITY }; // Whether this card is a utility or a minion
+	public enum Type { LORD, MINION, UTILITY }; // Whether this card is a utility or a minion
 	public Type cardType;
 	public int wageMod, wageBonus;
 
@@ -22,9 +22,10 @@ public class CardData : MonoBehaviour {
 	*	Initialize the card
 	*/
 	void Awake(){
+		id = null;
+		if(cardType == Type.LORD) return;
 		currentHealth = health;
 		currentStrength = strength;
-		id = null;
 		orange = new Color(248/255f, 140/255f, 0f, 1f);
 	}
 
@@ -32,6 +33,9 @@ public class CardData : MonoBehaviour {
 	*	Restore the given health to the card
 	*/
 	public void Heal(int healthGained){
+
+		if(cardType == Type.LORD) return;
+
 		currentHealth += healthGained;
 		if(currentHealth > health){
 			currentHealth = health;
@@ -46,6 +50,9 @@ public class CardData : MonoBehaviour {
 	*	Restore the given health to the card
 	*/
 	public void ChangeStrength(int changeBy){
+
+		if(cardType == Type.LORD) return;
+
 		currentStrength += changeBy;
 		GetComponent<GetCardStats>().SetStrength(currentStrength, strength);
 		string floatingText = ""+ changeBy;
@@ -60,6 +67,9 @@ public class CardData : MonoBehaviour {
 	*	Deal the given health to the card
 	*/
 	public void DealDamage(int damage){
+
+		if(cardType == Type.LORD) return;
+
 		currentHealth-=damage;
 		GetComponent<GetCardStats>().SetHealth(currentHealth, health);
 		string floatingText = "-"  + damage;
@@ -70,6 +80,9 @@ public class CardData : MonoBehaviour {
 	*	Restore the unit to full health and strength
 	*/
 	public void Restore(){
+
+		if(cardType == Type.LORD) return;
+
 		currentHealth = health;
 		GetComponent<GetCardStats>().SetHealth(currentHealth, health);
 		currentStrength = strength;

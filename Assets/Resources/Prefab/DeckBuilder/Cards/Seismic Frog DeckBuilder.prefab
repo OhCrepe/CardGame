@@ -409,7 +409,7 @@ MonoBehaviour:
   cost: 6
   strength: 5
   health: 5
-  cardType: 0
+  cardType: 1
   wageMod: 0
   wageBonus: 0
 --- !u!61 &1766659922085095082

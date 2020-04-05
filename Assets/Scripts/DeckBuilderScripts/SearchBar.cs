@@ -17,17 +17,44 @@ public class SearchBar : MonoBehaviour
     */
     public void UpdateCardView(){
 
-        //string search = transform.Find("Text").GetComponent<Text>().text.ToUpper();
         string search = GetComponent<InputField>().text.ToUpper();
+        Dropdown typeDropdown = GameObject.Find("CardDropdown").GetComponent<Dropdown>();
+        string type = typeDropdown.options[typeDropdown.value].text;
+        bool typeSpecified;
+        CardData.Type cardType = CardData.Type.LORD;
+
+        switch(type.ToUpper()){
+
+            case "LORDS":
+                typeSpecified = true;
+                cardType = CardData.Type.LORD;
+                break;
+
+            case "UNITS":
+                typeSpecified = true;
+                cardType = CardData.Type.MINION;
+                break;
+
+            case "UTILITIES":
+                typeSpecified = true;
+                cardType = CardData.Type.UTILITY;
+                break;
+
+            default:
+                typeSpecified = false;
+                break;
+
+        }
 
         foreach(Transform child in cardView.transform){
 
             GameObject card = child.gameObject;
             string name = child.Find("Name").gameObject.GetComponent<Text>().text.ToUpper();
+            bool nameSearched = name.Contains(search);
 
-            Debug.Log(name + " ~ " + search);
+            bool correctType = (!typeSpecified || cardType == card.GetComponent<CardData>().cardType);
 
-            card.SetActive(name.Contains(search));
+            card.SetActive(nameSearched && correctType);
 
         }
 

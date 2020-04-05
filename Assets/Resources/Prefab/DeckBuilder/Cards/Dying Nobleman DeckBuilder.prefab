@@ -328,7 +328,9 @@ MonoBehaviour:
   cost: 3
   strength: 1
   health: 1
-  cardType: 0
+  cardType: 1
+  wageMod: 0
+  wageBonus: 0
 --- !u!61 &4244032458703707035
 BoxCollider2D:
   m_ObjectHideFlags: 0

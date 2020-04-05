@@ -500,7 +500,7 @@ MonoBehaviour:
   cost: 3
   strength: 1
   health: 4
-  cardType: 0
+  cardType: 1
   wageMod: 1
   wageBonus: 0
 --- !u!61 &4127852458643130881

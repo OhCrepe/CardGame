@@ -803,7 +803,7 @@ MonoBehaviour:
   cost: 3
   strength: 2
   health: 2
-  cardType: 0
+  cardType: 1
   wageMod: 1
   wageBonus: 0
 --- !u!61 &7208574054050183087

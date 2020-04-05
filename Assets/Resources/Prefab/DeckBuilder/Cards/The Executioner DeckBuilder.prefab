@@ -95,6 +95,7 @@ GameObject:
   - component: {fileID: 7138879293744044056}
   - component: {fileID: 114590998263415114}
   - component: {fileID: 9159169075901406814}
+  - component: {fileID: 114307755364871374}
   m_Layer: 5
   m_Name: The Executioner DeckBuilder
   m_TagString: Lord
@@ -280,6 +281,24 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e6ba622aeb0b9ae4d8326f106fd26916, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &114307755364871374
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3300288981548278464}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 98dc2e9297b83144dba3fe348047cd3c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  cost: 0
+  strength: 0
+  health: 0
+  cardType: 0
+  wageMod: 0
+  wageBonus: 0
 --- !u!1 &5478932724333443499
 GameObject:
   m_ObjectHideFlags: 0
