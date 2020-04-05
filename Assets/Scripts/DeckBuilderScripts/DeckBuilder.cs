@@ -148,6 +148,26 @@ public class DeckBuilder : MonoBehaviour
     */
     public void SaveDeck(){
 
+        if(!ValidateDeck()){
+            return;
+        }
+
+        string[] deckCards = new string[deckSize+1];
+        for(int i = 0; i < deckSize+1; i++){
+            deckCards[i] = deckView.transform.GetChild(i).Find("Name").GetComponent<Text>().text;
+        }
+
+        DeckList deck = new DeckList(GetDeckName(), deckCards);
+        DeckList.SaveDeck(deck);
+        MainMenu();
+
+    }
+
+    /*
+    *   Return true if the deck is legal, otherwise return false
+    */
+    public bool ValidateDeck(){
+
         bool deckValid = true, nameValid = true;
 
         int thisDeckSize = deckView.transform.childCount;
@@ -171,18 +191,7 @@ public class DeckBuilder : MonoBehaviour
             nameValid = false;
         }
 
-        if(!deckValid || !nameValid) return;
-
-        Debug.Log("valid");
-
-
-        string[] deckCards = new string[deckSize+1];
-        for(int i = 0; i < deckSize+1; i++){
-            deckCards[i] = deckView.transform.GetChild(i).Find("Name").GetComponent<Text>().text;
-        }
-
-        DeckList deck = new DeckList(deckName, deckCards);
-        DeckList.SaveDeck(deck);
+        return (deckValid && nameValid);
 
     }
 

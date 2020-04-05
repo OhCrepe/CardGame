@@ -76,4 +76,25 @@ public class DeckList
         return location + name + fileExtension;
     }
 
+    /*
+    *   Returns a list of all decks this player has created
+    */
+    public static List<string> GetAllDeckNames(){
+        string location = Application.persistentDataPath + deckLocations;
+        Directory.CreateDirectory(location);
+        DirectoryInfo dirInfo = new DirectoryInfo(location);
+        FileInfo[] info = dirInfo.GetFiles("*.dek");
+
+        List<string> names = new List<string>();
+        foreach(FileInfo file in info){
+            string name = file.ToString();
+            int lastSlash = name.LastIndexOf('\\');
+            int lastDot = name.LastIndexOf('.');
+            name = name.Substring(lastSlash + 1, lastDot - lastSlash - 1);
+            Debug.Log(name);
+            names.Add(name);
+        }
+        return names;
+    }
+
 }

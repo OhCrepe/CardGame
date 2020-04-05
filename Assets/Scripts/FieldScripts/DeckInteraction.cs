@@ -39,7 +39,7 @@ public class DeckInteraction : MonoBehaviour {
 	*/
 	private void LoadDeck(){
 
-		DeckList deck = DeckList.LoadDeck("Sample");
+		DeckList deck = DeckList.LoadDeck(GameState.selectedDeck);
 		if(deck == null){
 			return;
 		}

@@ -16,6 +16,8 @@ public class GameState : MonoBehaviour {
 
 	public static bool canAttack = false;
 
+	public static string selectedDeck;
+
 	static GameState(){
 		currentPlayer = GameObject.Find("PlayerField");
 		gameOver = false;
