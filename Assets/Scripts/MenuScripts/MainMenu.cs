@@ -14,4 +14,8 @@ public class MainMenu : MonoBehaviour
         SceneManager.LoadScene("DeckBuilder");
     }
 
+    public void LoadHowToPlay(){
+        SceneManager.LoadScene("HowToPlay", LoadSceneMode.Additive);
+    }
+
 }
