@@ -14,7 +14,7 @@ namespace Server
     class GameServer
     {
 
-        private const string ip = "192.168.0.16";
+        private const string ip = "192.168.1.16";
         private const int port = 8888;
 
         static void Main(string[] args)

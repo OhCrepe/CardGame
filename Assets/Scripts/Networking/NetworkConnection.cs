@@ -24,7 +24,7 @@ public class NetworkConnection : MonoBehaviour, IDisposable
 
     private List<string> commands;
 
-    private const string ip = "86.30.74.235";
+    private const string ip = "154.57.234.56";
     private const int port = 8888;
 
     // Initialize the network connection
