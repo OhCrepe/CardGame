@@ -44,10 +44,13 @@ namespace Server
                     if(game == null)
                     {
                         game = new GameState(handler);
-                    }else
+                        Console.WriteLine("Player 1 connected to game " + handler.game.id);
+                    }
+                    else
                     {
                         game.player2 = handler;
                         handler.game = game;
+                        Console.WriteLine("Player 2 connected to game " + handler.game.id);
                         game = null;
                     }              
                     Thread thread = new Thread(new ThreadStart(handler.Run));

@@ -45,19 +45,34 @@ namespace Server
          */ 
         public void Dispose()
         {
-            input.Close();
-            writer.Close();
-            client.Close();
+            Console.WriteLine("Closing connection on game " + game.id);
+            try
+            {
+                if (client.Connected)
+                {
+                    client.GetStream().Close();
+                    client.Close();
+                }
+            } catch(ObjectDisposedException e)
+            {
+                Console.WriteLine("Connection already disposed");
+            }
         }
 
         public void Run()
         {
             try
             {
-                bool connected = true;
-                while (connected)
+                while (client.Connected)
                 {
-                    String line = input.ReadLine();
+                    String line = null;
+                    try
+                    {
+                        line = input.ReadLine();
+                    }catch(SocketException e)
+                    {
+                        Dispose();
+                    }
                     if (line != null)
                     {
                         Console.WriteLine("Recieved: " + line);
@@ -147,16 +162,19 @@ namespace Server
                         }
                     }
                 }
+                Dispose();
             }
             catch (Exception e)
             {
                 try
                 {
-                    client.Close();
+                    Dispose();
                 }
                 catch (IOException ex)
                 {
-                    Console.WriteLine(ex);
+                    Dispose();
+                    Console.WriteLine(e);
+
                 }
                 Console.WriteLine(e);
             }
@@ -189,8 +207,6 @@ namespace Server
             if(gold <= 0)
             {
                 gold = 0;
-                SendMessage("LOSE");
-                otherPlayer.SendMessage("WIN");
             }
             else {
                 this.gold = gold;
@@ -199,7 +215,14 @@ namespace Server
             SendMessage("GOLD#" + gold);
             otherPlayer.SendMessage("GOLD_OPP#" + gold);
 
-            if (gold <= 0) game.gameOver = true;
+            if (gold <= 0)
+            {
+                SendMessage("LOSE");
+                otherPlayer.SendMessage("WIN");
+                game.gameOver = true;
+                Dispose();
+                otherPlayer.Dispose();
+            }
 
         }
 
@@ -209,6 +232,7 @@ namespace Server
         public void SendMessage(string message)
         {
             if (game.gameOver) return;
+            if (!client.Connected) return;
             Console.WriteLine("Sending Message: " + message);
             writer.WriteLine(message);
         }

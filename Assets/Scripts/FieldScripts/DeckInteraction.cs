@@ -39,8 +39,10 @@ public class DeckInteraction : MonoBehaviour {
 	*/
 	private void LoadDeck(){
 
+		Debug.Log("Loading Deck");
 		DeckList deck = DeckList.LoadDeck(GameState.selectedDeck);
 		if(deck == null){
+			Debug.Log("Null deck");
 			return;
 		}
 		string message = "DECKLIST#";

@@ -51,6 +51,7 @@ public class NetworkConnection : MonoBehaviour, IDisposable
         reader = new StreamReader(stream);
         writer = new StreamWriter(stream);
         writer.AutoFlush = true;
+        Debug.Log("Initializing Connection");
 
     }
 
@@ -171,6 +172,7 @@ public class NetworkConnection : MonoBehaviour, IDisposable
                 case "LOSE":
                     GameState.gameOver = true;
                     stateReader.displayMessage.text = "Defeat!";
+                    Disconnect();
                     menuButton.SetActive(true);
                     break;
 
@@ -248,6 +250,7 @@ public class NetworkConnection : MonoBehaviour, IDisposable
                 case "WIN":
                     GameState.gameOver = true;
                     stateReader.displayMessage.text = "Victory!";
+                    Disconnect();
                     menuButton.SetActive(true);
                     break;
 
@@ -265,9 +268,10 @@ public class NetworkConnection : MonoBehaviour, IDisposable
     *   Start the thread that listens to the server
     */
     private void InitializeListenThread(){
+        Debug.Log("Starting listen thread");
         Thread thread = new Thread(new ThreadStart(ListenThread));
         thread.Start();
-        Console.WriteLine("Connection established");
+        Debug.Log("Connection established");
     }
 
     /*
@@ -275,14 +279,16 @@ public class NetworkConnection : MonoBehaviour, IDisposable
     */
     private void ListenThread(){
 
-        bool connected = true;
-        while(connected){
+        while(tcp.Connected){
+            try{
+                string line = reader.ReadLine();
+                if(line != null){
 
-            string line = reader.ReadLine();
-            if(line != null){
+                    commands.Add(line);
 
-                commands.Add(line);
-
+                }
+            }catch(ObjectDisposedException e){
+                Disconnect();
             }
 
         }
@@ -294,18 +300,21 @@ public class NetworkConnection : MonoBehaviour, IDisposable
     */
     public void SendMessage(string message){
         if(GameState.gameOver) return;
+        if(!tcp.Connected) return;
         Debug.Log("Sending: " + message);
         writer.WriteLine(message);
     }
 
+    public void Disconnect(){Dispose();}
     /*
      * Close the connection
      */
     public void Dispose()
     {
-        reader.Close();
-        writer.Close();
-        tcp.Close();
+        if(tcp.Connected){
+            tcp.GetStream().Close();
+            tcp.Close();
+        }
     }
 
     void OnApplicationQuit(){ Dispose(); }

@@ -11,7 +11,9 @@ public class MainMenuButton : MonoBehaviour
     */
     public void OnButton()
     {
+        GameObject.Find("NetworkManager").GetComponent<NetworkConnection>().Disconnect();
         SceneManager.LoadScene("MainMenu");
+        GameState.gameOver = false;
     }
 
 }

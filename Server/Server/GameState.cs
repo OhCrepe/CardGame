@@ -12,6 +12,8 @@ namespace Server
 
         public PlayerHandler player1, player2;
         public PlayerHandler[] players;
+        public int id;
+        public static int games = 0;
 
         public bool targetting = false, attacking = false, deciding = false;
         public Card targettingCard = null, decidingCard = null;
@@ -32,6 +34,8 @@ namespace Server
             gameOver = false;
             player1 = p1;
             p1.game = this;
+            id = games;
+            games++;
         }
 
         /*  
