@@ -678,8 +678,8 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: "You can bounce this unit, then deal 1 damage to each of your opponents
-    minions.\r\n"
+  m_Text: "You can bounce this unit, then deal 1 damage to each of your opponent's
+    units.\r\n"
 --- !u!1 &1754846518082349832
 GameObject:
   m_ObjectHideFlags: 0

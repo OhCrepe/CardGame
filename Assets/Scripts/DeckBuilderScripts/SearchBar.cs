@@ -18,10 +18,18 @@ public class SearchBar : MonoBehaviour
     public void UpdateCardView(){
 
         string search = GetComponent<InputField>().text.ToUpper();
-        Dropdown typeDropdown = GameObject.Find("CardDropdown").GetComponent<Dropdown>();
+
+        Dropdown typeDropdown = GameObject.Find("CardTypeDropdown").GetComponent<Dropdown>();
         string type = typeDropdown.options[typeDropdown.value].text;
+
+        Dropdown costDropdown = GameObject.Find("CardCostDropdown").GetComponent<Dropdown>();
+        string cost = costDropdown.options[costDropdown.value].text;
+
         bool typeSpecified;
+        bool costSpecified;
+
         CardData.Type cardType = CardData.Type.LORD;
+        int costInt = 0;
 
         switch(type.ToUpper()){
 
@@ -46,6 +54,25 @@ public class SearchBar : MonoBehaviour
 
         }
 
+        switch(cost.ToUpper()){
+
+            case "ANY":
+                costSpecified = false;
+                break;
+
+            case "9+":
+                costSpecified = true;
+                costInt = 9;
+                break;
+
+            default:
+                costSpecified = true;
+                costInt = int.Parse(cost);
+                break;
+
+
+        }
+
         foreach(Transform child in cardView.transform){
 
             GameObject card = child.gameObject;
@@ -53,8 +80,15 @@ public class SearchBar : MonoBehaviour
             bool nameSearched = name.Contains(search);
 
             bool correctType = (!typeSpecified || cardType == card.GetComponent<CardData>().cardType);
+            bool correctCost = false;
+            if(costInt == 9){
+                if(card.GetComponent<CardData>().cost >= costInt && costSpecified) correctCost = true;
+            }else{
+                if(card.GetComponent<CardData>().cost == costInt && costSpecified) correctCost = true;
+            }
+            if(!costSpecified) correctCost = true;
 
-            card.SetActive(nameSearched && correctType);
+            card.SetActive(nameSearched && correctType && correctCost);
 
         }
 
