@@ -104,6 +104,10 @@ namespace Server.Cards
                     return new FrogElderAbility(player, this, game);
                     break;
 
+                case "GRAVE ROBBER":
+                    return new GraveRobberAbility(player, this, game);
+                    break;
+
                 case "ILLUSION FROG":
                     return new IllusionFrogAbility(player, this, game);
                     break;
