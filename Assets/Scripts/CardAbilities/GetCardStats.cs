@@ -44,7 +44,7 @@ public class GetCardStats : MonoBehaviour {
 			healthText.color = Color.green;
 		}
 		if(health == maxHealth){
-			healthText.color = Color.black;
+			healthText.color = Color.white;
 		}
 		healthText.text = "" + health;
 
@@ -59,7 +59,7 @@ public class GetCardStats : MonoBehaviour {
 			strengthText.color = Color.green;
 		}
 		if(strength == maxStrength){
-			strengthText.color = Color.black;
+			strengthText.color = Color.white;
 		}
 		strengthText.text = "" + strength;
 

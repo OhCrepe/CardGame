@@ -86,6 +86,8 @@ public class CardData : MonoBehaviour {
 		currentHealth = health;
 		GetComponent<GetCardStats>().SetHealth(currentHealth, health);
 		currentStrength = strength;
+		GetComponent<GetCardStats>().SetHealth(currentStrength, strength);
+
 	}
 
 	/*
