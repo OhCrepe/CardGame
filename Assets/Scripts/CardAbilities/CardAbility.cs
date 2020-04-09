@@ -14,12 +14,14 @@ public class CardAbility : MonoBehaviour {
 	public bool oncePerTurnUsed;
 	public bool hasAttacked;
 	private GameObject target = null;
+	private GameStateReader reader;
 
 	/*
 	*	Locate the player object
 	*/
 	public void Awake(){
 		player = GameObject.Find("PlayerField");
+		reader = GameObject.Find("GameStateReader").GetComponent<GameStateReader>();
 	}
 
 	/*
@@ -46,6 +48,7 @@ public class CardAbility : MonoBehaviour {
 	*/
 	public IEnumerator WaitForAttackTarget(){
 
+		reader.ChangeText("Select a target for the attack of " + transform.Find("Name").GetComponent<Text>().text);
 		bool selected = false;
 		GameState.targetting = true;
 		GameState.attacking = true;

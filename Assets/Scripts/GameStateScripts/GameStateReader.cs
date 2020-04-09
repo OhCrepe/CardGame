@@ -67,4 +67,8 @@ public class GameStateReader : MonoBehaviour {
 
 	}
 
+	public void ChangeText(string text){
+		displayMessage.text = text;
+	}
+
 }

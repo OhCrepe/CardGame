@@ -233,5 +233,10 @@ namespace Server.Cards
             oncePerTurnUsed = false;
         }
 
+        public virtual void OnAttackAbility(int damage, bool pillage)
+        {
+
+        }
+
     }
 }

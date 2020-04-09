@@ -332,6 +332,7 @@ namespace Server
             attacking.player.SendMessage("ATK_USED#" + attacking.id);
             attacking.DealDamage(attacked.currentStrength, true);
             attacked.DealDamage(attacking.currentStrength, true);
+            attacking.ability.OnAttackAbility(attacking.currentStrength, false);
         }
 
         /*
@@ -353,6 +354,7 @@ namespace Server
             attacking.player.SendMessage("ATK_USED#" + attacking.id);
             PlayerHandler target = attacking.player.otherPlayer;
             target.SetGold(target.gold -= attacking.currentStrength);
+            attacking.ability.OnAttackAbility(attacking.currentStrength, true);
         }
 
         public void SendTrigger(CardAbility.Trigger trigger, Card triggeringCard)
