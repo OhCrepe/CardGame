@@ -24,7 +24,7 @@ public class Hoverable : MonoBehaviour, IPointerEnterHandler, IPointerExitHandle
                     }
                 }
             }
-            GetComponent<Canvas>().sortingOrder = 10; //Layer of cards being held
+            GetComponent<Canvas>().sortingOrder = 11; //Layer of cards being held
 
         }
 
