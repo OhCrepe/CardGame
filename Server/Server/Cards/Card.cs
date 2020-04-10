@@ -84,6 +84,10 @@ namespace Server.Cards
                     return new BloatedBodyAbility(player, this, game);
                     break;
 
+                case "BLOODSUCKER":
+                    return new BloodsuckerAbility(player, this, game);
+                    break;
+
                 case "CANNIBAL":
                     return new CannibalAbility(player, this, game);
                     break;
