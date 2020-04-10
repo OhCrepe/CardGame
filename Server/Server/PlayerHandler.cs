@@ -40,6 +40,11 @@ namespace Server
 
         }
 
+        public bool IsConnected()
+        {
+            return client.Connected;
+        }
+
         /*
          * Close the connection
          */ 
@@ -52,6 +57,9 @@ namespace Server
                 {
                     client.GetStream().Close();
                     client.Close();
+                } else if (!game.gameOver)
+                {
+                    if(otherPlayer != null)otherPlayer.SendMessage("WIN");
                 }
             } catch(ObjectDisposedException e)
             {

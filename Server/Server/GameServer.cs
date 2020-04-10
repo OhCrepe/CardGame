@@ -41,7 +41,7 @@ namespace Server
                 {
                     TcpClient client = listener.AcceptTcpClient();
                     PlayerHandler handler = new PlayerHandler(client);
-                    if(game == null)
+                    if(game == null || !game.player1.IsConnected())
                     {
                         game = new GameState(handler);
                         Console.WriteLine("Player 1 connected to game " + handler.game.id);
