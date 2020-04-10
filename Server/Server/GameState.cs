@@ -65,6 +65,8 @@ namespace Server
                 player2.SetGold(startingGold);
                 player1.SendMessage("LORD_OPP#" + player2.deck.lord.name + "#" + player2.deck.lord.id);
                 player2.SendMessage("LORD_OPP#" + player1.deck.lord.name + "#" + player1.deck.lord.id);
+                player1.SendMessage("YOUR_TURN");
+                player2.SendMessage("YOUR_OPPONENTS_TURN");
                 MainPhase();
             }
 
@@ -94,6 +96,9 @@ namespace Server
                     player.SendMessage("CAN_ATTACK");
                 }
             }
+
+            currentPlayer.SendMessage("YOUR_TURN");
+            currentPlayer.otherPlayer.SendMessage("YOUR_OPPONENTS_TURN");
 
             currentPhase = Phase.START;
             DebtPhase();
@@ -330,8 +335,13 @@ namespace Server
         {
             attacking.hasAttacked = true;
             attacking.player.SendMessage("ATK_USED#" + attacking.id);
-            attacking.DealDamage(attacked.currentStrength, true);
-            attacked.DealDamage(attacking.currentStrength, true);
+
+            // Must store these in advance because a card that dies may have its strength restored while doing so (e.g. illusion frog + engorgement).
+            int attackingStrength = attacking.currentStrength;
+            int attackedStrength = attacked.currentStrength;
+
+            attacking.DealDamage(attackedStrength, true);
+            attacked.DealDamage(attackingStrength, true);
             attacking.ability.OnAttackAbility(attacking.currentStrength, false);
         }
 

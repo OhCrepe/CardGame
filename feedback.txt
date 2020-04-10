@@ -1,0 +1,9 @@
+Gold noise is annoying.
+Back button on deck builder is placed wierdly.
+Graphical issues with the order cards are drawn (hovered cards should appear in front).
+Gamestate text is sometimes too quick or not informative enough.
+Attack button and ability button aren't clear enough.
+When deck is completely valid text shouldn't flash green.
+Stuck on victory screen (but only sometimes).
+Background needs to change.
+If Illusion Frog dies while attacking with modified strength, the damage dealt is still 2.

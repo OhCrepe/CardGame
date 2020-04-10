@@ -6,6 +6,7 @@ using System.Net.Sockets;
 using System.Text;
 using System.Threading;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class NetworkConnection : MonoBehaviour, IDisposable
 {
@@ -116,6 +117,7 @@ public class NetworkConnection : MonoBehaviour, IDisposable
                 case "DAMAGE":
                     card = GameObject.Find(args[1]);
                     if(card == null) break;
+                    stateReader.ChangeText(card.transform.Find("Name").GetComponent<Text>().text + " took "  + args[2]  + " damage!");
                     card.GetComponent<CardData>().DealDamage(int.Parse(args[2]));
                     break;
 
@@ -133,6 +135,7 @@ public class NetworkConnection : MonoBehaviour, IDisposable
                 case "HEAL":
                     card = GameObject.Find(args[1]);
                     if(card == null) break;
+                    stateReader.ChangeText(card.transform.Find("Name").GetComponent<Text>().text + " was healed!");
                     card.GetComponent<CardData>().Heal(int.Parse(args[2]));
                     break;
 
@@ -146,12 +149,14 @@ public class NetworkConnection : MonoBehaviour, IDisposable
                     card = CardMap.cardsInGame[args[1]];
                     if(card == null) break;
                     card.GetComponent<CardAbility>().Bounce();
+                    stateReader.ChangeText("You can't activate that card right now!");
                     break;
 
                 // Kill a card
                 case "KILL":
                     card = CardMap.cardsInGame[args[1]];
                     if(card == null) break;
+                    stateReader.ChangeText(card.transform.Find("Name").GetComponent<Text>().text + " was killed!");
                     GameObject.Find("Discard").GetComponent<DiscardPile>().Discard(GameObject.Find(args[1]));
                     break;
 
@@ -159,6 +164,7 @@ public class NetworkConnection : MonoBehaviour, IDisposable
                 case "KILL_OPP":
                     card = GameObject.Find(args[1]);
                     if(card == null) break;
+                    stateReader.ChangeText(card.transform.Find("Name").GetComponent<Text>().text + " was killed!");
                     Destroy(card, FloatingTextController.floatingTextLength);
                     break;
 
@@ -171,7 +177,7 @@ public class NetworkConnection : MonoBehaviour, IDisposable
                 // We lose
                 case "LOSE":
                     GameState.gameOver = true;
-                    stateReader.displayMessage.text = "Defeat!";
+                    stateReader.ChangeText("Defeat!");
                     Disconnect();
                     menuButton.SetActive(true);
                     break;
@@ -219,11 +225,13 @@ public class NetworkConnection : MonoBehaviour, IDisposable
                     card = GameObject.Find(args[1]);
                     if(card == null) break;
                     card.GetComponent<CardData>().ChangeStrength(int.Parse(args[2]));
+                    stateReader.ChangeText(card.transform.Find("Name").GetComponent<Text>().text + " has increased strength!");
                     break;
 
                 // Summon a card
                 case "SUMMON":
                     player.SummonUnitWithId(args[1]);
+                    stateReader.ChangeText("You summoned a unit!");
                     break;
 
                 // Summon a card
@@ -231,6 +239,7 @@ public class NetworkConnection : MonoBehaviour, IDisposable
                     card = CardMap.InstantiateToZone(args[1], opponent.field.transform);
                     card.name = args[2];
                     card.GetComponent<CardData>().SetId(args[2]);
+                    stateReader.ChangeText("Your opponent summoned " + args[1] + "!");
                     break;
 
                 // Target a card
@@ -238,20 +247,32 @@ public class NetworkConnection : MonoBehaviour, IDisposable
                     GameState.targetting = true;
                     card = CardMap.cardsInGame[args[1]];
                     GameState.targettingCard = card;
+                    stateReader.ChangeText("Select a target for the effect of " + card.transform.Find("Name").GetComponent<Text>().text);
                     break;
 
                 // The given target is valid
                 case "VALID_TARGET":
                     GameState.targetting = false;
                     GameState.targettingCard = null;
+                    stateReader.ChangeText("Turn player is deciding what to do...");
                     break;
 
                 // We win
                 case "WIN":
                     GameState.gameOver = true;
-                    stateReader.displayMessage.text = "Victory!";
+                    stateReader.ChangeText("Victory!");
                     Disconnect();
                     menuButton.SetActive(true);
+                    break;
+
+                // My turn
+                case "YOUR_OPPONENTS_TURN":
+                    stateReader.ChangeText("It is your opponent's turn!");
+                    break;
+
+                // My turn
+                case "YOUR_TURN":
+                    stateReader.ChangeText("It is your turn!");
                     break;
 
                 default:
