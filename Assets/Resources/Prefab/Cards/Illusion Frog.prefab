@@ -84,6 +84,7 @@ GameObject:
   - component: {fileID: 6317117832539236956}
   - component: {fileID: 6317117832539236959}
   - component: {fileID: 6317117832539236958}
+  - component: {fileID: 7516222189666288808}
   m_Layer: 5
   m_Name: Attack Button
   m_TagString: Untagged
@@ -131,12 +132,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.8602941, g: 0.006325698, b: 0.006325698, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 10913, guid: 0000000000000000f000000000000000, type: 0}
+  m_Sprite: {fileID: 21300000, guid: 3ccc32776c10af3418653baafcd50886, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -157,6 +158,21 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fae650e0de5cdc24a895b435b1243632, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &7516222189666288808
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6317117832539236928}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: -900027084, guid: f70555f144d8491a825f0804e09c671c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_EffectColor: {r: 0, g: 0, b: 0, a: 0.5}
+  m_EffectDistance: {x: 1, y: -1}
+  m_UseGraphicAlpha: 1
 --- !u!1 &7068693123589790723
 GameObject:
   m_ObjectHideFlags: 0
@@ -169,6 +185,7 @@ GameObject:
   - component: {fileID: 6992846859332896835}
   - component: {fileID: 7173030263932516245}
   - component: {fileID: 7172963889350060779}
+  - component: {fileID: 1816634747775184512}
   m_Layer: 5
   m_Name: Ability Button
   m_TagString: Untagged
@@ -216,12 +233,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.34299308, g: 0.6949051, b: 0.7647059, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 10913, guid: 0000000000000000f000000000000000, type: 0}
+  m_Sprite: {fileID: 21300000, guid: b9bad94ce0c01f649994ebe5eb6453b0, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -242,6 +259,21 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 22a0d1218d0894043928a021dd0638be, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &1816634747775184512
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7068693123589790723}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: -900027084, guid: f70555f144d8491a825f0804e09c671c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_EffectColor: {r: 0, g: 0, b: 0, a: 0.5}
+  m_EffectDistance: {x: 1, y: -1}
+  m_UseGraphicAlpha: 1
 --- !u!1 &7068701035564440133
 GameObject:
   m_ObjectHideFlags: 0
