@@ -14,12 +14,13 @@ namespace Server
     class GameServer
     {
 
-        private const string ip = "192.168.1.16";
+        private const string regularIP = "192.168.1.16";
         private const int port = 8888;
 
         static void Main(string[] args)
         {
 
+            Config.LoadSettings();
             CardReader.StartReader();
             RunServer();
 
@@ -34,8 +35,26 @@ namespace Server
             TcpListener listener = null;
             try
             {
-                listener = new TcpListener(IPAddress.Parse(ip), port);
+
+                string ip = regularIP;
+                if (Config.configSettings.ContainsKey("test_local_server"))
+                {
+                    if (Config.configSettings["test_local_server"] == "true")
+                    {
+                        listener = new TcpListener(IPAddress.Loopback, port);
+                        Console.WriteLine("Starting local server...");
+                    }
+                    else
+                    {
+                        listener = new TcpListener(IPAddress.Parse(ip), port);
+                    }
+                }
+                else
+                {
+                    listener = new TcpListener(IPAddress.Parse(ip), port);
+                }
                 listener.Start();
+
                 Console.WriteLine("Waiting for incoming connections...");
                 while (true)
                 {

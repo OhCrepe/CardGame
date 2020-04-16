@@ -18,4 +18,6 @@ public class MainMenu : MonoBehaviour
         SceneManager.LoadScene("HowToPlay", LoadSceneMode.Additive);
     }
 
+
+
 }

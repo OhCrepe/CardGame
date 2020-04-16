@@ -7,12 +7,22 @@ using UnityEngine.UI;
 public class DeckSelect : MonoBehaviour
 {
 
+    public GameObject localText;
     private Dropdown dropdown;
 
-    void Start(){
+    void Awake(){
         dropdown = GameObject.Find("Dropdown").GetComponent<Dropdown>();
         InitializeDeckSelect();
+        GameState.localServer = false;
 
+    }
+
+    void Update(){
+        if (Input.GetKeyUp(KeyCode.L))
+        {
+            GameState.localServer = !GameState.localServer;
+            localText.SetActive(GameState.localServer);
+        }
     }
 
     private void InitializeDeckSelect(){

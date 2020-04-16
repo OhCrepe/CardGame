@@ -72,6 +72,7 @@
     <Compile Include="Cards\Card.cs" />
     <Compile Include="Cards\CardAbility.cs" />
     <Compile Include="Cards\CardReader.cs" />
+    <Compile Include="Config.cs" />
     <Compile Include="GameState.cs" />
     <Compile Include="PlayerHandler.cs" />
     <Compile Include="GameServer.cs" />

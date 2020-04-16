@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.IO;
+using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -19,7 +20,10 @@ namespace Server.Cards
         public static void StartReader() {
 
             cardStats = new SortedDictionary<string, Card>();
-            string filepath = Resources.CardData;
+
+            string filepath = Path.GetDirectoryName(Process.GetCurrentProcess().MainModule.FileName) + @"\CardData.csv";
+            Console.WriteLine(filepath);
+
             string[] cards = File.ReadAllLines(filepath);
             for(int i = 1; i < cards.Length; i++)
             {

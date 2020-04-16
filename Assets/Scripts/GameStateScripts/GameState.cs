@@ -18,6 +18,8 @@ public class GameState : MonoBehaviour {
 
 	public static string selectedDeck;
 
+	public static bool localServer;
+
 	static GameState(){
 		currentPlayer = GameObject.Find("PlayerField");
 		gameOver = false;

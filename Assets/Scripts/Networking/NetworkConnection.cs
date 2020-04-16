@@ -47,7 +47,12 @@ public class NetworkConnection : MonoBehaviour, IDisposable
     */
     private void InitializeRemoteIO(){
 
-        tcp = new TcpClient(ip, port);
+        if(GameState.localServer){
+            tcp = new TcpClient("localhost", port);
+        }
+        else{
+            tcp = new TcpClient(ip, port);
+        }
         NetworkStream stream = tcp.GetStream();
         reader = new StreamReader(stream);
         writer = new StreamWriter(stream);
