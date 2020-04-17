@@ -287,7 +287,14 @@ public class NetworkConnection : MonoBehaviour, IDisposable
 
             commands.RemoveAt(0);
 
+
         }
+
+        if(!tcp.Connected && !GameState.gameOver){
+            stateReader.ChangeText("You've been disconnected from the server.");
+            menuButton.SetActive(true);
+        }
+
     }
 
     /*
@@ -315,8 +322,9 @@ public class NetworkConnection : MonoBehaviour, IDisposable
                 }
             }catch(ObjectDisposedException e){
                 Disconnect();
+            }catch(Exception e){
+                Disconnect();
             }
-
         }
 
     }

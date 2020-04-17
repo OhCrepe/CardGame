@@ -899,7 +899,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Yo this is a text
+  m_Text: Waiting for another player...
 --- !u!222 &1677322051
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -984,6 +984,43 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 114697548798952082, guid: 22acd9ff395a3004ebd6a9233b3d6397,
+        type: 3}
+      propertyPath: m_FontData.m_FontStyle
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 174137991, guid: 22acd9ff395a3004ebd6a9233b3d6397, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 419
+      objectReference: {fileID: 0}
+    - target: {fileID: 174137991, guid: 22acd9ff395a3004ebd6a9233b3d6397, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 200
+      objectReference: {fileID: 0}
+    - target: {fileID: 2088291114, guid: 22acd9ff395a3004ebd6a9233b3d6397, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 224976160349056858, guid: 22acd9ff395a3004ebd6a9233b3d6397,
+        type: 3}
+      propertyPath: m_AnchorMin.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 224976160349056858, guid: 22acd9ff395a3004ebd6a9233b3d6397,
+        type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 224976160349056858, guid: 22acd9ff395a3004ebd6a9233b3d6397,
+        type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 224976160349056858, guid: 22acd9ff395a3004ebd6a9233b3d6397,
+        type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 174137992, guid: 22acd9ff395a3004ebd6a9233b3d6397, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
@@ -1011,43 +1048,6 @@ PrefabInstance:
     - target: {fileID: 174137992, guid: 22acd9ff395a3004ebd6a9233b3d6397, type: 3}
       propertyPath: m_Colors.m_HighlightedColor.b
       value: 0.2901961
-      objectReference: {fileID: 0}
-    - target: {fileID: 224976160349056858, guid: 22acd9ff395a3004ebd6a9233b3d6397,
-        type: 3}
-      propertyPath: m_AnchorMin.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 224976160349056858, guid: 22acd9ff395a3004ebd6a9233b3d6397,
-        type: 3}
-      propertyPath: m_AnchorMax.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 224976160349056858, guid: 22acd9ff395a3004ebd6a9233b3d6397,
-        type: 3}
-      propertyPath: m_AnchoredPosition.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 224976160349056858, guid: 22acd9ff395a3004ebd6a9233b3d6397,
-        type: 3}
-      propertyPath: m_AnchoredPosition.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 114697548798952082, guid: 22acd9ff395a3004ebd6a9233b3d6397,
-        type: 3}
-      propertyPath: m_FontData.m_FontStyle
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 174137991, guid: 22acd9ff395a3004ebd6a9233b3d6397, type: 3}
-      propertyPath: m_AnchoredPosition.x
-      value: 419
-      objectReference: {fileID: 0}
-    - target: {fileID: 174137991, guid: 22acd9ff395a3004ebd6a9233b3d6397, type: 3}
-      propertyPath: m_AnchoredPosition.y
-      value: 200
-      objectReference: {fileID: 0}
-    - target: {fileID: 2088291114, guid: 22acd9ff395a3004ebd6a9233b3d6397, type: 3}
-      propertyPath: m_AnchoredPosition.x
-      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2088291115, guid: 22acd9ff395a3004ebd6a9233b3d6397, type: 3}
       propertyPath: m_Color.r
