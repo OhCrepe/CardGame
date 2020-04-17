@@ -1,8 +1,8 @@
-# CardGame
-Repository for my final year uni project, an online card game created using the Unity Game Engine. Gameplay in a style similar to most popular Trading Card Games, both physical (*Magic: The Gathering*, *Yu-Gi-Oh*) and virtual (*Hearthstone*).
+# Lords
+Repository for my final year uni project, an online card game created using the Unity Game Engine called Lords. Gameplay in a style similar to most popular Trading Card Games, both physical (*Magic: The Gathering*, *Yu-Gi-Oh*) and virtual (*Hearthstone*).
 
 ## Running the Game
-To run the game executable, simply download the Executable/Week11 folder from the repository. From here you can run the Week11.exe to run the most recent build of the game (as of 10/12/2019-21:32).
+To run the game executable, simply download the Executable/Lords folder from the repository. From here you can run the Lords.exe to run the most recent build of the game (as of 10/12/2019-21:32).
 
 ### Requirements for running the game
 **System Requirements**
@@ -20,7 +20,27 @@ The Unity version used to create this game is 2018.4.10f1. It is therefore recom
 
 **System Requirements**
 
-The system requirements for opening hte game in the Unity Editor are identically to those for running the game executable.
+The system requirements for opening the game in the Unity Editor are identical to those for running the game executable.
+
+## Running the Server Locally
+
+By default, Lords will attempt to connect to a server hosted on my home pc. In the future this will be a permanently on PC, however, for now, this is the case. To host a server locally on your machine follow these steps:
+
+1) Download the Server_Executable folder in the Git repository.
+2) In this folder, open Config.settings
+3) Change the value of test_local_server to true
+4) Run the server by double-clicking on Server.exe
+
+Note that you may need to enable Server.exe on your anti-virus/firewall. Also, this has only been tested to work on Windows.
+
+
+To then connect to this server, open your instance of Lords and follow these steps:
+
+1) Click "Enter Game"
+2) Press the 'L' key to toggle between local-server on and off (when it is on some text will appear to indicate as such)
+3) Choose a deck and click "Enter Game"
+
+Note that this only supports instances of Lords running on the same machine as the server. To start an actual game, you'll need to start a second instance of Lords and repeat these steps.
 
 # Credits/References
 
