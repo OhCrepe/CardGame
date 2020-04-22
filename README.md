@@ -44,7 +44,7 @@ Note that this only supports instances of Lords running on the same machine as t
 
 ### Running the Server Unit Tests
 
-In order to run the server Unit Tests follow these steps.
+To run the server Unit Tests follow these steps.
 
 1) Import the server project, found in the /Server directory, to Visual Studio.
 2) On the toolbar at the top of the page, click Test -> Run -> Run All Tests
