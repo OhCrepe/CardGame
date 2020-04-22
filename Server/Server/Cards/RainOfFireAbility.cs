@@ -6,10 +6,10 @@ using System.Threading.Tasks;
 
 namespace Server.Cards
 {
-    class RainOfFireAbility : CardAbility
+    public class RainOfFireAbility : CardAbility
     {
 
-        private const int damageDealt = 2;
+        public const int damageDealt = 2;
 
         public RainOfFireAbility(PlayerHandler player, Card card, GameState game) : base(player, card, game)
         {

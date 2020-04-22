@@ -10,7 +10,7 @@ using System.Threading.Tasks;
 
 namespace Server
 {
-    class PlayerHandler : IDisposable
+    public class PlayerHandler : IDisposable
     {
 
         public int gold;
@@ -25,6 +25,7 @@ namespace Server
         public PlayerHandler(TcpClient client)
         {
 
+            if (client == null) return;
             this.client = client;
             try
             {
@@ -240,6 +241,7 @@ namespace Server
         public void SendMessage(string message)
         {
             if (game.gameOver) return;
+            if (client == null) return;
             if (!client.Connected) return;
             Console.WriteLine("Sending Message: " + message);
             writer.WriteLine(message);

@@ -6,10 +6,10 @@ using System.Threading.Tasks;
 
 namespace Server.Cards
 {
-    class TrinketsAndBaublesAbility : CardAbility
+    public class TrinketsAndBaublesAbility : CardAbility
     {
 
-        private const int goldGained = 5;
+        public const int goldGained = 5;
 
         public TrinketsAndBaublesAbility(PlayerHandler player, Card card, GameState game) : base(player, card, game)
         {

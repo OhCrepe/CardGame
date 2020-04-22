@@ -118,6 +118,6 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="CardData" xml:space="preserve">
-    <value>C:\Users\Tyler\Gits\ce301_thorn_t\Server\Server\CardData.csv</value>
+    <value>C:\Users\Tyler\Gits\ce301_thorn_t\Server\Server\bin\Debug\CardData.csv</value>
   </data>
 </root>

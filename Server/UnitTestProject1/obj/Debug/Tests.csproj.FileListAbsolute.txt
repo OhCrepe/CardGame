@@ -1,0 +1,7 @@
+C:\Users\Tyler\Gits\ce301_thorn_t\Server\UnitTestProject1\obj\Debug\Tests.csprojResolveAssemblyReference.cache
+C:\Users\Tyler\Gits\ce301_thorn_t\Server\UnitTestProject1\bin\Debug\UnitTestProject1.dll
+C:\Users\Tyler\Gits\ce301_thorn_t\Server\UnitTestProject1\bin\Debug\UnitTestProject1.pdb
+C:\Users\Tyler\Gits\ce301_thorn_t\Server\UnitTestProject1\bin\Debug\Server.exe
+C:\Users\Tyler\Gits\ce301_thorn_t\Server\UnitTestProject1\bin\Debug\Server.pdb
+C:\Users\Tyler\Gits\ce301_thorn_t\Server\UnitTestProject1\obj\Debug\UnitTestProject1.dll
+C:\Users\Tyler\Gits\ce301_thorn_t\Server\UnitTestProject1\obj\Debug\UnitTestProject1.pdb

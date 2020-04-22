@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Server.Cards
 {
-    class GlancingBlowAbility : CardAbility
+    public class GlancingBlowAbility : CardAbility
     {
 
         public const int damageDealt = 2;

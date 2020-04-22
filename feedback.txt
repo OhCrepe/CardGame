@@ -1,8 +1,7 @@
 Gold noise is annoying.
+
 Back button on deck builder is placed wierdly.
 
 Gamestate text is sometimes too quick or not informative enough.
 
 When deck is completely valid text shouldn't flash green.
-Stuck on victory screen (but only sometimes).
-Background needs to change.

@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace Server.Cards
 {
-    class CardReader
+    public class CardReader
     {
 
         public static SortedDictionary<string, Card> cardStats;
@@ -24,7 +24,16 @@ namespace Server.Cards
             string filepath = Path.GetDirectoryName(Process.GetCurrentProcess().MainModule.FileName) + @"\CardData.csv";
             Console.WriteLine(filepath);
 
-            string[] cards = File.ReadAllLines(filepath);
+            string[] cards = null;
+            try
+            {
+                cards = File.ReadAllLines(filepath);
+            }catch(IOException e)
+            {
+                // Default location for testing
+                filepath = Resources.CardData;
+                cards = File.ReadAllLines(filepath);
+            }
             for(int i = 1; i < cards.Length; i++)
             {
 

@@ -23,11 +23,12 @@ namespace Server.Cards
         }
 
         /*
-        * Ensure this card is in hand and that there is a target for it's effect, and that there are cards to draw
+        * Ensure this card is in hand and that there is a target for it's effect, and that there are cards to draw 
+        * (we do shuffle in first so we just need 1 card in deck)
         */
         public override bool ValidActivation()
         {
-            return (player.deck.hand.Count > 1 && player.deck.deck.Count > 1 && player.deck.hand.Contains(card));
+            return (player.deck.hand.Count > 1 && player.deck.deck.Count > 0 && player.deck.hand.Contains(card));
         }
 
         /*

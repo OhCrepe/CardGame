@@ -6,10 +6,10 @@ using System.Threading.Tasks;
 
 namespace Server.Cards
 {
-    class TheDoctorAbility : CardAbility
+    public class TheDoctorAbility : CardAbility
     {
 
-        private const int healAmount = 1;
+        public const int healAmount = 1;
 
         public TheDoctorAbility(PlayerHandler player, Card card, GameState game) : base(player, card, game)
         {

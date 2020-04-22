@@ -6,10 +6,10 @@ using System.Threading.Tasks;
 
 namespace Server.Cards
 {
-    class CombatMedicAbility : CardAbility
+    public class CombatMedicAbility : CardAbility
     {
 
-        public int abilityCost = 1, healAmount = 2;
+        public const int abilityCost = 1, healAmount = 2;
 
         public CombatMedicAbility(PlayerHandler player, Card card, GameState game) : base(player, card, game)
         {
@@ -21,7 +21,18 @@ namespace Server.Cards
          */ 
         public override void OnFieldTrigger()
         {
-            if(!oncePerTurnUsed) game.TargetCard(this);
+            if (!oncePerTurnUsed)
+            {
+                game.TargetCard(this);
+            }
+        }
+
+        /*
+         * Ensure that the activation of this cards effect is valid
+         */
+        public override bool ValidActivation()
+        {
+            return !oncePerTurnUsed && player.deck.field.Contains(card) && game.currentPlayer == player;
         }
 
         /*
@@ -37,6 +48,7 @@ namespace Server.Cards
          */ 
         public override void OnTargetSelect(Card card)
         {
+            base.OnTargetSelect(card);
             if (oncePerTurnUsed) return;
             player.SetGold(player.gold - abilityCost);
             card.Heal(healAmount);

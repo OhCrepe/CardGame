@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Server.Cards
 {
-    class CardAbility
+    public class CardAbility
     {
 
         public PlayerHandler player; // The player this card belongs to
@@ -190,6 +190,7 @@ namespace Server.Cards
             player.deck.discard.Add(card);
             player.SendMessage("KILL#" + card.id);
             player.otherPlayer.SendMessage("KILL_OPP#" + card.id);
+            card.Restore();
             OnKillAbility(combat);
 
         }

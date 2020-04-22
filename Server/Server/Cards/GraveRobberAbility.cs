@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Server.Cards
 {
-    class GraveRobberAbility : CardAbility
+    public class GraveRobberAbility : CardAbility
     {
 
         public const int goldStolen = 2;

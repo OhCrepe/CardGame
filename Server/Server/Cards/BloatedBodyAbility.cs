@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Server.Cards
 {
-    class BloatedBodyAbility : CardAbility
+    public class BloatedBodyAbility : CardAbility
     {
 
         public const int deathDamage = 3;

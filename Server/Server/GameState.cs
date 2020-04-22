@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace Server
 {
-    class GameState
+    public class GameState
     {
 
         public PlayerHandler player1, player2;
@@ -23,8 +23,9 @@ namespace Server
 
         public PlayerHandler currentPlayer;
 
-        private const int startingGold = 25;
-        private const int goldPerTurn = 5;
+        public const int startingGold = 25;
+        public const int goldPerTurn = 5;
+        public const int startingHandSize = 4;
         private bool canAttack;
 
         public bool gameOver;
@@ -51,14 +52,22 @@ namespace Server
                 currentPlayer = player1;
                 player1.otherPlayer = player2;
                 player2.otherPlayer = player1;
+                if (player1.deck == null)
+                {
+                    player1.deck = new ServerDeckList(player1);
+                }
+                if(player2.deck == null)
+                {
+                    player2.deck = new ServerDeckList(player2);
+                }
                 player1.deck.ShuffleDeck();
-                for (int i = 0; i < 4; i++)
+                for (int i = 0; i < startingHandSize; i++)
                 {
                     player1.deck.DrawCard();
                 }
                 player1.SetGold(startingGold);
                 player2.deck.ShuffleDeck();
-                for (int i = 0; i < 4; i++)
+                for (int i = 0; i < startingHandSize; i++)
                 {
                     player2.deck.DrawCard();
                 }
@@ -322,6 +331,7 @@ namespace Server
          */
         public bool ValidAttack(Card attacking, Card attacked)
         {
+            if (!canAttack) return false;
             if (attacking.player != currentPlayer) return false;
             if (attacking == attacked) return false;
             if (attacking.hasAttacked) return false;
@@ -350,6 +360,7 @@ namespace Server
          */ 
         public bool ValidDirectAttack(Card attacking)
         {
+            if (!canAttack) return false;
             if (attacking.player != currentPlayer) return false;
             if (attacking.hasAttacked) return false;
             return currentPlayer.deck.field.Contains(attacking) && currentPlayer.otherPlayer.deck.field.Count == 0;
@@ -367,6 +378,9 @@ namespace Server
             attacking.ability.OnAttackAbility(attacking.currentStrength, true);
         }
 
+        /*
+         * Send a trigger to all cards which may trigger their effects
+         */
         public void SendTrigger(CardAbility.Trigger trigger, Card triggeringCard)
         {
 
@@ -388,6 +402,14 @@ namespace Server
 
             }
 
+        }
+
+        /*
+         * Check whether we can attack at this moment
+         */ 
+        public bool CheckCanAttack()
+        {
+            return canAttack;
         }
 
     }

@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Server.Cards
 {
-    class SeismicFrogAbility : CardAbility
+    public class SeismicFrogAbility : CardAbility
     {
 
         public const int damageDealt = 1;

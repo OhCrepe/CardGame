@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Server.Cards
 {
-    class Card
+    public class Card
     {
 
         public static int cardCount;

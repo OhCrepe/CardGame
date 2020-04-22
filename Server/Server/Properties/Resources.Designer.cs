@@ -61,7 +61,7 @@ namespace Server.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to C:\Users\Tyler\Gits\ce301_thorn_t\Server\Server\CardData.csv.
+        ///   Looks up a localized string similar to C:\Users\Tyler\Gits\ce301_thorn_t\Server\Server\bin\Debug\CardData.csv.
         /// </summary>
         internal static string CardData {
             get {

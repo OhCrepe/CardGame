@@ -27,7 +27,7 @@ namespace Server.Cards
          */
         public override bool ValidActivation()
         {
-            return player.deck.field.Count > 1 && player.deck.field.Contains(card);
+            return player.deck.field.Count > 1 && player.deck.field.Contains(card) && !oncePerTurnUsed;
         }
 
         /*
@@ -43,6 +43,7 @@ namespace Server.Cards
          */ 
         public override void OnTargetSelect(Card card)
         {
+            base.OnTargetSelect(card);
             if (oncePerTurnUsed) return;
             card.ability.Kill(false);
             this.card.Heal(card.health);

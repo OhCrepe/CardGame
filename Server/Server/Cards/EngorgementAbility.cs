@@ -6,10 +6,10 @@ using System.Threading.Tasks;
 
 namespace Server.Cards
 {
-    class EngorgementAbility : CardAbility
+    public class EngorgementAbility : CardAbility
     {
 
-        private const int strengthGained = 2;
+        public const int strengthGained = 2;
 
         public EngorgementAbility(PlayerHandler player, Card card, GameState game) : base(player, card, game)
         {

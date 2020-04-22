@@ -9,7 +9,7 @@ using Server.Cards;
 namespace Server
 {
 
-    class ServerDeckList
+    public class ServerDeckList
     {
 
         public Card lord;
@@ -20,6 +20,17 @@ namespace Server
         public PlayerHandler player;
 
         private static readonly RNGCryptoServiceProvider random = new RNGCryptoServiceProvider();
+
+        // A default decklist for testing
+        public ServerDeckList(PlayerHandler player)
+        {
+            this.player = player;
+            this.lord = CreateCard("The Executioner");
+            this.deck = DefaultDeckList();
+            this.hand = new List<Card>();
+            this.field = new List<Card>();
+            this.discard = new List<Card>();
+        }
 
         public ServerDeckList(PlayerHandler player, Card lord, Card[] deck)
         {
@@ -103,7 +114,6 @@ namespace Server
             }
             Card drawnCard = deck[0];
             MoveCardToHand(drawnCard);
-            //CheckForDeck(); // Graphical and therefore doesn't matter so much
             return drawnCard;
 
         }
@@ -178,6 +188,55 @@ namespace Server
                 if (card.name.Contains(searchString)) return true;
             }
             return false;
+        }
+
+
+        /*
+         * A default decklist used for testing
+         */ 
+        public List<Card> DefaultDeckList()
+        {
+            List<Card> deck = new List<Card>();
+            deck.Add(CreateCard("Dying Nobleman"));
+            deck.Add(CreateCard("Dying Nobleman"));
+            deck.Add(CreateCard("Dying Nobleman"));
+            deck.Add(CreateCard("Swelling Flesh"));
+            deck.Add(CreateCard("Swelling Flesh"));
+            deck.Add(CreateCard("Swelling Flesh"));
+            deck.Add(CreateCard("Negotiator"));
+            deck.Add(CreateCard("Negotiator"));
+            deck.Add(CreateCard("Negotiator"));
+            deck.Add(CreateCard("Swarm of Rats"));
+            deck.Add(CreateCard("Swarm of Rats"));
+            deck.Add(CreateCard("Swarm of Rats"));
+
+            return deck;
+        }
+        public Card CreateCard(string cardName)
+        {
+            return (new Card(CardReader.cardStats[cardName], player, player.game));
+        }
+
+        /*
+         * Used primarily for testing, searches for a card from the hand, then if not found, the deck with the given name 
+         */ 
+        public Card GetCardByName(string name)
+        {
+            foreach(Card card in hand)
+            {
+                if (card.name.Equals(name))
+                {
+                    return card;
+                }
+            }
+            foreach(Card card in deck)
+            {
+                if (card.name.Equals(name))
+                {
+                    return card;
+                }
+            }
+            return null;
         }
 
     }

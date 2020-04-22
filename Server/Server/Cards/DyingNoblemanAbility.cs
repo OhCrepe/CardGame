@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Server.Cards
 {
-    class DyingNoblemanAbility : CardAbility
+    public class DyingNoblemanAbility : CardAbility
     {
 
         public const int goldGained = 6;
