@@ -42,6 +42,14 @@ To then connect to this server, open your instance of Lords and follow these ste
 
 Note that this only supports instances of Lords running on the same machine as the server. To start an actual game, you'll need to start a second instance of Lords and repeat these steps.
 
+### Running the Server Unit Tests
+
+To run the server Unit Tests follow these steps.
+
+1) Import the server project, found in the /Server directory, to Visual Studio.
+2) On the toolbar at the top of the page, click Test -> Run -> Run All Tests
+3) The "Test Explorer" window should appear on the screen, presenting the results of the tests including which tests passed and which tests failed.
+
 # Credits/References
 
 Card artwork provided by Charlie Adams
