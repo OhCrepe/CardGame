@@ -2,7 +2,7 @@
 Repository for my final year uni project, an online card game created using the Unity Game Engine called Lords. Gameplay in a style similar to most popular Trading Card Games, both physical (*Magic: The Gathering*, *Yu-Gi-Oh*) and virtual (*Hearthstone*).
 
 ## Running the Game
-To run the game executable, simply download the Executable/Lords folder from the repository. From here you can run the Lords.exe to run the most recent build of the game (as of 10/12/2019-21:32).
+To run the game executable, simply download the Executable/Lords folder from the repository. From here you can run the Lords.exe to run the most recent build of the game.
 
 ### Requirements for running the game
 **System Requirements**
@@ -24,7 +24,7 @@ The system requirements for opening the game in the Unity Editor are identical t
 
 ## Running the Server Locally
 
-By default, Lords will attempt to connect to a server hosted on my home pc. In the future this will be a permanently on PC, however, for now, this is the case. To host a server locally on your machine follow these steps:
+By default, Lords will attempt to connect to a server hosted on my home computer. In the future this will be a different machine constantly running the server. To host a server locally on your machine follow these steps:
 
 1) Download the Server_Executable folder in the Git repository.
 2) In this folder, open Config.settings
