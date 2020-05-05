@@ -229,6 +229,7 @@ namespace Server.Cards
          */
         public void Restore()
         {
+            if (cardType != Type.MINION) return;
             currentHealth = health;
             currentStrength = strength;
             player.SendMessage("RESTORE#" + id);
